@@ -100,7 +100,29 @@ public class ShadowDance extends AbstractGame  {
         }
         if (level3){
             SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+            if (input.wasPressed(Keys.TAB)){
+                gameWon = true;
+            }
+            if (input.wasPressed(Keys.BACKSPACE)){
+                gameLost = true;
+            }
 
+        }
+        if (gameWon){
+            TITLE_FONT.drawString(WIN_MESSAGE, WINDOW_WIDTH/2 - 130 ,END_MESSAGE);
+            INSTRUCTION_FONT.drawString(REPLAY_INSTRUCTIONS, WINDOW_HEIGHT/2 - 200, REPLAY_INSTRUCTIONS_Y);
+            if (input.wasPressed(Keys.SPACE)){
+                gameWon = false;
+                showInstructions = true;
+            }
+        }
+        if (gameLost){
+            TITLE_FONT.drawString(LOSE_MESSAGE, WINDOW_WIDTH/2 - 130 ,END_MESSAGE);
+            INSTRUCTION_FONT.drawString(REPLAY_INSTRUCTIONS, WINDOW_HEIGHT/2 - 200, REPLAY_INSTRUCTIONS_Y);
+            if (input.wasPressed(Keys.SPACE)){
+                gameLost = false;
+                showInstructions = true;
+            }
         }
 
 
