@@ -1,0 +1,2164 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff4a7ac64d, pid=10220, tid=2652
+#
+# JRE version: OpenJDK Runtime Environment (20.0.2+9) (build 20.0.2+9-78)
+# Java VM: OpenJDK 64-Bit Server VM (20.0.2+9-78, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Problematic frame:
+# C  [lwjgl_opengl.dll+0xc64d]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\lib\idea_rt.jar=62680:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 ShadowDance
+
+Host: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.3393)
+Time: Mon Oct  9 19:43:59 2023 AUS Eastern Summer Time elapsed time: 0.485978 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000027bf2a6c340):  JavaThread "main" [_thread_in_native, id=2652, stack(0x0000009ddca00000,0x0000009ddcb00000)]
+
+Stack: [0x0000009ddca00000,0x0000009ddcb00000],  sp=0x0000009ddcafe658,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [lwjgl_opengl.dll+0xc64d]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  org.lwjgl.opengl.GL11C.nglGenTextures(IJ)V+0
+j  org.lwjgl.opengl.GL11C.glGenTextures()I+20
+j  org.lwjgl.opengl.GL11.glGenTextures()I+0
+j  bagel.Texture.<init>(IILjava/nio/ByteBuffer;)V+21
+J 515% c1 bagel.InternalFont.<init>(Ljava/lang/String;I)V (267 bytes) @ 0x0000027b800a0504 [0x0000027b8009f580+0x0000000000000f84]
+j  bagel.TextureManager.getFont(Ljava/lang/String;I)Lbagel/InternalFont;+41
+j  bagel.Font.<init>(Ljava/lang/String;I)V+7
+j  Accuracy.<clinit>()V+8
+v  ~StubRoutines::call_stub 0x0000027b8753100d
+j  Levels.<init>(IILjava/lang/String;)V+5
+j  Level1.<init>(IILjava/lang/String;)V+4
+j  ShadowDance.<clinit>()V+20
+v  ~StubRoutines::call_stub 0x0000027b8753100d
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), reading address 0x00000000000002d8
+
+
+Registers:
+RAX=0x0000027bd43f0eb0, RBX=0x0000027bd0544438, RCX=0x0000000000000001, RDX=0x0000027bd442cf2c
+RSP=0x0000009ddcafe658, RBP=0x0000009ddcafe6e0, RSI=0x0000027bd0161430, RDI=0x0000027b8754df59
+R8 =0x0000000000000001, R9 =0x0000027bd442cf2c, R10=0x0000000000000000, R11=0x000000008913f9f0
+R12=0x0000000000000000, R13=0x0000027bd0544438, R14=0x0000009ddcafe710, R15=0x0000027bf2a6c340
+RIP=0x00007fff4a7ac64d, EFLAGS=0x0000000000010206
+
+
+Register to memory mapping:
+
+RIP=0x00007fff4a7ac64d lwjgl_opengl.dll
+RAX=0x0000027bd43f0eb0 points into unknown readable memory: 0x0000000000000000 | 00 00 00 00 00 00 00 00
+RBX={method} {0x0000027bd0544440} 'nglGenTextures' '(IJ)V' in 'org/lwjgl/opengl/GL11C'
+RCX=0x0000000000000001 is an unknown value
+RDX=0x0000027bd442cf2c points into unknown readable memory: 00 00 00 00
+RSP=0x0000009ddcafe658 is pointing into the stack for thread: 0x0000027bf2a6c340
+RBP=0x0000009ddcafe6e0 is pointing into the stack for thread: 0x0000027bf2a6c340
+RSI=0x0000027bd0161430 is pointing into metadata
+RDI=0x0000027b8754df59 is at code_begin+1305 in an Interpreter codelet
+return entry points  [0x0000027b8754da40, 0x0000027b8754e508]  2760 bytes
+R8 =0x0000000000000001 is an unknown value
+R9 =0x0000027bd442cf2c points into unknown readable memory: 00 00 00 00
+R10=0x0 is NULL
+R11=0x000000008913f9f0 is an oop: java.lang.Class 
+{0x000000008913f9f0} - klass: 'java/lang/Class'
+ - ---- fields (total size 116 words):
+ - private volatile transient 'classRedefinedCount' 'I' @12  0 (0x00000000)
+ - abstract internal 'klass' 'J' @16  2729720254480 (0x0000027b90019010)
+ - abstract internal 'array_klass' 'J' @24  0 (0x0000000000000000)
+ - abstract internal 'oop_size' 'I' @32  116 (0x00000074)
+ - abstract internal 'static_oop_field_count' 'I' @36  0 (0x00000000)
+ - private volatile transient 'cachedConstructor' 'Ljava/lang/reflect/Constructor;' @40  NULL (0x00000000)
+ - private transient 'name' 'Ljava/lang/String;' @44  "org.lwjgl.opengl.GL11C"{0x000000008913fd90} (0x8913fd90)
+ - private transient 'module' 'Ljava/lang/Module;' @48  a 'java/lang/Module'{0x00000000897ec240} (0x897ec240)
+ - private final 'classLoader' 'Ljava/lang/ClassLoader;' @52  a 'jdk/internal/loader/ClassLoaders$AppClassLoader'{0x00000000897ec080} (0x897ec080)
+ - private transient 'classData' 'Ljava/lang/Object;' @56  NULL (0x00000000)
+ - private transient 'packageName' 'Ljava/lang/String;' @60  "org.lwjgl.opengl"{0x000000008929c128} (0x8929c128)
+ - private final 'componentType' 'Ljava/lang/Class;' @64  NULL (0x00000000)
+ - private volatile transient 'reflectionData' 'Ljava/lang/ref/SoftReference;' @68  NULL (0x00000000)
+ - private volatile transient 'genericInfo' 'Lsun/reflect/generics/repository/ClassRepository;' @72  NULL (0x00000000)
+ - private volatile transient 'enumConstants' '[Ljava/lang/Object;' @76  NULL (0x00000000)
+ - private volatile transient 'enumConstantDirectory' 'Ljava/util/Map;' @80  NULL (0x00000000)
+ - private volatile transient 'annotationData' 'Ljava/lang/Class$AnnotationData;' @84  NULL (0x00000000)
+ - private volatile transient 'annotationType' 'Lsun/reflect/annotation/AnnotationType;' @88  NULL (0x00000000)
+ - transient 'classValueMap' 'Ljava/lang/ClassValue$ClassValueMap;' @92  NULL (0x00000000)
+ - abstract internal 'protection_domain' 'Ljava/lang/Object;' @96  a 'java/security/ProtectionDomain'{0x00000000892a7a28} (0x892a7a28)
+ - abstract internal 'signers_name' 'Ljava/lang/Object;' @100  NULL (0x00000000)
+ - abstract internal 'source_file' 'Ljava/lang/Object;' @104  NULL (0x00000000)
+ - signature: Lorg/lwjgl/opengl/GL11C;
+ - ---- static fields (0):
+ - public static final 'GL_NEVER' 'I' @112  512 (0x00000200)
+ - public static final 'GL_LESS' 'I' @116  513 (0x00000201)
+ - public static final 'GL_EQUAL' 'I' @120  514 (0x00000202)
+ - public static final 'GL_LEQUAL' 'I' @124  515 (0x00000203)
+ - public static final 'GL_GREATER' 'I' @128  516 (0x00000204)
+ - public static final 'GL_NOTEQUAL' 'I' @132  517 (0x00000205)
+ - public static final 'GL_GEQUAL' 'I' @136  518 (0x00000206)
+ - public static final 'GL_ALWAYS' 'I' @140  519 (0x00000207)
+ - public static final 'GL_DEPTH_BUFFER_BIT' 'I' @144  256 (0x00000100)
+ - public static final 'GL_STENCIL_BUFFER_BIT' 'I' @148  1024 (0x00000400)
+ - public static final 'GL_COLOR_BUFFER_BIT' 'I' @152  16384 (0x00004000)
+ - public static final 'GL_POINTS' 'I' @156  0 (0x00000000)
+ - public static final 'GL_LINES' 'I' @160  1 (0x00000001)
+ - public static final 'GL_LINE_LOOP' 'I' @164  2 (0x00000002)
+ - public static final 'GL_LINE_STRIP' 'I' @168  3 (0x00000003)
+ - public static final 'GL_TRIANGLES' 'I' @172  4 (0x00000004)
+ - public static final 'GL_TRIANGLE_STRIP' 'I' @176  5 (0x00000005)
+ - public static final 'GL_TRIANGLE_FAN' 'I' @180  6 (0x00000006)
+ - public static final 'GL_QUADS' 'I' @184  7 (0x00000007)
+ - public static final 'GL_ZERO' 'I' @188  0 (0x00000000)
+ - public static final 'GL_ONE' 'I' @192  1 (0x00000001)
+ - public static final 'GL_SRC_COLOR' 'I' @196  768 (0x00000300)
+ - public static final 'GL_ONE_MINUS_SRC_COLOR' 'I' @200  769 (0x00000301)
+ - public static final 'GL_SRC_ALPHA' 'I' @204  770 (0x00000302)
+ - public static final 'GL_ONE_MINUS_SRC_ALPHA' 'I' @208  771 (0x00000303)
+ - public static final 'GL_DST_ALPHA' 'I' @212  772 (0x00000304)
+ - public static final 'GL_ONE_MINUS_DST_ALPHA' 'I' @216  773 (0x00000305)
+ - public static final 'GL_DST_COLOR' 'I' @220  774 (0x00000306)
+ - public static final 'GL_ONE_MINUS_DST_COLOR' 'I' @224  775 (0x00000307)
+ - public static final 'GL_SRC_ALPHA_SATURATE' 'I' @228  776 (0x00000308)
+ - public static final 'GL_TRUE' 'I' @232  1 (0x00000001)
+ - public static final 'GL_FALSE' 'I' @236  0 (0x00000000)
+ - public static final 'GL_BYTE' 'I' @240  5120 (0x00001400)
+ - public static final 'GL_UNSIGNED_BYTE' 'I' @244  5121 (0x00001401)
+ - public static final 'GL_SHORT' 'I' @248  5122 (0x00001402)
+ - public static final 'GL_UNSIGNED_SHORT' 'I' @252  5123 (0x00001403)
+ - public static final 'GL_INT' 'I' @256  5124 (0x00001404)
+ - public static final 'GL_UNSIGNED_INT' 'I' @260  5125 (0x00001405)
+ - public static final 'GL_FLOAT' 'I' @264  5126 (0x00001406)
+ - public static final 'GL_DOUBLE' 'I' @268  5130 (0x0000140a)
+ - public static final 'GL_NONE' 'I' @272  0 (0x00000000)
+ - public static final 'GL_FRONT_LEFT' 'I' @276  1024 (0x00000400)
+ - public static final 'GL_FRONT_RIGHT' 'I' @280  1025 (0x00000401)
+ - public static final 'GL_BACK_LEFT' 'I' @284  1026 (0x00000402)
+ - public static final 'GL_BACK_RIGHT' 'I' @288  1027 (0x00000403)
+ - public static final 'GL_FRONT' 'I' @292  1028 (0x00000404)
+ - public static final 'GL_BACK' 'I' @296  1029 (0x00000405)
+ - public static final 'GL_LEFT' 'I' @300  1030 (0x00000406)
+ - public static final 'GL_RIGHT' 'I' @304  1031 (0x00000407)
+ - public static final 'GL_FRONT_AND_BACK' 'I' @308  1032 (0x00000408)
+ - public static final 'GL_NO_ERROR' 'I' @312  0 (0x00000000)
+ - public static final 'GL_INVALID_ENUM' 'I' @316  1280 (0x00000500)
+ - public static final 'GL_INVALID_VALUE' 'I' @320  1281 (0x00000501)
+ - public static final 'GL_INVALID_OPERATION' 'I' @324  1282 (0x00000502)
+ - public static final 'GL_STACK_OVERFLOW' 'I' @328  1283 (0x00000503)
+ - public static final 'GL_STACK_UNDERFLOW' 'I' @332  1284 (0x00000504)
+ - public static final 'GL_OUT_OF_MEMORY' 'I' @336  1285 (0x00000505)
+ - public static final 'GL_CW' 'I' @340  2304 (0x00000900)
+ - public static final 'GL_CCW' 'I' @344  2305 (0x00000901)
+ - public static final 'GL_POINT_SIZE' 'I' @348  2833 (0x00000b11)
+ - public static final 'GL_POINT_SIZE_RANGE' 'I' @352  2834 (0x00000b12)
+ - public static final 'GL_POINT_SIZE_GRANULARITY' 'I' @356  2835 (0x00000b13)
+ - public static final 'GL_LINE_SMOOTH' 'I' @360  2848 (0x00000b20)
+ - public static final 'GL_LINE_WIDTH' 'I' @364  2849 (0x00000b21)
+ - public static final 'GL_LINE_WIDTH_RANGE' 'I' @368  2850 (0x00000b22)
+ - public static final 'GL_LINE_WIDTH_GRANULARITY' 'I' @372  2851 (0x00000b23)
+ - public static final 'GL_POLYGON_MODE' 'I' @376  2880 (0x00000b40)
+ - public static final 'GL_POLYGON_SMOOTH' 'I' @380  2881 (0x00000b41)
+ - public static final 'GL_CULL_FACE' 'I' @384  2884 (0x00000b44)
+ - public static final 'GL_CULL_FACE_MODE' 'I' @388  2885 (0x00000b45)
+ - public static final 'GL_FRONT_FACE' 'I' @392  2886 (0x00000b46)
+ - public static final 'GL_DEPTH_RANGE' 'I' @396  2928 (0x00000b70)
+ - public static final 'GL_DEPTH_TEST' 'I' @400  2929 (0x00000b71)
+ - public static final 'GL_DEPTH_WRITEMASK' 'I' @404  2930 (0x00000b72)
+ - public static final 'GL_DEPTH_CLEAR_VALUE' 'I' @408  2931 (0x00000b73)
+ - public static final 'GL_DEPTH_FUNC' 'I' @412  2932 (0x00000b74)
+ - public static final 'GL_STENCIL_TEST' 'I' @416  2960 (0x00000b90)
+ - public static final 'GL_STENCIL_CLEAR_VALUE' 'I' @420  2961 (0x00000b91)
+ - public static final 'GL_STENCIL_FUNC' 'I' @424  2962 (0x00000b92)
+ - public static final 'GL_STENCIL_VALUE_MASK' 'I' @428  2963 (0x00000b93)
+ - public static final 'GL_STENCIL_FAIL' 'I' @432  2964 (0x00000b94)
+ - public static final 'GL_STENCIL_PASS_DEPTH_FAIL' 'I' @436  2965 (0x00000b95)
+ - public static final 'GL_STENCIL_PASS_DEPTH_PASS' 'I' @440  2966 (0x00000b96)
+ - public static final 'GL_STENCIL_REF' 'I' @444  2967 (0x00000b97)
+ - public static final 'GL_STENCIL_WRITEMASK' 'I' @448  2968 (0x00000b98)
+ - public static final 'GL_VIEWPORT' 'I' @452  2978 (0x00000ba2)
+ - public static final 'GL_DITHER' 'I' @456  3024 (0x00000bd0)
+ - public static final 'GL_BLEND_DST' 'I' @460  3040 (0x00000be0)
+ - public static final 'GL_BLEND_SRC' 'I' @464  3041 (0x00000be1)
+ - public static final 'GL_BLEND' 'I' @468  3042 (0x00000be2)
+ - public static final 'GL_LOGIC_OP_MODE' 'I' @472  3056 (0x00000bf0)
+ - public static final 'GL_COLOR_LOGIC_OP' 'I' @476  3058 (0x00000bf2)
+ - public static final 'GL_DRAW_BUFFER' 'I' @480  3073 (0x00000c01)
+ - public static final 'GL_READ_BUFFER' 'I' @484  3074 (0x00000c02)
+ - public static final 'GL_SCISSOR_BOX' 'I' @488  3088 (0x00000c10)
+ - public static final 'GL_SCISSOR_TEST' 'I' @492  3089 (0x00000c11)
+ - public static final 'GL_COLOR_CLEAR_VALUE' 'I' @496  3106 (0x00000c22)
+ - public static final 'GL_COLOR_WRITEMASK' 'I' @500  3107 (0x00000c23)
+ - public static final 'GL_DOUBLEBUFFER' 'I' @504  3122 (0x00000c32)
+ - public static final 'GL_STEREO' 'I' @508  3123 (0x00000c33)
+ - public static final 'GL_LINE_SMOOTH_HINT' 'I' @512  3154 (0x00000c52)
+ - public static final 'GL_POLYGON_SMOOTH_HINT' 'I' @516  3155 (0x00000c53)
+ - public static final 'GL_UNPACK_SWAP_BYTES' 'I' @520  3312 (0x00000cf0)
+ - public static final 'GL_UNPACK_LSB_FIRST' 'I' @524  3313 (0x00000cf1)
+ - public static final 'GL_UNPACK_ROW_LENGTH' 'I' @528  3314 (0x00000cf2)
+ - public static final 'GL_UNPACK_SKIP_ROWS' 'I' @532  3315 (0x00000cf3)
+ - public static final 'GL_UNPACK_SKIP_PIXELS' 'I' @536  3316 (0x00000cf4)
+ - public static final 'GL_UNPACK_ALIGNMENT' 'I' @540  3317 (0x00000cf5)
+ - public static final 'GL_PACK_SWAP_BYTES' 'I' @544  3328 (0x00000d00)
+ - public static final 'GL_PACK_LSB_FIRST' 'I' @548  3329 (0x00000d01)
+ - public static final 'GL_PACK_ROW_LENGTH' 'I' @552  3330 (0x00000d02)
+ - public static final 'GL_PACK_SKIP_ROWS' 'I' @556  3331 (0x00000d03)
+ - public static final 'GL_PACK_SKIP_PIXELS' 'I' @560  3332 (0x00000d04)
+ - public static final 'GL_PACK_ALIGNMENT' 'I' @564  3333 (0x00000d05)
+ - public static final 'GL_MAX_TEXTURE_SIZE' 'I' @568  3379 (0x00000d33)
+ - public static final 'GL_MAX_VIEWPORT_DIMS' 'I' @572  3386 (0x00000d3a)
+ - public static final 'GL_SUBPIXEL_BITS' 'I' @576  3408 (0x00000d50)
+ - public static final 'GL_TEXTURE_1D' 'I' @580  3552 (0x00000de0)
+ - public static final 'GL_TEXTURE_2D' 'I' @584  3553 (0x00000de1)
+ - public static final 'GL_TEXTURE_WIDTH' 'I' @588  4096 (0x00001000)
+ - public static final 'GL_TEXTURE_HEIGHT' 'I' @592  4097 (0x00001001)
+ - public static final 'GL_TEXTURE_INTERNAL_FORMAT' 'I' @596  4099 (0x00001003)
+ - public static final 'GL_TEXTURE_BORDER_COLOR' 'I' @600  4100 (0x00001004)
+ - public static final 'GL_DONT_CARE' 'I' @604  4352 (0x00001100)
+ - public static final 'GL_FASTEST' 'I' @608  4353 (0x00001101)
+ - public static final 'GL_NICEST' 'I' @612  4354 (0x00001102)
+ - public static final 'GL_CLEAR' 'I' @616  5376 (0x00001500)
+ - public static final 'GL_AND' 'I' @620  5377 (0x00001501)
+ - public static final 'GL_AND_REVERSE' 'I' @624  5378 (0x00001502)
+ - public static final 'GL_COPY' 'I' @628  5379 (0x00001503)
+ - public static final 'GL_AND_INVERTED' 'I' @632  5380 (0x00001504)
+ - public static final 'GL_NOOP' 'I' @636  5381 (0x00001505)
+ - public static final 'GL_XOR' 'I' @640  5382 (0x00001506)
+ - public static final 'GL_OR' 'I' @644  5383 (0x00001507)
+ - public static final 'GL_NOR' 'I' @648  5384 (0x00001508)
+ - public static final 'GL_EQUIV' 'I' @652  5385 (0x00001509)
+ - public static final 'GL_INVERT' 'I' @656  5386 (0x0000150a)
+ - public static final 'GL_OR_REVERSE' 'I' @660  5387 (0x0000150b)
+ - public static final 'GL_COPY_INVERTED' 'I' @664  5388 (0x0000150c)
+ - public static final 'GL_OR_INVERTED' 'I' @668  5389 (0x0000150d)
+ - public static final 'GL_NAND' 'I' @672  5390 (0x0000150e)
+ - public static final 'GL_SET' 'I' @676  5391 (0x0000150f)
+ - public static final 'GL_TEXTURE' 'I' @680  5890 (0x00001702)
+ - public static final 'GL_COLOR' 'I' @684  6144 (0x00001800)
+ - public static final 'GL_DEPTH' 'I' @688  6145 (0x00001801)
+ - public static final 'GL_STENCIL' 'I' @692  6146 (0x00001802)
+ - public static final 'GL_STENCIL_INDEX' 'I' @696  6401 (0x00001901)
+ - public static final 'GL_DEPTH_COMPONENT' 'I' @700  6402 (0x00001902)
+ - public static final 'GL_RED' 'I' @704  6403 (0x00001903)
+ - public static final 'GL_GREEN' 'I' @708  6404 (0x00001904)
+ - public static final 'GL_BLUE' 'I' @712  6405 (0x00001905)
+ - public static final 'GL_ALPHA' 'I' @716  6406 (0x00001906)
+ - public static final 'GL_RGB' 'I' @720  6407 (0x00001907)
+ - public static final 'GL_RGBA' 'I' @724  6408 (0x00001908)
+ - public static final 'GL_POINT' 'I' @728  6912 (0x00001b00)
+ - public static final 'GL_LINE' 'I' @732  6913 (0x00001b01)
+ - public static final 'GL_FILL' 'I' @736  6914 (0x00001b02)
+ - public static final 'GL_KEEP' 'I' @740  7680 (0x00001e00)
+ - public static final 'GL_REPLACE' 'I' @744  7681 (0x00001e01)
+ - public static final 'GL_INCR' 'I' @748  7682 (0x00001e02)
+ - public static final 'GL_DECR' 'I' @752  7683 (0x00001e03)
+ - public static final 'GL_VENDOR' 'I' @756  7936 (0x00001f00)
+ - public static final 'GL_RENDERER' 'I' @760  7937 (0x00001f01)
+ - public static final 'GL_VERSION' 'I' @764  7938 (0x00001f02)
+ - public static final 'GL_EXTENSIONS' 'I' @768  7939 (0x00001f03)
+ - public static final 'GL_NEAREST' 'I' @772  9728 (0x00002600)
+ - public static final 'GL_LINEAR' 'I' @776  9729 (0x00002601)
+ - public static final 'GL_NEAREST_MIPMAP_NEAREST' 'I' @780  9984 (0x00002700)
+ - public static final 'GL_LINEAR_MIPMAP_NEAREST' 'I' @784  9985 (0x00002701)
+ - public static final 'GL_NEAREST_MIPMAP_LINEAR' 'I' @788  9986 (0x00002702)
+ - public static final 'GL_LINEAR_MIPMAP_LINEAR' 'I' @792  9987 (0x00002703)
+ - public static final 'GL_TEXTURE_MAG_FILTER' 'I' @796  10240 (0x00002800)
+ - public static final 'GL_TEXTURE_MIN_FILTER' 'I' @800  10241 (0x00002801)
+ - public static final 'GL_TEXTURE_WRAP_S' 'I' @804  10242 (0x00002802)
+ - public static final 'GL_TEXTURE_WRAP_T' 'I' @808  10243 (0x00002803)
+ - public static final 'GL_REPEAT' 'I' @812  10497 (0x00002901)
+ - public static final 'GL_POLYGON_OFFSET_FACTOR' 'I' @816  32824 (0x00008038)
+ - public static final 'GL_POLYGON_OFFSET_UNITS' 'I' @820  10752 (0x00002a00)
+ - public static final 'GL_POLYGON_OFFSET_POINT' 'I' @824  10753 (0x00002a01)
+ - public static final 'GL_POLYGON_OFFSET_LINE' 'I' @828  10754 (0x00002a02)
+ - public static final 'GL_POLYGON_OFFSET_FILL' 'I' @832  32823 (0x00008037)
+ - public static final 'GL_R3_G3_B2' 'I' @836  10768 (0x00002a10)
+ - public static final 'GL_RGB4' 'I' @840  32847 (0x0000804f)
+ - public static final 'GL_RGB5' 'I' @844  32848 (0x00008050)
+ - public static final 'GL_RGB8' 'I' @848  32849 (0x00008051)
+ - public static final 'GL_RGB10' 'I' @852  32850 (0x00008052)
+ - public static final 'GL_RGB12' 'I' @856  32851 (0x00008053)
+ - public static final 'GL_RGB16' 'I' @860  32852 (0x00008054)
+ - public static final 'GL_RGBA2' 'I' @864  32853 (0x00008055)
+ - public static final 'GL_RGBA4' 'I' @868  32854 (0x00008056)
+ - public static final 'GL_RGB5_A1' 'I' @872  32855 (0x00008057)
+ - public static final 'GL_RGBA8' 'I' @876  32856 (0x00008058)
+ - public static final 'GL_RGB10_A2' 'I' @880  32857 (0x00008059)
+ - public static final 'GL_RGBA12' 'I' @884  32858 (0x0000805a)
+ - public static final 'GL_RGBA16' 'I' @888  32859 (0x0000805b)
+ - public static final 'GL_TEXTURE_RED_SIZE' 'I' @892  32860 (0x0000805c)
+ - public static final 'GL_TEXTURE_GREEN_SIZE' 'I' @896  32861 (0x0000805d)
+ - public static final 'GL_TEXTURE_BLUE_SIZE' 'I' @900  32862 (0x0000805e)
+ - public static final 'GL_TEXTURE_ALPHA_SIZE' 'I' @904  32863 (0x0000805f)
+ - public static final 'GL_PROXY_TEXTURE_1D' 'I' @908  32867 (0x00008063)
+ - public static final 'GL_PROXY_TEXTURE_2D' 'I' @912  32868 (0x00008064)
+ - public static final 'GL_TEXTURE_BINDING_1D' 'I' @916  32872 (0x00008068)
+ - public static final 'GL_TEXTURE_BINDING_2D' 'I' @920  32873 (0x00008069)
+ - public static final 'GL_VERTEX_ARRAY' 'I' @924  32884 (0x00008074)
+R12=0x0 is NULL
+R13={method} {0x0000027bd0544440} 'nglGenTextures' '(IJ)V' in 'org/lwjgl/opengl/GL11C'
+R14=0x0000009ddcafe710 is pointing into the stack for thread: 0x0000027bf2a6c340
+R15=0x0000027bf2a6c340 is a thread
+
+
+Top of Stack: (sp=0x0000009ddcafe658)
+0x0000009ddcafe658:   0000027b87551ff3 0000027b8754df59
+0x0000009ddcafe668:   0000027b87551cee 0000027bd0544438
+0x0000009ddcafe678:   0000027bd0161430 0000009ddcafe6f8
+0x0000009ddcafe688:   0000027b8754df59 0000027b87551c96
+0x0000009ddcafe698:   0000009ddcafe698 0000027bd0544438
+0x0000009ddcafe6a8:   0000009ddcafe710 0000027bd0551fb8
+0x0000009ddcafe6b8:   0000000000000000 000000008913f9f0
+0x0000009ddcafe6c8:   0000027bd0544438 0000000000000000
+0x0000009ddcafe6d8:   0000009ddcafe700 0000009ddcafe760
+0x0000009ddcafe6e8:   0000027b8754de8a 000000008913f9f0
+0x0000009ddcafe6f8:   0000027b8754f897 0000027bd442cf2c
+0x0000009ddcafe708:   0000000000000000 0000000000000001
+0x0000009ddcafe718:   0000009ddcafe718 0000027bd05445a4
+0x0000009ddcafe728:   0000009ddcafe790 0000027bd0551fb8
+0x0000009ddcafe738:   0000000000000000 000000008913f9f0
+0x0000009ddcafe748:   0000027bd0544610 0000009ddcafe700
+0x0000009ddcafe758:   0000009ddcafe798 0000009ddcafe7e0
+0x0000009ddcafe768:   0000027b8754df9e 0000000000000000
+0x0000009ddcafe778:   0000000000000000 0000000089148648
+0x0000009ddcafe788:   0000000000010000 00000000893d0c78
+0x0000009ddcafe798:   0000009ddcafe798 0000027bd05129a8
+0x0000009ddcafe7a8:   0000009ddcafe7e8 0000027bd0538000
+0x0000009ddcafe7b8:   0000000000000000 00000000892c8fe8
+0x0000009ddcafe7c8:   0000027bd05129c0 0000009ddcafe798
+0x0000009ddcafe7d8:   0000009ddcafe7f0 0000009ddcafe840
+0x0000009ddcafe7e8:   0000027b8754df9e 000000008929b248
+0x0000009ddcafe7f8:   0000009ddcafe7f8 0000027bd04fcb25
+0x0000009ddcafe808:   0000009ddcafe868 0000027bd04fd228
+0x0000009ddcafe818:   0000000000000000 0000000089298500
+0x0000009ddcafe828:   0000027bd04fcbd0 0000009ddcafe7f0
+0x0000009ddcafe838:   0000009ddcafe870 0000009ddcafea40
+0x0000009ddcafe848:   0000027b800a0504 0000000089292f60 
+
+Instructions: (pc=0x00007fff4a7ac64d)
+0x00007fff4a7ac54d:   cc cc cc 48 8b 01 41 0f b6 c8 48 8b 50 18 48 ff
+0x00007fff4a7ac55d:   a2 d0 01 00 00 cc cc cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac56d:   cc cc cc 48 8b 01 0f 28 cb 0f 28 c2 48 8b 48 18
+0x00007fff4a7ac57d:   48 ff a1 d8 01 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac58d:   cc cc cc 48 8b 01 45 8b d8 44 8b 44 24 28 41 8b
+0x00007fff4a7ac59d:   d1 41 8b cb 4c 8b 50 18 49 ff a2 e8 01 00 00 cc
+0x00007fff4a7ac5ad:   cc cc cc 48 8b 01 41 8b c8 48 8b 50 18 48 ff a2
+0x00007fff4a7ac5bd:   f0 01 00 00 cc cc cc cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac5cd:   cc cc cc 40 53 48 8b 01 41 8b d8 44 8b 44 24 30
+0x00007fff4a7ac5dd:   41 8b d1 4c 8b 4c 24 38 8b cb 4c 8b 50 18 5b 49
+0x00007fff4a7ac5ed:   ff a2 f8 01 00 00 cc cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac5fd:   cc cc cc 48 8b 01 48 8b 48 18 48 ff a1 98 02 00
+0x00007fff4a7ac60d:   00 cc cc 48 8b 01 48 8b 48 18 48 ff a1 a0 02 00
+0x00007fff4a7ac61d:   00 cc cc 48 8b 01 41 8b c8 48 8b 50 18 48 ff a2
+0x00007fff4a7ac62d:   c8 02 00 00 cc cc cc cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac63d:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac64d:   49 ff a2 d8 02 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac65d:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac66d:   49 ff a2 e0 02 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac67d:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac68d:   49 ff a2 f0 02 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac69d:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac6ad:   49 ff a2 f8 02 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac6bd:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac6cd:   49 ff a2 00 03 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac6dd:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac6ed:   49 ff a2 08 03 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac6fd:   cc cc cc 48 8b 01 48 8b 48 18 48 8b 81 10 03 00
+0x00007fff4a7ac70d:   00 48 ff e0 cc cc cc cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac71d:   cc cc cc 48 8b 01 49 8b d1 41 8b c8 4c 8b 50 18
+0x00007fff4a7ac72d:   49 ff a2 68 03 00 00 cc cc cc cc cc cc cc cc cc
+0x00007fff4a7ac73d:   cc cc cc 48 8b 01 48 8b 48 18 48 8b 81 78 03 00 
+
+
+Stack slot to memory mapping:
+stack at sp + 0 slots: 0x0000027b87551ff3 is at code_begin+1043 in an Interpreter codelet
+method entry point (kind = native)  [0x0000027b87551be0, 0x0000027b875526d0]  2800 bytes
+stack at sp + 1 slots: 0x0000027b8754df59 is at code_begin+1305 in an Interpreter codelet
+return entry points  [0x0000027b8754da40, 0x0000027b8754e508]  2760 bytes
+stack at sp + 2 slots: 0x0000027b87551cee is at code_begin+270 in an Interpreter codelet
+method entry point (kind = native)  [0x0000027b87551be0, 0x0000027b875526d0]  2800 bytes
+stack at sp + 3 slots: {method} {0x0000027bd0544440} 'nglGenTextures' '(IJ)V' in 'org/lwjgl/opengl/GL11C'
+stack at sp + 4 slots: 0x0000027bd0161430 is pointing into metadata
+stack at sp + 5 slots: 0x0000009ddcafe6f8 is pointing into the stack for thread: 0x0000027bf2a6c340
+stack at sp + 6 slots: 0x0000027b8754df59 is at code_begin+1305 in an Interpreter codelet
+return entry points  [0x0000027b8754da40, 0x0000027b8754e508]  2760 bytes
+stack at sp + 7 slots: 0x0000027b87551c96 is at code_begin+182 in an Interpreter codelet
+method entry point (kind = native)  [0x0000027b87551be0, 0x0000027b875526d0]  2800 bytes
+
+
+Compiled method (c1)     588  515 % !   3       bagel.InternalFont::<init> @ 146 (267 bytes)
+ total in heap  [0x0000027b8009f190,0x0000027b800a2170] = 12256
+ relocation     [0x0000027b8009f2d8,0x0000027b8009f580] = 680
+ main code      [0x0000027b8009f580,0x0000027b800a1158] = 7128
+ stub code      [0x0000027b800a1158,0x0000027b800a1318] = 448
+ oops           [0x0000027b800a1318,0x0000027b800a1328] = 16
+ metadata       [0x0000027b800a1328,0x0000027b800a1388] = 96
+ scopes data    [0x0000027b800a1388,0x0000027b800a1910] = 1416
+ scopes pcs     [0x0000027b800a1910,0x0000027b800a1d40] = 1072
+ dependencies   [0x0000027b800a1d40,0x0000027b800a1d48] = 8
+ handler table  [0x0000027b800a1d48,0x0000027b800a2120] = 984
+ nul chk table  [0x0000027b800a2120,0x0000027b800a2170] = 80
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont'
+  0x0000027b8009f580: 448b 5208 | 49bb 0000 | 008f 7b02 | 0000 4d03 | d34c 3bd0 
+
+  0x0000027b8009f594: ;   {runtime_call ic_miss_stub}
+  0x0000027b8009f594: 0f85 6648 | 4f07 660f | 1f44 0000 
+[Verified Entry Point]
+  0x0000027b8009f5a0: 8984 2400 | 80ff ff55 | 4881 ec50 | 0100 0090 | 4181 7f20 | 0100 0000 
+
+  0x0000027b8009f5b8: ;   {runtime_call StubRoutines (2)}
+  0x0000027b8009f5b8: 7405 e861 | a74d 0748 | 8954 2478 | 4c89 8424 | 8800 0000 | 4489 8c24 | 8000 0000 
+
+  0x0000027b8009f5d4: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f5d4: 48be b0a4 | 4fd0 7b02 | 0000 8bbe | cc00 0000 | 83c7 0289 | becc 0000 | 0081 e7fe | 0700 0083 
+  0x0000027b8009f5f4: ff00 0f84 | 0b14 0000 
+
+  0x0000027b8009f5fc: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f5fc: 488b f248 | bfb0 a44f | d07b 0200 | 0048 8387 | 1001 0000 
+
+  0x0000027b8009f610: ;   {metadata(method data for {method} {0x0000027b8f476690} '<init>' '()V' in 'java/lang/Object')}
+  0x0000027b8009f610: 0148 be80 | 7b00 d07b | 0200 008b | becc 0000 | 0083 c702 | 89be cc00 | 0000 81e7 | feff 1f00 
+  0x0000027b8009f630: 83ff 000f | 84ef 1300 | 0048 8bda 
+
+  0x0000027b8009f63c: ;   {metadata('bagel/FontClassification')}
+  0x0000027b8009f63c: 48ba a85a | 0190 7b02 | 0000 498b | 87f8 0000 | 0048 8d78 | 1849 3bbf | 0801 0000 | 0f87 eb13 
+  0x0000027b8009f65c: 0000 4989 | bff8 0000 | 0048 c700 | 0100 0000 | 488b ca49 | ba00 0000 | 8f7b 0200 | 0049 2bca 
+  0x0000027b8009f67c: 8948 0848 | 33c9 8948 | 0c48 33c9 | 4889 4810 
+
+  0x0000027b8009f68c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f68c: 488b d048 | beb0 a44f | d07b 0200 | 0048 8386 | 2001 0000 
+
+  0x0000027b8009f6a0: ;   {metadata(method data for {method} {0x0000027bd04d4600} '<init>' '(Ljava/lang/String;I)V' in 'bagel/FontClassification')}
+  0x0000027b8009f6a0: 0148 bab0 | aa4f d07b | 0200 008b | b2cc 0000 | 0083 c602 | 89b2 cc00 | 0000 81e6 | feff 1f00 
+  0x0000027b8009f6c0: 83fe 000f | 848d 1300 | 0048 8bd0 
+
+  0x0000027b8009f6cc: ;   {metadata(method data for {method} {0x0000027bd04d4600} '<init>' '(Ljava/lang/String;I)V' in 'bagel/FontClassification')}
+  0x0000027b8009f6cc: 48be b0aa | 4fd0 7b02 | 0000 4883 | 8610 0100 
+
+  0x0000027b8009f6dc: ;   {metadata(method data for {method} {0x0000027b8f476690} '<init>' '()V' in 'java/lang/Object')}
+  0x0000027b8009f6dc: 0001 48ba | 807b 00d0 | 7b02 0000 | 8bb2 cc00 | 0000 83c6 | 0289 b2cc | 0000 0081 | e6fe ff1f 
+  0x0000027b8009f6fc: 0083 fe00 | 0f84 7113 | 0000 4489 | 480c 410f | be57 4083 | fa00 0f85 | 8013 0000 | 4d8b d044 
+  0x0000027b8009f71c: 8950 1048 | 8bd0 4933 | d048 c1ea | 1448 83fa | 000f 8580 | 1300 0041 | 0fbe 5740 | 83fa 000f 
+  0x0000027b8009f73c: 858a 1300 | 004c 8bd0 | 4489 5310 | 488b d348 | 33d0 48c1 | ea14 4883 | fa00 0f85 | 8a13 0000 
+  0x0000027b8009f75c: 4489 4b0c 
+
+  0x0000027b8009f760: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f760: 48ba b0a4 | 4fd0 7b02 | 0000 4883 | 8230 0100 | 0001 498b 
+
+  0x0000027b8009f774: ;   {static_call}
+  0x0000027b8009f774: d066 90e8 
+
+  0x0000027b8009f778: ; ImmutableOopMap {[120]=Oop [136]=Oop }
+                      ;*invokestatic fileToByteBuffer {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@23 (line 55)
+  0x0000027b8009f778: 844f 4f07 | 4889 8424 | 9000 0000 
+
+  0x0000027b8009f784: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f784: 48be b0a4 | 4fd0 7b02 | 0000 4883 | 8640 0100 
+
+  0x0000027b8009f794: ;   {static_call}
+  0x0000027b8009f794: 0001 90e8 
+
+  0x0000027b8009f798: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*invokestatic create {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@28 (line 57)
+  0x0000027b8009f798: 644f 4f07 | 410f be57 | 4083 fa00 | 488b 5424 | 780f 854f | 1300 004c | 8bd0 4489 | 5214 4c8b 
+  0x0000027b8009f7b8: c24c 33c0 | 49c1 e814 | 4983 f800 | 0f85 5013 
+
+  0x0000027b8009f7c8: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f7c8: 0000 49b8 | b0a4 4fd0 | 7b02 0000 | 4983 8050 | 0100 0001 | 488b d04c | 8b84 2490 
+
+  0x0000027b8009f7e4: ;   {static_call}
+  0x0000027b8009f7e4: 0000 00e8 
+
+  0x0000027b8009f7e8: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*invokestatic stbtt_InitFont {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@39 (line 58)
+  0x0000027b8009f7e8: 144f 4f07 
+
+  0x0000027b8009f7ec: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f7ec: 83f8 0048 | beb0 a44f | d07b 0200 | 0048 bf70 | 0100 0000 | 0000 000f | 840a 0000 | 0048 bf60 
+  0x0000027b8009f80c: 0100 0000 | 0000 0048 | 8b1c 3e48 | 8d5b 0148 | 891c 3e0f | 843e 0d00 | 0044 8b8c | 2480 0000 
+  0x0000027b8009f82c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f82c: 0048 beb0 | a44f d07b | 0200 0048 | 8386 c001 | 0000 01be | 6000 0000 | 498b f90f | affe c5fb 
+  0x0000027b8009f84c: ;   {static_call}
+  0x0000027b8009f84c: 2ac7 90e8 
+
+  0x0000027b8009f850: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*invokestatic nextPowerOfTwo {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@64 (line 62)
+  0x0000027b8009f850: ac4e 4f07 | 8984 2484 
+
+  0x0000027b8009f858: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f858: 0000 0048 | beb0 a44f | d07b 0200 | 0048 8386 | d001 0000 | 0144 8b8c | 2480 0000 | 0041 ffc1 
+  0x0000027b8009f878: c4c1 7b2a 
+
+  0x0000027b8009f87c: ;   {static_call}
+  0x0000027b8009f87c: c166 90e8 
+
+  0x0000027b8009f880: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*invokestatic nextPowerOfTwo {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@73 (line 63)
+  0x0000027b8009f880: 7c4e 4f07 | 8984 24a0 | 0000 008b | 9c24 8400 | 0000 0faf 
+
+  0x0000027b8009f894: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009f894: d848 bab0 | a44f d07b | 0200 0048 | 8382 e001 
+
+  0x0000027b8009f8a4: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009f8a4: 0000 0148 | ba98 b44f | d07b 0200 | 008b b2cc | 0000 0083 | c602 89b2 | cc00 0000 | 81e6 feff 
+  0x0000027b8009f8c4: 1f00 83fe | 000f 8463 
+
+  0x0000027b8009f8cc: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009f8cc: 1200 0048 | ba98 b44f | d07b 0200 | 0048 8382 | 1001 0000 
+
+  0x0000027b8009f8e0: ;   {metadata(method data for {method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b8009f8e0: 0148 baa0 | b415 d07b | 0200 008b | b2cc 0000 | 0083 c602 | 89b2 cc00 | 0000 81e6 | feff 1f00 
+  0x0000027b8009f900: 83fe 000f | 844a 1200 
+
+  0x0000027b8009f908: ;   {metadata('java/nio/DirectByteBuffer')}
+  0x0000027b8009f908: 0048 bac8 | 981c 8f7b | 0200 0049 | 8b87 f800 | 0000 488d | 7840 493b | bf08 0100 | 000f 8749 
+  0x0000027b8009f928: 1200 0049 | 89bf f800 | 0000 48c7 | 0001 0000 | 0048 8bca | 49ba 0000 | 008f 7b02 | 0000 492b 
+  0x0000027b8009f948: ca89 4808 | 4833 c989 | 480c 4833 | c948 bf06 | 0000 0000 | 0000 0048 | 894c f808 | 48ff cf75 
+  0x0000027b8009f968: f64c 8bc0 
+
+  0x0000027b8009f96c: ;   {metadata(method data for {method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b8009f96c: 48ba a0b4 | 15d0 7b02 | 0000 4883 | 8210 0100 | 0001 4c8b | c348 8bd0 | 899c 24a4 | 0000 0048 
+  0x0000027b8009f98c: 8984 2498 | 0000 000f 
+
+  0x0000027b8009f994: ;   {optimized virtual_call}
+  0x0000027b8009f994: 1f40 00e8 
+
+  0x0000027b8009f998: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [152]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.nio.ByteBuffer::allocateDirect@5 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b8009f998: 6447 4f07 
+
+  0x0000027b8009f99c: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009f99c: 49b8 98b4 | 4fd0 7b02 | 0000 4983 | 8020 0100 
+
+  0x0000027b8009f9ac: ;   {metadata(method data for {method} {0x0000027b8f1c9838} 'nativeOrder' '()Ljava/nio/ByteOrder;' in 'java/nio/ByteOrder')}
+  0x0000027b8009f9ac: 0001 49b8 | 30b9 15d0 | 7b02 0000 | 418b 90cc | 0000 0083 | c202 4189 | 90cc 0000 | 0081 e2fe 
+  0x0000027b8009f9cc: ff1f 0083 | fa00 0f84 | a911 0000 | 488b 8424 | 9800 0000 
+
+  0x0000027b8009f9e0: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009f9e0: 49b8 98b4 | 4fd0 7b02 | 0000 4983 | 8030 0100 
+
+  0x0000027b8009f9f0: ;   {oop(a 'java/nio/ByteOrder'{0x000000008971f538})}
+  0x0000027b8009f9f0: 0001 49b8 | 38f5 7189 | 0000 0000 | 488b 9424 | 9800 0000 
+
+  0x0000027b8009fa04: ;   {optimized virtual_call}
+  0x0000027b8009fa04: 6666 90e8 
+
+  0x0000027b8009fa08: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*invokevirtual order {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@7 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b8009fa08: f446 4f07 | 4889 8424 | a800 0000 
+
+  0x0000027b8009fa14: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fa14: 48ba b0a4 | 4fd0 7b02 | 0000 4883 | 82f0 0100 
+
+  0x0000027b8009fa24: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fa24: 0001 48ba | 40b6 4fd0 | 7b02 0000 | 448b 82cc | 0000 0041 | 83c0 0244 | 8982 cc00 | 0000 4181 
+  0x0000027b8009fa44: e0fe ff1f | 0041 83f8 | 000f 844f 
+
+  0x0000027b8009fa50: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fa50: 1100 0048 | ba40 b64f | d07b 0200 | 0048 8382 | 1001 0000 | 01ba 6000 | 0000 41b8 | 1400 0000 
+  0x0000027b8009fa70: 0f1f 8000 
+
+  0x0000027b8009fa74: ;   {static_call}
+  0x0000027b8009fa74: 0000 00e8 
+
+  0x0000027b8009fa78: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [168]=Oop }
+                      ;*invokestatic __checkMalloc {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.stb.STBTTBakedChar::malloc@6 (line 143)
+                      ; - bagel.InternalFont::<init>@91 (line 65)
+  0x0000027b8009fa78: 844c 4f07 
+
+  0x0000027b8009fa7c: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fa7c: 48ba 40b6 | 4fd0 7b02 | 0000 4883 | 8220 0100 | 0001 488b | d066 0f1f 
+
+  0x0000027b8009fa94: ;   {static_call}
+  0x0000027b8009fa94: 4400 00e8 
+
+  0x0000027b8009fa98: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [168]=Oop }
+                      ;*invokestatic nmemAllocChecked {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.stb.STBTTBakedChar::malloc@9 (line 143)
+                      ; - bagel.InternalFont::<init>@91 (line 65)
+  0x0000027b8009fa98: 644c 4f07 
+
+  0x0000027b8009fa9c: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fa9c: 48ba 40b6 | 4fd0 7b02 | 0000 4883 | 8230 0100 
+
+  0x0000027b8009faac: ;   {oop(a 'java/lang/Class'{0x00000000892837f0} = 'org/lwjgl/stb/STBTTBakedChar$Buffer')}
+  0x0000027b8009faac: 0001 48ba | f037 2889 | 0000 0000 | 4c8b c041 | b960 0000 | 0066 0f1f 
+
+  0x0000027b8009fac4: ;   {static_call}
+  0x0000027b8009fac4: 4400 00e8 
+
+  0x0000027b8009fac8: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [168]=Oop }
+                      ;*invokestatic wrap {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.stb.STBTTBakedChar::malloc@13 (line 143)
+                      ; - bagel.InternalFont::<init>@91 (line 65)
+  0x0000027b8009fac8: 344c 4f07 | 4883 f800 
+
+  0x0000027b8009fad0: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fad0: 7517 49b8 | 40b6 4fd0 | 7b02 0000 | 4180 8839 | 0100 0001 | e9cd 0000 
+
+  0x0000027b8009fae8: ;   {metadata('org/lwjgl/stb/STBTTBakedChar$Buffer')}
+  0x0000027b8009fae8: 0049 b9a0 | 7a01 907b | 0200 008b | 5008 49ba | 0000 008f | 7b02 0000 | 4903 d24c | 3bca 0f85 
+  0x0000027b8009fb08: 8e00 0000 
+
+  0x0000027b8009fb0c: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fb0c: 49b8 40b6 | 4fd0 7b02 | 0000 448b | 4808 49ba | 0000 008f | 7b02 0000 | 4d03 ca4d | 3b88 5001 
+  0x0000027b8009fb2c: 0000 750d | 4983 8058 | 0100 0001 | e979 0000 | 004d 3b88 | 6001 0000 | 750d 4983 | 8068 0100 
+  0x0000027b8009fb4c: 0001 e963 | 0000 0049 | 83b8 5001 | 0000 0075 | 174d 8988 | 5001 0000 | 49c7 8058 | 0100 0001 
+  0x0000027b8009fb6c: 0000 00e9 | 4200 0000 | 4983 b860 | 0100 0000 | 7517 4d89 | 8860 0100 | 0049 c780 | 6801 0000 
+  0x0000027b8009fb8c: 0100 0000 | e921 0000 | 00e9 1c00 
+
+  0x0000027b8009fb98: ;   {metadata(method data for {method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b8009fb98: 0000 49b8 | 40b6 4fd0 | 7b02 0000 | 4983 a840 | 0100 0001 | e912 1000 | 00e9 0000 | 0000 488b 
+  0x0000027b8009fbb8: c841 0fbe | 5740 83fa | 0048 8b54 | 2478 0f85 | 0010 0000 | 4c8b d144 | 8952 1c4c | 8bc2 4c33 
+  0x0000027b8009fbd8: c149 c1e8 | 1449 83f8 | 000f 8501 
+
+  0x0000027b8009fbe4: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fbe4: 1000 0049 | b8b0 a44f | d07b 0200 | 0049 8380 | 0002 0000 | 0144 8b8c | 2480 0000 | 00c4 c17a 
+  0x0000027b8009fc04: 2ac1 488b | 9424 9000 | 0000 4c8b | 8424 a800 | 0000 448b | 8c24 8400 | 0000 8bbc | 24a0 0000 
+  0x0000027b8009fc24: 00be 2000 | 0000 0f1f 
+
+  0x0000027b8009fc2c: ;   {static_call}
+  0x0000027b8009fc2c: 4400 00e8 
+
+  0x0000027b8009fc30: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*invokestatic stbtt_BakeFontBitmap {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@112 (line 68)
+  0x0000027b8009fc30: cc4a 4f07 
+
+  0x0000027b8009fc34: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fc34: 83f8 0048 | bab0 a44f | d07b 0200 | 0049 b810 | 0200 0000 | 0000 000f | 8f0a 0000 | 0049 b820 
+  0x0000027b8009fc54: 0200 0000 | 0000 004a | 8b34 0248 | 8d76 014a | 8934 020f | 8f8f 0000 
+
+  0x0000027b8009fc6c: ;   {oop(a 'java/lang/Class'{0x0000000089701518} = 'java/lang/System')}
+  0x0000027b8009fc6c: 0048 ba18 | 1570 8900 | 0000 008b | 7274 660f | 1f44 0000 
+
+  0x0000027b8009fc80: ;   {no_reloc}
+  0x0000027b8009fc80: e98a 0f00 | 0090 9090 | 9090 488b | d048 89b4 | 24b0 0000 
+
+  0x0000027b8009fc94: ;   {static_call}
+  0x0000027b8009fc94: 0066 90e8 
+
+  0x0000027b8009fc98: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop [176]=Oop }
+                      ;*invokedynamic {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@126 (line 69)
+  0x0000027b8009fc98: 644a 4f07 
+
+  0x0000027b8009fc9c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fc9c: 49b8 b0a4 | 4fd0 7b02 | 0000 4d8d | 8040 0200 | 0048 8bd0 | 4885 d275 | 0449 8308 | 0148 8bb4 
+  0x0000027b8009fcbc: 24b0 0000 | 0048 3b06 
+
+  0x0000027b8009fcc4: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fcc4: 4c8b c648 | bab0 a44f | d07b 0200 
+
+  0x0000027b8009fcd0: ;   {metadata('java/io/PrintStream')}
+  0x0000027b8009fcd0: 0049 baf0 | a500 8f7b | 0200 004c | 8992 6002 | 0000 4883 | 8268 0200 | 0001 4c8b | c048 8bd6 
+  0x0000027b8009fcf0: 0f1f 8000 
+
+  0x0000027b8009fcf4: ;   {optimized virtual_call}
+  0x0000027b8009fcf4: 0000 00e8 
+
+  0x0000027b8009fcf8: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*invokevirtual println {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@131 (line 69)
+  0x0000027b8009fcf8: 0444 4f07 | 8b9c 24a4 
+
+  0x0000027b8009fd00: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fd00: 0000 0048 | beb0 a44f | d07b 0200 | 0048 8386 | 8802 0000 | 01c1 e302 
+
+  0x0000027b8009fd18: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009fd18: 48be 98b4 | 4fd0 7b02 | 0000 8bbe | cc00 0000 | 83c7 0289 | becc 0000 | 0081 e7fe | ff1f 0083 
+  0x0000027b8009fd38: ff00 0f84 | de0e 0000 
+
+  0x0000027b8009fd40: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009fd40: 48be 98b4 | 4fd0 7b02 | 0000 4883 | 8610 0100 
+
+  0x0000027b8009fd50: ;   {metadata(method data for {method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b8009fd50: 0001 48be | a0b4 15d0 | 7b02 0000 | 8bbe cc00 | 0000 83c7 | 0289 becc | 0000 0081 | e7fe ff1f 
+  0x0000027b8009fd70: 0083 ff00 | 0f84 c50e 
+
+  0x0000027b8009fd78: ;   {metadata('java/nio/DirectByteBuffer')}
+  0x0000027b8009fd78: 0000 48ba | c898 1c8f | 7b02 0000 | 498b 87f8 | 0000 0048 | 8d78 4049 | 3bbf 0801 | 0000 0f87 
+  0x0000027b8009fd98: c40e 0000 | 4989 bff8 | 0000 0048 | c700 0100 | 0000 488b | ca49 ba00 | 0000 8f7b | 0200 0049 
+  0x0000027b8009fdb8: 2bca 8948 | 0848 33c9 | 8948 0c48 | 33c9 48bf | 0600 0000 | 0000 0000 | 4889 4cf8 | 0848 ffcf 
+  0x0000027b8009fdd8: 75f6 4c8b 
+
+  0x0000027b8009fddc: ;   {metadata(method data for {method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b8009fddc: c048 baa0 | b415 d07b | 0200 0048 | 8382 1001 | 0000 014c | 8bc3 488b | d048 8984 | 24b8 0000 
+  0x0000027b8009fdfc: ;   {optimized virtual_call}
+  0x0000027b8009fdfc: 0066 90e8 
+
+  0x0000027b8009fe00: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop [184]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.nio.ByteBuffer::allocateDirect@5 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b8009fe00: fc42 4f07 
+
+  0x0000027b8009fe04: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009fe04: 49b8 98b4 | 4fd0 7b02 | 0000 4983 | 8020 0100 
+
+  0x0000027b8009fe14: ;   {metadata(method data for {method} {0x0000027b8f1c9838} 'nativeOrder' '()Ljava/nio/ByteOrder;' in 'java/nio/ByteOrder')}
+  0x0000027b8009fe14: 0001 49b8 | 30b9 15d0 | 7b02 0000 | 418b 90cc | 0000 0083 | c202 4189 | 90cc 0000 | 0081 e2fe 
+  0x0000027b8009fe34: ff1f 0083 | fa00 0f84 | 2d0e 0000 | 488b 8424 | b800 0000 
+
+  0x0000027b8009fe48: ;   {metadata(method data for {method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b8009fe48: 49b8 98b4 | 4fd0 7b02 | 0000 4983 | 8030 0100 
+
+  0x0000027b8009fe58: ;   {oop(a 'java/nio/ByteOrder'{0x000000008971f538})}
+  0x0000027b8009fe58: 0001 49b8 | 38f5 7189 | 0000 0000 | 488b 9424 | b800 0000 
+
+  0x0000027b8009fe6c: ;   {optimized virtual_call}
+  0x0000027b8009fe6c: 6666 90e8 
+
+  0x0000027b8009fe70: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*invokevirtual order {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@7 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b8009fe70: 8c42 4f07 | 488b b424 | a800 0000 | 8bbc 24a0 | 0000 008b | 9c24 8400 | 0000 4c8b | 8424 8800 
+  0x0000027b8009fe90: 0000 488b | 5424 7848 | 8984 24e8 | 0000 0089 | bc24 fc00 | 0000 899c | 24f8 0000 | 004c 8984 
+  0x0000027b8009feb0: 2408 0100 | 0048 8994 | 2400 0100 | 0066 6690 
+
+  0x0000027b8009fec0: ; implicit exception: dispatches to 0x0000027b800a0c8e
+  0x0000027b8009fec0: 483b 0648 
+
+  0x0000027b8009fec4: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009fec4: 8bce 49b9 | b0a4 4fd0 | 7b02 0000 | 4983 8198 | 0200 0001 
+
+  0x0000027b8009fed8: ;   {metadata(method data for {method} {0x0000027b8f055d68} 'hasRemaining' '()Z' in 'java/nio/Buffer')}
+  0x0000027b8009fed8: 48b9 40af | 15d0 7b02 | 0000 448b | 89cc 0000 | 0041 83c1 | 0244 8989 | cc00 0000 | 4181 e1fe 
+  0x0000027b8009fef8: ff1f 0041 | 83f9 000f | 848e 0d00 | 008b 4e18 | 448b 4e1c 
+
+  0x0000027b8009ff0c: ;   {metadata(method data for {method} {0x0000027b8f055d68} 'hasRemaining' '()Z' in 'java/nio/Buffer')}
+  0x0000027b8009ff0c: 413b c948 | b940 af15 | d07b 0200 | 0049 b910 | 0100 0000 | 0000 000f | 8d0a 0000 | 0049 b920 
+  0x0000027b8009ff2c: 0100 0000 | 0000 004e | 8b1c 094d | 8d5b 014e | 891c 090f | 8d1a 0000 
+
+  0x0000027b8009ff44: ;   {metadata(method data for {method} {0x0000027b8f055d68} 'hasRemaining' '()Z' in 'java/nio/Buffer')}
+  0x0000027b8009ff44: 0048 b940 | af15 d07b | 0200 00ff | 8130 0100 | 00b9 0100 | 0000 e905 | 0000 00b9 | 0000 0000 
+  0x0000027b8009ff64: 83e1 0183 
+
+  0x0000027b8009ff68: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009ff68: f900 48b9 | b0a4 4fd0 | 7b02 0000 | 49b9 d002 | 0000 0000 | 0000 0f84 | 0a00 0000 | 49b9 e002 
+  0x0000027b8009ff88: 0000 0000 | 0000 4e8b | 1c09 4d8d | 5b01 4e89 | 1c09 0f84 | 5b04 0000 
+
+  0x0000027b8009ffa0: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b8009ffa0: 488b ce49 | b9b0 a44f | d07b 0200 | 008b 4908 | 49ba 0000 | 008f 7b02 | 0000 4903 | ca49 3b89 
+  0x0000027b8009ffc0: 0003 0000 | 750d 4983 | 8108 0300 | 0001 e960 | 0000 0049 | 3b89 1003 | 0000 750d | 4983 8118 
+  0x0000027b8009ffe0: 0300 0001 | e94a 0000 | 0049 83b9 | 0003 0000 | 0075 1749 | 8989 0003 | 0000 49c7 | 8108 0300 
+  0x0000027b800a0000: 0001 0000 | 00e9 2900 | 0000 4983 | b910 0300 | 0000 7517 | 4989 8910 | 0300 0049 | c781 1803 
+  0x0000027b800a0020: 0000 0100 | 0000 e908 | 0000 0049 | 8381 f002 | 0000 0148 | 8bd6 4889 | b424 f000 | 0000 0f1f 
+  0x0000027b800a0040: 8000 0000 | 0048 b8c8 | 981c 8f7b 
+
+  0x0000027b800a004c: ;   {virtual_call}
+  0x0000027b800a004c: 0200 00e8 
+
+  0x0000027b800a0050: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual get {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@156 (line 75)
+  0x0000027b800a0050: ac70 a507 
+
+  0x0000027b800a0054: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0054: 83f8 8049 | b8b0 a44f | d07b 0200 | 0048 ba28 | 0300 0000 | 0000 000f | 840a 0000 | 0048 ba38 
+  0x0000027b800a0074: 0300 0000 | 0000 0049 | 8b34 1048 | 8d76 0149 | 8934 100f | 841c 0000 
+
+  0x0000027b800a008c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a008c: 0049 b8b0 | a44f d07b | 0200 0041 | ff80 4803 | 0000 41b8 | ff00 0000 | e906 0000 | 0041 b880 
+  0x0000027b800a00ac: ffff ff89 | 8424 1401 | 0000 488b | 8424 e800 | 0000 450f | bec0 483b | 0048 8bd0 
+
+  0x0000027b800a00c8: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a00c8: 48bf b0a4 | 4fd0 7b02 | 0000 8b52 | 0849 ba00 | 0000 8f7b | 0200 0049 | 03d2 483b | 9770 0300 
+  0x0000027b800a00e8: 0075 0d48 | 8387 7803 | 0000 01e9 | 6000 0000 | 483b 9780 | 0300 0075 | 0d48 8387 | 8803 0000 
+  0x0000027b800a0108: 01e9 4a00 | 0000 4883 | bf70 0300 | 0000 7517 | 4889 9770 | 0300 0048 | c787 7803 | 0000 0100 
+  0x0000027b800a0128: 0000 e929 | 0000 0048 | 83bf 8003 | 0000 0075 | 1748 8997 | 8003 0000 | 48c7 8788 | 0300 0001 
+  0x0000027b800a0148: 0000 00e9 | 0800 0000 | 4883 8760 | 0300 0001 | 498b f84c | 8bc7 488b | d089 bc24 | 1001 0000 
+  0x0000027b800a0168: 4889 8424 | e800 0000 | 0f1f 4400 | 0048 b8c8 | 981c 8f7b 
+
+  0x0000027b800a017c: ;   {virtual_call}
+  0x0000027b800a017c: 0200 00e8 
+
+  0x0000027b800a0180: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@183 (line 79)
+  0x0000027b800a0180: fc65 a507 | 488b 8424 | e800 0000 
+
+  0x0000027b800a018c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a018c: 49b8 b0a4 | 4fd0 7b02 | 0000 8b40 | 0849 ba00 | 0000 8f7b | 0200 0049 | 03c2 493b | 80a8 0300 
+  0x0000027b800a01ac: 0075 0d49 | 8380 b003 | 0000 01e9 | 6000 0000 | 493b 80b8 | 0300 0075 | 0d49 8380 | c003 0000 
+  0x0000027b800a01cc: 01e9 4a00 | 0000 4983 | b8a8 0300 | 0000 7517 | 4989 80a8 | 0300 0049 | c780 b003 | 0000 0100 
+  0x0000027b800a01ec: 0000 e929 | 0000 0049 | 83b8 b803 | 0000 0075 | 1749 8980 | b803 0000 | 49c7 80c0 | 0300 0001 
+  0x0000027b800a020c: 0000 00e9 | 0800 0000 | 4983 8098 | 0300 0001 | 448b 8424 | 1001 0000 | 488b 9424 | e800 0000 
+  0x0000027b800a022c: 9048 b8c8 | 981c 8f7b 
+
+  0x0000027b800a0234: ;   {virtual_call}
+  0x0000027b800a0234: 0200 00e8 
+
+  0x0000027b800a0238: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@191 (line 80)
+  0x0000027b800a0238: 4465 a507 | 488b 8424 | e800 0000 
+
+  0x0000027b800a0244: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0244: 49b8 b0a4 | 4fd0 7b02 | 0000 8b40 | 0849 ba00 | 0000 8f7b | 0200 0049 | 03c2 493b | 80e0 0300 
+  0x0000027b800a0264: 0075 0d49 | 8380 e803 | 0000 01e9 | 6000 0000 | 493b 80f0 | 0300 0075 | 0d49 8380 | f803 0000 
+  0x0000027b800a0284: 01e9 4a00 | 0000 4983 | b8e0 0300 | 0000 7517 | 4989 80e0 | 0300 0049 | c780 e803 | 0000 0100 
+  0x0000027b800a02a4: 0000 e929 | 0000 0049 | 83b8 f003 | 0000 0075 | 1749 8980 | f003 0000 | 49c7 80f8 | 0300 0001 
+  0x0000027b800a02c4: 0000 00e9 | 0800 0000 | 4983 80d0 | 0300 0001 | 448b 8424 | 1001 0000 | 488b 9424 | e800 0000 
+  0x0000027b800a02e4: 9048 b8c8 | 981c 8f7b 
+
+  0x0000027b800a02ec: ;   {virtual_call}
+  0x0000027b800a02ec: 0200 00e8 
+
+  0x0000027b800a02f0: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@199 (line 81)
+  0x0000027b800a02f0: 8c64 a507 | 488b 8424 | e800 0000 
+
+  0x0000027b800a02fc: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a02fc: 49b8 b0a4 | 4fd0 7b02 | 0000 8b40 | 0849 ba00 | 0000 8f7b | 0200 0049 | 03c2 493b | 8018 0400 
+  0x0000027b800a031c: 0075 0d49 | 8380 2004 | 0000 01e9 | 6000 0000 | 493b 8028 | 0400 0075 | 0d49 8380 | 3004 0000 
+  0x0000027b800a033c: 01e9 4a00 | 0000 4983 | b818 0400 | 0000 7517 | 4989 8018 | 0400 0049 | c780 2004 | 0000 0100 
+  0x0000027b800a035c: 0000 e929 | 0000 0049 | 83b8 2804 | 0000 0075 | 1749 8980 | 2804 0000 | 49c7 8030 | 0400 0001 
+  0x0000027b800a037c: 0000 00e9 | 0800 0000 | 4983 8008 | 0400 0001 | 448b 8424 | 1401 0000 | 488b 9424 | e800 0000 
+  0x0000027b800a039c: 9048 b8c8 | 981c 8f7b 
+
+  0x0000027b800a03a4: ;   {virtual_call}
+  0x0000027b800a03a4: 0200 00e8 
+
+  0x0000027b800a03a8: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@207 (line 82)
+  0x0000027b800a03a8: d463 a507 
+
+  0x0000027b800a03ac: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a03ac: 48ba b0a4 | 4fd0 7b02 | 0000 8bb2 | d000 0000 | 83c6 0289 | b2d0 0000 | 0081 e6fe | 3f00 0083 
+  0x0000027b800a03cc: fe00 0f84 | e508 0000 | 4d8b 9780 
+
+  0x0000027b800a03d8: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@211 (line 83)
+                      ;   {poll}
+  0x0000027b800a03d8: 0300 0041 
+
+  0x0000027b800a03dc: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a03dc: 8502 48ba | b0a4 4fd0 | 7b02 0000 | ff82 4004 | 0000 488b | b424 f000 | 0000 e9c5 | faff ff48 
+  0x0000027b800a03fc: 8b84 24e8 | 0000 0048 | 3b00 488b 
+
+  0x0000027b800a0408: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0408: f048 b9b0 | a44f d07b | 0200 008b | 7608 49ba | 0000 008f | 7b02 0000 | 4903 f248 | 3bb1 6804 
+  0x0000027b800a0428: 0000 750d | 4883 8170 | 0400 0001 | e960 0000 | 0048 3bb1 | 7804 0000 | 750d 4883 | 8180 0400 
+  0x0000027b800a0448: 0001 e94a | 0000 0048 | 83b9 6804 | 0000 0075 | 1748 89b1 | 6804 0000 | 48c7 8170 | 0400 0001 
+  0x0000027b800a0468: 0000 00e9 | 2900 0000 | 4883 b978 | 0400 0000 | 7517 4889 | b178 0400 | 0048 c781 | 8004 0000 
+  0x0000027b800a0488: 0100 0000 | e908 0000 | 0048 8381 | 5804 0000 | 0148 8bd0 | 4889 8424 | e800 0000 | 9048 b8ff 
+  0x0000027b800a04a8: ffff ffff 
+
+  0x0000027b800a04ac: ;   {virtual_call}
+  0x0000027b800a04ac: ffff ffe8 
+
+  0x0000027b800a04b0: ; ImmutableOopMap {[232]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual rewind {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@216 (line 84)
+  0x0000027b800a04b0: 2c13 4f07 | 0f1f 4000 
+
+  0x0000027b800a04b8: ;   {metadata('bagel/Texture')}
+  0x0000027b800a04b8: 48ba 0028 | 0190 7b02 | 0000 e931 | 0800 004c 
+
+  0x0000027b800a04c8: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a04c8: 8bc0 49b9 | b0a4 4fd0 | 7b02 0000 | 4983 8190 | 0400 0001 | 448b 8424 | f800 0000 | 448b 8c24 
+  0x0000027b800a04e8: fc00 0000 | 488b bc24 | e800 0000 | 488b d048 | 8984 2418 
+
+  0x0000027b800a04fc: ;   {optimized virtual_call}
+  0x0000027b800a04fc: 0100 00e8 
+
+  0x0000027b800a0500: ; ImmutableOopMap {[256]=Oop [264]=Oop [280]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@231 (line 86)
+  0x0000027b800a0500: d90c 0000 | 410f be57 | 4083 fa00 | 488b 9424 | 0001 0000 | 0f85 eb07 | 0000 488b | 8424 1801 
+  0x0000027b800a0520: 0000 4c8b | d044 8952 | 1848 8bf2 | 4833 f048 | c1ee 1448 | 83fe 000f | 85e8 0700 
+
+  0x0000027b800a053c: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a053c: 0048 bab0 | a44f d07b | 0200 00ff | 82a0 0400 | 0048 81c4 | 5001 0000 
+
+  0x0000027b800a0554: ;   {poll_return}
+  0x0000027b800a0554: 5d49 3ba7 | 7803 0000 | 0f87 db07 | 0000 c34c | 8b84 2488 | 0000 000f | 1f44 0000 
+
+  0x0000027b800a0570: ;   {no_reloc}
+  0x0000027b800a0570: e9ed 0700 | 0000 0000 | 0000 80ba | 2301 0000 | 050f 85ea | 0700 0049 | 8b87 f800 | 0000 488d 
+  0x0000027b800a0590: 7828 493b | bf08 0100 | 000f 87d2 | 0700 0049 | 89bf f800 | 0000 48c7 | 0001 0000 | 0048 8bca 
+  0x0000027b800a05b0: 49ba 0000 | 008f 7b02 | 0000 492b | ca89 4808 | 4833 c989 | 480c 4833 | c948 8948 | 1048 8948 
+  0x0000027b800a05d0: 1848 8948 | 2066 6690 
+
+  0x0000027b800a05d8: ;   {no_reloc}
+  0x0000027b800a05d8: e9b0 0700 | 0090 9090 | 9090 498b | d04c 8bc6 | 4889 8424 | 2001 0000 | 0f1f 8000 
+
+  0x0000027b800a05f4: ;   {static_call}
+  0x0000027b800a05f4: 0000 00e8 
+
+  0x0000027b800a05f8: ; ImmutableOopMap {[136]=Oop [288]=Oop }
+                      ;*invokedynamic {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@50 (line 59)
+  0x0000027b800a05f8: 0441 4f07 
+
+  0x0000027b800a05fc: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a05fc: 49b8 b0a4 | 4fd0 7b02 | 0000 4d8d | 80a0 0100 | 0048 8bd0 | 4885 d275 | 0449 8308 | 014c 8b84 
+  0x0000027b800a061c: 2420 0100 
+
+  0x0000027b800a0620: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0620: 0048 bab0 | a44f d07b | 0200 0048 | 8382 b001 | 0000 014c | 8bc0 488b | 9424 2001 
+
+  0x0000027b800a063c: ;   {optimized virtual_call}
+  0x0000027b800a063c: 0000 90e8 
+
+  0x0000027b800a0640: ; ImmutableOopMap {[136]=Oop [288]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@55 (line 59)
+  0x0000027b800a0640: bc3a 4f07 | 488b 8424 | 2001 0000 | e9fa 0a00 | 0049 8b87 | 2804 0000 | 4d33 d24d | 8997 2804 
+  0x0000027b800a0660: 0000 4d33 | d24d 8997 | 3004 0000 | 0f1f 4000 
+
+  0x0000027b800a0670: ;   {no_reloc}
+  0x0000027b800a0670: e931 0700 | 0000 0000 | 0000 4c8b | c080 ba23 | 0100 0005 | 0f85 2b07 | 0000 498b | 87f8 0000 
+  0x0000027b800a0690: 0048 8d78 | 2849 3bbf | 0801 0000 | 0f87 1307 | 0000 4989 | bff8 0000 | 0048 c700 | 0100 0000 
+  0x0000027b800a06b0: 488b ca49 | ba00 0000 | 8f7b 0200 | 0049 2bca | 8948 0848 | 33c9 8948 | 0c48 33c9 | 4889 4810 
+  0x0000027b800a06d0: 4889 4818 | 4889 4820 | 4889 8424 | 3801 0000 
+
+  0x0000027b800a06e0: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a06e0: 498b d048 | beb0 a44f | d07b 0200 | 0048 8386 | b804 0000 | 0141 8b50 | 0849 ba00 | 0000 8f7b 
+  0x0000027b800a0700: 0200 0049 | 03d2 488b | 5270 488b | 1248 3b02 
+
+  0x0000027b800a0710: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0710: 488b f248 | bfb0 a44f | d07b 0200 | 0048 8387 | f004 0000 
+
+  0x0000027b800a0724: ;   {metadata(method data for {method} {0x0000027b8f46b428} 'getName' '()Ljava/lang/String;' in 'java/lang/Class')}
+  0x0000027b800a0724: 0148 be18 | f70a d07b | 0200 008b | becc 0000 | 0083 c702 | 89be cc00 | 0000 81e7 | feff 1f00 
+  0x0000027b800a0744: 83ff 000f | 847a 0600 | 008b 722c | 4883 fe00 
+
+  0x0000027b800a0754: ;   {metadata(method data for {method} {0x0000027b8f46b428} 'getName' '()Ljava/lang/String;' in 'java/lang/Class')}
+  0x0000027b800a0754: 48bf 18f7 | 0ad0 7b02 | 0000 48b9 | 1001 0000 | 0000 0000 | 0f84 0a00 | 0000 48b9 | 2001 0000 
+  0x0000027b800a0774: 0000 0000 | 4c8b 0c0f | 4d8d 4901 | 4c89 0c0f | 0f84 1d00 
+
+  0x0000027b800a0788: ;   {metadata(method data for {method} {0x0000027b8f46b428} 'getName' '()Ljava/lang/String;' in 'java/lang/Class')}
+  0x0000027b800a0788: 0000 48ba | 18f7 0ad0 | 7b02 0000 | ff82 3001 | 0000 4c89 | 8424 2801 | 0000 e928 | 0000 004c 
+  0x0000027b800a07a8: 8984 2428 | 0100 0048 
+
+  0x0000027b800a07b0: ;   {metadata(method data for {method} {0x0000027b8f46b428} 'getName' '()Ljava/lang/String;' in 'java/lang/Class')}
+  0x0000027b800a07b0: 8bfa 48b9 | 18f7 0ad0 | 7b02 0000 | 4883 8148 | 0100 0001 
+
+  0x0000027b800a07c4: ;   {optimized virtual_call}
+  0x0000027b800a07c4: 6666 90e8 
+
+  0x0000027b800a07c8: ; ImmutableOopMap {[296]=Oop [304]=Oop [312]=Oop }
+                      ;*invokevirtual initClassName {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.Class::getName@14 (line 903)
+                      ; - bagel.InternalFont::<init>@250 (line 88)
+  0x0000027b800a07c8: 3439 4f07 | 488b f048 | 89b4 2440 | 0100 0048 | 8b84 2428 | 0100 0048 
+
+  0x0000027b800a07e0: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a07e0: 8bd0 48b9 | b0a4 4fd0 | 7b02 0000 | 8b52 0849 | ba00 0000 | 8f7b 0200 | 0049 03d2 | 483b 9138 
+  0x0000027b800a0800: 0500 0075 | 0d48 8381 | 4005 0000 | 01e9 6000 | 0000 483b | 9148 0500 | 0075 0d48 | 8381 5005 
+  0x0000027b800a0820: 0000 01e9 | 4a00 0000 | 4883 b938 | 0500 0000 | 7517 4889 | 9138 0500 | 0048 c781 | 4005 0000 
+  0x0000027b800a0840: 0100 0000 | e929 0000 | 0048 83b9 | 4805 0000 | 0075 1748 | 8991 4805 | 0000 48c7 | 8150 0500 
+  0x0000027b800a0860: 0001 0000 | 00e9 0800 | 0000 4883 | 8128 0500 | 0001 488b | d048 b8ff | ffff ffff 
+
+  0x0000027b800a087c: ;   {virtual_call}
+  0x0000027b800a087c: ffff ffe8 
+
+  0x0000027b800a0880: ; ImmutableOopMap {[304]=Oop [312]=Oop [320]=Oop }
+                      ;*invokevirtual getMessage {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@254 (line 88)
+  0x0000027b800a0880: 7c3b 4f07 | 0f1f 4000 
+
+  0x0000027b800a0888: ;   {no_reloc}
+  0x0000027b800a0888: e96a 0500 | 0090 9090 | 9090 488b | 9424 3001 | 0000 4c8b | 8424 4001 | 0000 4c8b 
+
+  0x0000027b800a08a4: ;   {static_call}
+  0x0000027b800a08a4: c866 90e8 
+
+  0x0000027b800a08a8: ; ImmutableOopMap {[312]=Oop }
+                      ;*invokedynamic {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@257 (line 88)
+  0x0000027b800a08a8: 543e 4f07 
+
+  0x0000027b800a08ac: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a08ac: 49b8 b0a4 | 4fd0 7b02 | 0000 4d8d | 8090 0500 | 0048 8bd0 | 4885 d275 | 0449 8308 | 014c 8b84 
+  0x0000027b800a08cc: 2438 0100 
+
+  0x0000027b800a08d0: ;   {metadata(method data for {method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a08d0: 0048 bab0 | a44f d07b | 0200 0048 | 8382 a005 | 0000 014c | 8bc0 488b | 9424 3801 
+
+  0x0000027b800a08ec: ;   {optimized virtual_call}
+  0x0000027b800a08ec: 0000 90e8 
+
+  0x0000027b800a08f0: ; ImmutableOopMap {[312]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@262 (line 88)
+  0x0000027b800a08f0: 0c38 4f07 | 488b 8424 | 3801 0000 | e94a 0800 | 0089 8424 | 0080 ffff | 5548 81ec | 5001 0000 
+  0x0000027b800a0910: 4181 7f20 | 0000 0000 
+
+  0x0000027b800a0918: ;   {runtime_call StubRoutines (2)}
+  0x0000027b800a0918: 7405 e801 | 944d 07b9 | 5000 0000 | 4863 c948 | 8b34 0ab9 | 4800 0000 | 4863 c948 | 8b3c 0ab9 
+  0x0000027b800a0938: 3000 0000 | 4863 c98b | 1c0a b928 | 0000 0048 | 63c9 8b04 | 0ab9 2000 | 0000 4863 | c94c 8b04 
+  0x0000027b800a0958: 0ab9 1000 | 0000 4863 | c94c 8b0c | 0a48 8bca | 4889 b424 | e000 0000 | 4889 bc24 | d800 0000 
+  0x0000027b800a0978: 899c 24d4 | 0000 0089 | 8424 d000 | 0000 4c89 | 8424 c800 | 0000 4c89 | 8c24 c000 
+
+  0x0000027b800a0994: ;   {runtime_call}
+  0x0000027b800a0994: 0000 48b8 | 001b 481b | ff7f 0000 | ffd0 4c8b | 8c24 c000 | 0000 498b | c14c 8b84 | 24c8 0000 
+  0x0000027b800a09b4: 0049 8bf0 | 8b94 24d0 | 0000 0048 | 8bfa 8b9c | 24d4 0000 | 0048 8b94 | 24d8 0000 | 004c 8bc2 
+  0x0000027b800a09d4: 488b 9424 | e000 0000 | 4889 8424 | e800 0000 | 89bc 24fc | 0000 0089 | 9c24 f800 | 0000 4c89 
+  0x0000027b800a09f4: 8424 0801 | 0000 4889 | 9424 0001 | 0000 e9b9 
+
+  0x0000027b800a0a04: ;   {metadata({method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0a04: f4ff ff49 | ba28 594d | d07b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0a1c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0a1c: ffff e85d 
+
+  0x0000027b800a0a20: ; ImmutableOopMap {rdx=Oop r8=Oop [120]=Oop [136]=Oop }
+                      ;*synchronization entry
+                      ; - bagel.InternalFont::<init>@-1 (line 50)
+  0x0000027b800a0a20: 615b 07e9 | d4eb ffff 
+
+  0x0000027b800a0a28: ;   {metadata({method} {0x0000027b8f476690} '<init>' '()V' in 'java/lang/Object')}
+  0x0000027b800a0a28: 49ba 8866 | 478f 7b02 | 0000 4c89 | 5424 0848 | c704 24ff 
+
+  0x0000027b800a0a3c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0a3c: ffff ffe8 
+
+  0x0000027b800a0a40: ; ImmutableOopMap {rdx=Oop r8=Oop [120]=Oop [136]=Oop }
+                      ;*synchronization entry
+                      ; - java.lang.Object::<init>@-1 (line 45)
+                      ; - bagel.InternalFont::<init>@1 (line 50)
+  0x0000027b800a0a40: 3c61 5b07 | e9f0 ebff | ff48 8bd2 
+
+  0x0000027b800a0a4c: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000027b800a0a4c: e8af f45a 
+
+  0x0000027b800a0a50: ; ImmutableOopMap {r8=Oop rbx=Oop [120]=Oop [136]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@5 (line 52)
+  0x0000027b800a0a50: 07e9 36ec 
+
+  0x0000027b800a0a54: ;   {metadata({method} {0x0000027bd04d4600} '<init>' '(Ljava/lang/String;I)V' in 'bagel/FontClassification')}
+  0x0000027b800a0a54: ffff 49ba | f845 4dd0 | 7b02 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000027b800a0a6c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0a6c: ffe8 0e61 
+
+  0x0000027b800a0a70: ; ImmutableOopMap {r8=Oop rbx=Oop rax=Oop [120]=Oop [136]=Oop }
+                      ;*synchronization entry
+                      ; - bagel.FontClassification::<init>@-1 (line 18)
+                      ; - bagel.InternalFont::<init>@11 (line 52)
+  0x0000027b800a0a70: 5b07 e952 
+
+  0x0000027b800a0a74: ;   {metadata({method} {0x0000027b8f476690} '<init>' '()V' in 'java/lang/Object')}
+  0x0000027b800a0a74: ecff ff49 | ba88 6647 | 8f7b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0a8c: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0a8c: ffff e8ed 
+
+  0x0000027b800a0a90: ; ImmutableOopMap {r8=Oop rbx=Oop rax=Oop [120]=Oop [136]=Oop }
+                      ;*synchronization entry
+                      ; - java.lang.Object::<init>@-1 (line 45)
+                      ; - bagel.FontClassification::<init>@1 (line 18)
+                      ; - bagel.InternalFont::<init>@11 (line 52)
+  0x0000027b800a0a90: 605b 07e9 | 6eec ffff | 8b50 1048 | 83fa 000f | 8473 ecff | ff48 8914 
+
+  0x0000027b800a0aa8: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000027b800a0aa8: 24e8 d266 | 5b07 e965 | ecff ff49 | 83f8 000f | 8476 ecff | ff48 8904 
+
+  0x0000027b800a0ac0: ;   {runtime_call g1_post_barrier_slow}
+  0x0000027b800a0ac0: 24e8 ba69 | 5b07 e968 | ecff ff8b | 5310 4883 | fa00 0f84 | 69ec ffff | 4889 1424 
+
+  0x0000027b800a0adc: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000027b800a0adc: e89f 665b | 07e9 5bec | ffff 4883 | f800 0f84 | 6cec ffff | 4889 1c24 
+
+  0x0000027b800a0af4: ;   {runtime_call g1_post_barrier_slow}
+  0x0000027b800a0af4: e887 695b | 07e9 5eec | ffff 448b | 4214 4983 | f800 0f84 | a3ec ffff | 4c89 0424 
+
+  0x0000027b800a0b10: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000027b800a0b10: e86b 665b | 07e9 95ec | ffff 4883 | f800 0f84 | a6ec ffff | 4889 1424 
+
+  0x0000027b800a0b28: ;   {runtime_call g1_post_barrier_slow}
+  0x0000027b800a0b28: e853 695b | 07e9 98ec 
+
+  0x0000027b800a0b30: ;   {metadata({method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b800a0b30: ffff 49ba | a060 48d0 | 7b02 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000027b800a0b48: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0b48: ffe8 3260 
+
+  0x0000027b800a0b4c: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*synchronization entry
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@-1 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b800a0b4c: 5b07 e97c 
+
+  0x0000027b800a0b50: ;   {metadata({method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b800a0b50: edff ff49 | baf0 770c | 8f7b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0b68: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0b68: ffff e811 
+
+  0x0000027b800a0b6c: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*synchronization entry
+                      ; - java.nio.ByteBuffer::allocateDirect@-1 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b800a0b6c: 605b 07e9 | 95ed ffff 
+
+  0x0000027b800a0b74: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000027b800a0b74: 488b d2e8 
+
+  0x0000027b800a0b78: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.nio.ByteBuffer::allocateDirect@0 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b800a0b78: 84f3 5a07 | e9e8 edff 
+
+  0x0000027b800a0b80: ;   {metadata({method} {0x0000027b8f1c9838} 'nativeOrder' '()Ljava/nio/ByteOrder;' in 'java/nio/ByteOrder')}
+  0x0000027b800a0b80: ff49 ba30 | 981c 8f7b | 0200 004c | 8954 2408 | 48c7 0424 | ffff ffff 
+
+  0x0000027b800a0b98: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0b98: e8e3 5f5b 
+
+  0x0000027b800a0b9c: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [152]=Oop }
+                      ;*synchronization entry
+                      ; - java.nio.ByteOrder::nativeOrder@-1 (line 79)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@4 (line 75)
+                      ; - bagel.InternalFont::<init>@83 (line 64)
+  0x0000027b800a0b9c: 07e9 36ee 
+
+  0x0000027b800a0ba0: ;   {metadata({method} {0x0000027bd04f5890} 'malloc' '(I)Lorg/lwjgl/stb/STBTTBakedChar$Buffer;' in 'org/lwjgl/stb/STBTTBakedChar')}
+  0x0000027b800a0ba0: ffff 49ba | 8858 4fd0 | 7b02 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000027b800a0bb8: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0bb8: ffe8 c25f 
+
+  0x0000027b800a0bbc: ; ImmutableOopMap {rax=Oop [120]=Oop [136]=Oop [144]=Oop [168]=Oop }
+                      ;*synchronization entry
+                      ; - org.lwjgl.stb.STBTTBakedChar::malloc@-1 (line 143)
+                      ; - bagel.InternalFont::<init>@91 (line 65)
+  0x0000027b800a0bbc: 5b07 e990 | eeff ff48 
+
+  0x0000027b800a0bc4: ;   {runtime_call throw_class_cast_exception Runtime1 stub}
+  0x0000027b800a0bc4: 8904 24e8 
+
+  0x0000027b800a0bc8: ; ImmutableOopMap {[120]=Oop [136]=Oop [144]=Oop [168]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.lwjgl.stb.STBTTBakedChar::malloc@16 (line 143)
+                      ; - bagel.InternalFont::<init>@91 (line 65)
+  0x0000027b800a0bc8: b41b 5b07 | 448b 421c | 4983 f800 | 0f84 f2ef | ffff 4c89 
+
+  0x0000027b800a0bdc: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000027b800a0bdc: 0424 e89d | 655b 07e9 | e4ef ffff | 4883 f900 | 0f84 f5ef | ffff 4889 
+
+  0x0000027b800a0bf4: ;   {runtime_call g1_post_barrier_slow}
+  0x0000027b800a0bf4: 1424 e885 | 685b 07e9 | e7ef ffff | 49b8 0000 | 0000 0000 | 0000 b800 
+
+  0x0000027b800a0c0c: ;   {runtime_call load_appendix_patching Runtime1 stub}
+  0x0000027b800a0c0c: 0f05 0ae8 
+
+  0x0000027b800a0c10: ; ImmutableOopMap {rsi=Oop [120]=Oop [136]=Oop [168]=Oop }
+                      ;*invokedynamic {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@126 (line 69)
+  0x0000027b800a0c10: 6c53 5b07 | e967 f0ff 
+
+  0x0000027b800a0c18: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0c18: ffe8 e2e9 
+
+  0x0000027b800a0c1c: ; ImmutableOopMap {rax=Oop rsi=Oop [120]=Oop [136]=Oop [168]=Oop }
+                      ;*invokevirtual println {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@131 (line 69)
+                      ;   {metadata({method} {0x0000027bd04860a8} 'createByteBuffer' '(I)Ljava/nio/ByteBuffer;' in 'org/lwjgl/BufferUtils')}
+  0x0000027b800a0c1c: 5a07 49ba | a060 48d0 | 7b02 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x0000027b800a0c34: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0c34: ffe8 465f 
+
+  0x0000027b800a0c38: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*synchronization entry
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@-1 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b800a0c38: 5b07 e901 
+
+  0x0000027b800a0c3c: ;   {metadata({method} {0x0000027b8f0c77f8} 'allocateDirect' '(I)Ljava/nio/ByteBuffer;' in 'java/nio/ByteBuffer')}
+  0x0000027b800a0c3c: f1ff ff49 | baf0 770c | 8f7b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0c54: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0c54: ffff e825 
+
+  0x0000027b800a0c58: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*synchronization entry
+                      ; - java.nio.ByteBuffer::allocateDirect@-1 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b800a0c58: 5f5b 07e9 | 1af1 ffff 
+
+  0x0000027b800a0c60: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x0000027b800a0c60: 488b d2e8 
+
+  0x0000027b800a0c64: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.nio.ByteBuffer::allocateDirect@0 (line 343)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@1 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b800a0c64: 98f2 5a07 | e96d f1ff 
+
+  0x0000027b800a0c6c: ;   {metadata({method} {0x0000027b8f1c9838} 'nativeOrder' '()Ljava/nio/ByteOrder;' in 'java/nio/ByteOrder')}
+  0x0000027b800a0c6c: ff49 ba30 | 981c 8f7b | 0200 004c | 8954 2408 | 48c7 0424 | ffff ffff 
+
+  0x0000027b800a0c84: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0c84: e8f7 5e5b 
+
+  0x0000027b800a0c88: ; ImmutableOopMap {[120]=Oop [136]=Oop [168]=Oop [184]=Oop }
+                      ;*synchronization entry
+                      ; - java.nio.ByteOrder::nativeOrder@-1 (line 79)
+                      ; - org.lwjgl.BufferUtils::createByteBuffer@4 (line 75)
+                      ; - bagel.InternalFont::<init>@141 (line 73)
+  0x0000027b800a0c88: 07e9 b2f1 
+
+  0x0000027b800a0c8c: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0c8c: ffff e86d 
+
+  0x0000027b800a0c90: ; ImmutableOopMap {rsi=Oop [232]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual hasRemaining {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@148 (line 74)
+                      ;   {metadata({method} {0x0000027b8f055d68} 'hasRemaining' '()Z' in 'java/nio/Buffer')}
+  0x0000027b800a0c90: e95a 0749 | ba60 5d05 | 8f7b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0ca8: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0ca8: ffff e8d1 
+
+  0x0000027b800a0cac: ; ImmutableOopMap {rsi=Oop [232]=Oop [256]=Oop [264]=Oop }
+                      ;*synchronization entry
+                      ; - java.nio.Buffer::hasRemaining@-1 (line 524)
+                      ; - bagel.InternalFont::<init>@148 (line 74)
+  0x0000027b800a0cac: 5e5b 07e9 | 51f2 ffff 
+
+  0x0000027b800a0cb4: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0cb4: e847 e95a 
+
+  0x0000027b800a0cb8: ; ImmutableOopMap {rax=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual put {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@183 (line 79)
+                      ;   {metadata({method} {0x0000027bd04d5930} '<init>' '(Ljava/lang/String;I)V' in 'bagel/InternalFont')}
+  0x0000027b800a0cb8: 0749 ba28 | 594d d07b | 0200 004c | 8954 2408 | 48c7 0424 | d300 0000 
+
+  0x0000027b800a0cd0: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0cd0: e8ab 5e5b 
+
+  0x0000027b800a0cd4: ; ImmutableOopMap {[232]=Oop [240]=Oop [256]=Oop [264]=Oop }
+                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@211 (line 83)
+  0x0000027b800a0cd4: 07e9 faf6 
+
+  0x0000027b800a0cd8: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0cd8: ffff e821 
+
+  0x0000027b800a0cdc: ; ImmutableOopMap {rax=Oop [256]=Oop [264]=Oop }
+                      ;*invokevirtual rewind {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@216 (line 84)
+                      ;   {metadata('bagel/Texture')}
+  0x0000027b800a0cdc: e95a 0748 | ba00 2801 | 907b 0200 | 00b8 000f 
+
+  0x0000027b800a0cec: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000027b800a0cec: 050a e80d 
+
+  0x0000027b800a0cf0: ; ImmutableOopMap {[232]=Oop [256]=Oop [264]=Oop }
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@221 (line 86)
+  0x0000027b800a0cf0: 455b 07e9 | c0f7 ffff 
+
+  0x0000027b800a0cf8: ;   {runtime_call new_instance Runtime1 stub}
+  0x0000027b800a0cf8: 488b d2e8 
+
+  0x0000027b800a0cfc: ; ImmutableOopMap {[232]=Oop [256]=Oop [264]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@221 (line 86)
+  0x0000027b800a0cfc: 00ef 5a07 | e9c2 f7ff | ff8b 7218 | 4883 fe00 | 0f84 08f8 | ffff 4889 
+
+  0x0000027b800a0d14: ;   {runtime_call g1_pre_barrier_slow}
+  0x0000027b800a0d14: 3424 e865 | 645b 07e9 | faf7 ffff 
+
+  0x0000027b800a0d20: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0d20: e8db e85a 
+
+  0x0000027b800a0d24: ; ImmutableOopMap {rdx=Oop rax=Oop [264]=Oop }
+                      ;*putfield tex {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@234 (line 86)
+  0x0000027b800a0d24: 0748 83f8 | 000f 840e | f8ff ff48 
+
+  0x0000027b800a0d30: ;   {runtime_call g1_post_barrier_slow}
+  0x0000027b800a0d30: 8914 24e8 | 4867 5b07 | e900 f8ff 
+
+  0x0000027b800a0d3c: ;   {internal_word}
+  0x0000027b800a0d3c: ff49 ba55 | 050a 807b | 0200 004d | 8997 9003 
+
+  0x0000027b800a0d4c: ;   {runtime_call SafepointBlob}
+  0x0000027b800a0d4c: 0000 e92d 
+
+  0x0000027b800a0d50: ;   {metadata(NULL)}
+  0x0000027b800a0d50: a04f 0748 | ba00 0000 | 0000 0000 | 00b8 000f 
+
+  0x0000027b800a0d60: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000027b800a0d60: 050a e899 
+
+  0x0000027b800a0d64: ; ImmutableOopMap {r8=Oop [136]=Oop }
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@45 (line 59)
+  0x0000027b800a0d64: 445b 07e9 | 04f8 ffff 
+
+  0x0000027b800a0d6c: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0d6c: e88f e85a 
+
+  0x0000027b800a0d70: ; ImmutableOopMap {r8=Oop [136]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@45 (line 59)
+  0x0000027b800a0d70: 0748 8bd2 
+
+  0x0000027b800a0d74: ;   {runtime_call fast_new_instance_init_check Runtime1 stub}
+  0x0000027b800a0d74: e887 f45a 
+
+  0x0000027b800a0d78: ; ImmutableOopMap {r8=Oop [136]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@45 (line 59)
+  0x0000027b800a0d78: 07e9 57f8 | ffff 48be | 0000 0000 | 0000 0000 | b800 0f05 
+
+  0x0000027b800a0d8c: ;   {runtime_call load_appendix_patching Runtime1 stub}
+  0x0000027b800a0d8c: 0ae8 ee51 
+
+  0x0000027b800a0d90: ; ImmutableOopMap {r8=Oop rax=Oop [136]=Oop }
+                      ;*invokedynamic {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@50 (line 59)
+  0x0000027b800a0d90: 5b07 e941 
+
+  0x0000027b800a0d94: ;   {metadata(NULL)}
+  0x0000027b800a0d94: f8ff ff48 | ba00 0000 | 0000 0000 | 00b8 000f 
+
+  0x0000027b800a0da4: ;   {runtime_call load_klass_patching Runtime1 stub}
+  0x0000027b800a0da4: 050a e855 
+
+  0x0000027b800a0da8: ; ImmutableOopMap {rax=Oop [304]=Oop }
+                      ;*new {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@241 (line 88)
+  0x0000027b800a0da8: 445b 07e9 | c0f8 ffff 
+
+  0x0000027b800a0db0: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0db0: e84b e85a 
+
+  0x0000027b800a0db4: ; ImmutableOopMap {r8=Oop [304]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@241 (line 88)
+  0x0000027b800a0db4: 0748 8bd2 
+
+  0x0000027b800a0db8: ;   {runtime_call fast_new_instance_init_check Runtime1 stub}
+  0x0000027b800a0db8: e843 f45a 
+
+  0x0000027b800a0dbc: ; ImmutableOopMap {r8=Oop [304]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@241 (line 88)
+  0x0000027b800a0dbc: 07e9 16f9 
+
+  0x0000027b800a0dc0: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0dc0: ffff e839 
+
+  0x0000027b800a0dc4: ; ImmutableOopMap {r8=Oop rax=Oop rdx=Oop [304]=Oop [312]=Oop }
+                      ;*invokevirtual getName {reexecute=0 rethrow=0 return_oop=0}
+                      ; - bagel.InternalFont::<init>@250 (line 88)
+                      ;   {metadata({method} {0x0000027b8f46b428} 'getName' '()Ljava/lang/String;' in 'java/lang/Class')}
+  0x0000027b800a0dc4: e85a 0749 | ba20 b446 | 8f7b 0200 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x0000027b800a0ddc: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x0000027b800a0ddc: ffff e89d 
+
+  0x0000027b800a0de0: ; ImmutableOopMap {r8=Oop rax=Oop rdx=Oop [304]=Oop [312]=Oop }
+                      ;*synchronization entry
+                      ; - java.lang.Class::getName@-1 (line 902)
+                      ; - bagel.InternalFont::<init>@250 (line 88)
+  0x0000027b800a0de0: 5d5b 07e9 | 65f9 ffff | 48bf 0000 | 0000 0000 | 0000 b800 
+
+  0x0000027b800a0df4: ;   {runtime_call load_appendix_patching Runtime1 stub}
+  0x0000027b800a0df4: 0f05 0ae8 
+
+  0x0000027b800a0df8: ; ImmutableOopMap {rax=Oop [304]=Oop [312]=Oop [320]=Oop }
+                      ;*invokedynamic {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@257 (line 88)
+  0x0000027b800a0df8: 8451 5b07 | e987 faff 
+
+  0x0000027b800a0e00: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x0000027b800a0e00: ffe8 fae7 
+
+  0x0000027b800a0e04: ; ImmutableOopMap {rdx=Oop [264]=Oop [280]=Oop }
+                      ;*putfield tex {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) bagel.InternalFont::<init>@234 (line 86)
+  0x0000027b800a0e04: 5a07 48ff | b424 8800 | 0000 488f | 8424 3001 | 0000 e936 | f8ff ff48 | ffb4 2488 | 0000 0048 
+  0x0000027b800a0e24: 8f84 2430 | 0100 00e9 | 21f8 ffff | 48ff b424 | 8800 0000 | 488f 8424 | 3001 0000 | e90c f8ff 
+  0x0000027b800a0e44: ff48 ffb4 | 2488 0000 | 0048 8f84 | 2430 0100 | 00e9 f7f7 | ffff 48ff | b424 8800 | 0000 488f 
+  0x0000027b800a0e64: 8424 3001 | 0000 e9e2 | f7ff ff48 | ffb4 2488 | 0000 0048 | 8f84 2430 | 0100 00e9 | cdf7 ffff 
+  0x0000027b800a0e84: 48ff b424 | 8800 0000 | 488f 8424 | 3001 0000 | e9b8 f7ff | ff48 ffb4 | 2488 0000 | 0048 8f84 
+  0x0000027b800a0ea4: 2430 0100 | 00e9 a3f7 | ffff 48ff | b424 8800 | 0000 488f | 8424 3001 | 0000 e98e | f7ff ff48 
+  0x0000027b800a0ec4: ffb4 2488 | 0000 0048 | 8f84 2430 | 0100 00e9 | 79f7 ffff | 48ff b424 | 8800 0000 | 488f 8424 
+  0x0000027b800a0ee4: 3001 0000 | e964 f7ff | ff48 ffb4 | 2488 0000 | 0048 8f84 | 2430 0100 | 00e9 4ff7 | ffff 48ff 
+  0x0000027b800a0f04: b424 8800 | 0000 488f | 8424 3001 | 0000 e93a | f7ff ff48 | ffb4 2488 | 0000 0048 | 8f84 2430 
+  0x0000027b800a0f24: 0100 00e9 | 25f7 ffff | 48ff b424 | 8800 0000 | 488f 8424 | 3001 0000 | e910 f7ff | ff48 ffb4 
+  0x0000027b800a0f44: 2408 0100 | 0048 8f84 | 2430 0100 | 00e9 fbf6 | ffff 48ff | b424 0801 | 0000 488f | 8424 3001 
+  0x0000027b800a0f64: 0000 e9e6 | f6ff ff48 | ffb4 2408 | 0100 0048 | 8f84 2430 | 0100 00e9 | d1f6 ffff | 48ff b424 
+  0x0000027b800a0f84: 0801 0000 | 488f 8424 | 3001 0000 | e9bc f6ff | ff48 ffb4 | 2408 0100 | 0048 8f84 | 2430 0100 
+  0x0000027b800a0fa4: 00e9 a7f6 | ffff 48ff | b424 0801 | 0000 488f | 8424 3001 | 0000 e992 | f6ff ff48 | ffb4 2408 
+  0x0000027b800a0fc4: 0100 0048 | 8f84 2430 | 0100 00e9 | 7df6 ffff | 48ff b424 | 8800 0000 | 488f 8424 | 3001 0000 
+  0x0000027b800a0fe4: e968 f6ff | ff48 ffb4 | 2488 0000 | 0048 8f84 | 2430 0100 | 00e9 53f6 | ffff 4c89 
+
+  0x0000027b800a1000: ;   {no_reloc}
+  0x0000027b800a1000: 8424 3001 | 0000 e946 | f6ff ff48 | ffb4 2488 | 0000 0048 | 8f84 2430 | 0100 00e9 | 31f6 ffff 
+  0x0000027b800a1020: 48ff b424 | 8800 0000 | 488f 8424 | 3001 0000 | e91c f6ff | ff48 ffb4 | 2488 0000 | 0048 8f84 
+  0x0000027b800a1040: 2430 0100 | 00e9 07f6 | ffff 48ff | b424 8800 | 0000 488f | 8424 3001 | 0000 e9f2 | f5ff ff48 
+  0x0000027b800a1060: ffb4 2488 | 0000 0048 | 8f84 2430 | 0100 00e9 | ddf5 ffff | 48ff b424 | 0801 0000 | 488f 8424 
+  0x0000027b800a1080: 3001 0000 | e9c8 f5ff | ff48 ffb4 | 2408 0100 | 0048 8f84 | 2430 0100 | 00e9 b3f5 | ffff 48ff 
+  0x0000027b800a10a0: b424 0801 | 0000 488f | 8424 3001 | 0000 e99e | f5ff ff48 | ffb4 2408 | 0100 0048 | 8f84 2430 
+  0x0000027b800a10c0: 0100 00e9 | 89f5 ffff | 48ff b424 | 0801 0000 | 488f 8424 | 3001 0000 | e974 f5ff | ff48 ffb4 
+  0x0000027b800a10e0: 2408 0100 | 0048 8f84 | 2430 0100 | 00e9 5ff5 | ffff 4c89 | 8424 3001 | 0000 e952 | f5ff ff4c 
+  0x0000027b800a1100: 8984 2430 | 0100 00e9 | 45f5 ffff | 4c89 8424 | 3001 0000 | e938 f5ff | ff48 ffb4 | 2408 0100 
+  0x0000027b800a1120: 0048 8f84 | 2430 0100 | 00e9 23f5 | ffff 498b | 8728 0400 | 0049 c787 | 2804 0000 | 0000 0000 
+  0x0000027b800a1140: 49c7 8730 | 0400 0000 | 0000 0048 | 81c4 5001 
+
+  0x0000027b800a1150: ;   {runtime_call unwind_exception Runtime1 stub}
+  0x0000027b800a1150: 0000 5de9 | 28cb 5a07 
+[Stub Code]
+  0x0000027b800a1158: ;   {no_reloc}
+  0x0000027b800a1158: 0f1f 4400 
+
+  0x0000027b800a115c: ;   {static_stub}
+  0x0000027b800a115c: 0048 bb00 | 0000 0000 
+
+  0x0000027b800a1164: ;   {runtime_call}
+  0x0000027b800a1164: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a116c: ;   {static_stub}
+  0x0000027b800a116c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1174: ;   {runtime_call}
+  0x0000027b800a1174: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a117c: ;   {static_stub}
+  0x0000027b800a117c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1184: ;   {runtime_call}
+  0x0000027b800a1184: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a118c: ;   {static_stub}
+  0x0000027b800a118c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1194: ;   {runtime_call}
+  0x0000027b800a1194: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a119c: ;   {static_stub}
+  0x0000027b800a119c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a11a4: ;   {runtime_call}
+  0x0000027b800a11a4: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a11ac: ;   {static_stub}
+  0x0000027b800a11ac: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a11b4: ;   {runtime_call}
+  0x0000027b800a11b4: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a11bc: ;   {static_stub}
+  0x0000027b800a11bc: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a11c4: ;   {runtime_call}
+  0x0000027b800a11c4: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a11cc: ;   {static_stub}
+  0x0000027b800a11cc: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a11d4: ;   {runtime_call}
+  0x0000027b800a11d4: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a11dc: ;   {static_stub}
+  0x0000027b800a11dc: 9048 bbd0 | cb4f d07b 
+
+  0x0000027b800a11e4: ;   {runtime_call I2C/C2I adapters}
+  0x0000027b800a11e4: 0200 00e9 | 73a7 5007 
+
+  0x0000027b800a11ec: ;   {static_stub}
+  0x0000027b800a11ec: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a11f4: ;   {runtime_call}
+  0x0000027b800a11f4: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a11fc: ;   {static_stub}
+  0x0000027b800a11fc: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1204: ;   {runtime_call}
+  0x0000027b800a1204: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a120c: ;   {static_stub}
+  0x0000027b800a120c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1214: ;   {runtime_call}
+  0x0000027b800a1214: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a121c: ;   {static_stub}
+  0x0000027b800a121c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1224: ;   {runtime_call}
+  0x0000027b800a1224: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a122c: ;   {static_stub}
+  0x0000027b800a122c: 9048 bb00 | 0000 0000 
+
+  0x0000027b800a1234: ;   {runtime_call}
+  0x0000027b800a1234: 0000 00e9 | fbff ffff 
+[Exception Handler]
+  0x0000027b800a123c: ;   {runtime_call handle_exception_from_callee Runtime1 stub}
+  0x0000027b800a123c: e83f 0f5b 
+
+  0x0000027b800a1240: ;   {external_word}
+  0x0000027b800a1240: 0748 b9a0 | 33a3 1bff | 7f00 0048 
+
+  0x0000027b800a124c: ;   {runtime_call}
+  0x0000027b800a124c: 83e4 f048 | b860 1d6f | 1bff 7f00 | 00ff d0f4 
+[Deopt Handler Code]
+  0x0000027b800a125c: ;   {section_word}
+  0x0000027b800a125c: 49ba 5c12 | 0a80 7b02 | 0000 4152 
+
+  0x0000027b800a1268: ;   {runtime_call DeoptimizationBlob}
+  0x0000027b800a1268: e9b3 8d4f 
+
+  0x0000027b800a126c: ;   {static_stub}
+  0x0000027b800a126c: 0748 bb00 | 0000 0000 
+
+  0x0000027b800a1274: ;   {runtime_call}
+  0x0000027b800a1274: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a127c: ;   {static_stub}
+  0x0000027b800a127c: 48bb 0000 | 0000 0000 
+
+  0x0000027b800a1284: ;   {runtime_call}
+  0x0000027b800a1284: 0000 e9fb 
+
+  0x0000027b800a1288: ;   {static_stub}
+  0x0000027b800a1288: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x0000027b800a1294: ;   {runtime_call}
+  0x0000027b800a1294: 00e9 fbff 
+
+  0x0000027b800a1298: ;   {static_stub}
+  0x0000027b800a1298: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x0000027b800a12a4: ;   {runtime_call}
+  0x0000027b800a12a4: e9fb ffff 
+
+  0x0000027b800a12a8: ;   {static_stub}
+  0x0000027b800a12a8: ff48 bb00 | 0000 0000 
+
+  0x0000027b800a12b0: ;   {runtime_call}
+  0x0000027b800a12b0: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a12b8: ;   {static_stub}
+  0x0000027b800a12b8: 48bb 0000 | 0000 0000 
+
+  0x0000027b800a12c0: ;   {runtime_call}
+  0x0000027b800a12c0: 0000 e9fb 
+
+  0x0000027b800a12c4: ;   {static_stub}
+  0x0000027b800a12c4: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x0000027b800a12d0: ;   {runtime_call}
+  0x0000027b800a12d0: 00e9 fbff 
+
+  0x0000027b800a12d4: ;   {static_stub}
+  0x0000027b800a12d4: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x0000027b800a12e0: ;   {runtime_call}
+  0x0000027b800a12e0: e9fb ffff 
+
+  0x0000027b800a12e4: ;   {static_stub}
+  0x0000027b800a12e4: ff48 bb00 | 0000 0000 
+
+  0x0000027b800a12ec: ;   {runtime_call}
+  0x0000027b800a12ec: 0000 00e9 | fbff ffff 
+
+  0x0000027b800a12f4: ;   {static_stub}
+  0x0000027b800a12f4: 48bb 0000 | 0000 0000 
+
+  0x0000027b800a12fc: ;   {runtime_call}
+  0x0000027b800a12fc: 0000 e9fb 
+
+  0x0000027b800a1300: ;   {static_stub}
+  0x0000027b800a1300: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x0000027b800a130c: ;   {runtime_call}
+  0x0000027b800a130c: 00e9 fbff | ffff f4f4 | f4f4 f4f4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000027bd42d8480, length=12, elements={
+0x0000027bf2a6c340, 0x0000027bffbd7a60, 0x0000027bffbd8860, 0x0000027bffbdb1b0,
+0x0000027bffbdec10, 0x0000027bffbe1560, 0x0000027bffbe1ea0, 0x0000027bffbeab20,
+0x0000027bffbeedb0, 0x0000027bffba3bc0, 0x0000027bd42dd510, 0x0000027bd42dda60
+}
+
+Java Threads: ( => current thread )
+=>0x0000027bf2a6c340 JavaThread "main" [_thread_in_native, id=2652, stack(0x0000009ddca00000,0x0000009ddcb00000)]
+  0x0000027bffbd7a60 JavaThread "Reference Handler" daemon [_thread_blocked, id=15712, stack(0x0000009ddd100000,0x0000009ddd200000)]
+  0x0000027bffbd8860 JavaThread "Finalizer" daemon [_thread_blocked, id=17348, stack(0x0000009ddd200000,0x0000009ddd300000)]
+  0x0000027bffbdb1b0 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=252, stack(0x0000009ddd300000,0x0000009ddd400000)]
+  0x0000027bffbdec10 JavaThread "Attach Listener" daemon [_thread_blocked, id=4604, stack(0x0000009ddd400000,0x0000009ddd500000)]
+  0x0000027bffbe1560 JavaThread "Service Thread" daemon [_thread_blocked, id=15660, stack(0x0000009ddd500000,0x0000009ddd600000)]
+  0x0000027bffbe1ea0 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=6680, stack(0x0000009ddd600000,0x0000009ddd700000)]
+  0x0000027bffbeab20 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=4288, stack(0x0000009ddd700000,0x0000009ddd800000)]
+  0x0000027bffbeedb0 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=14988, stack(0x0000009ddd800000,0x0000009ddd900000)]
+  0x0000027bffba3bc0 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=11492, stack(0x0000009ddd900000,0x0000009ddda00000)]
+  0x0000027bd42dd510 JavaThread "Monitor Ctrl-Break" daemon [_thread_in_native, id=14180, stack(0x0000009ddda00000,0x0000009dddb00000)]
+  0x0000027bd42dda60 JavaThread "Notification Thread" daemon [_thread_blocked, id=8952, stack(0x0000009dddb00000,0x0000009dddc00000)]
+
+Other Threads:
+  0x0000027bffbb82d0 VMThread "VM Thread" [stack: 0x0000009ddd000000,0x0000009ddd100000] [id=15964]
+  0x0000027bd426c820 WatcherThread "VM Periodic Task Thread" [stack: 0x0000009dddc00000,0x0000009dddd00000] [id=5492]
+  0x0000027bf2acc6d0 WorkerThread "GC Thread#0" [stack: 0x0000009ddcb00000,0x0000009ddcc00000] [id=2332]
+  0x0000027bf2add480 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000009ddcc00000,0x0000009ddcd00000] [id=8916]
+  0x0000027bf2ade050 WorkerThread "G1 Conc#0" [stack: 0x0000009ddcd00000,0x0000009ddce00000] [id=124]
+  0x0000027bf2b3e380 ConcurrentGCThread "G1 Refine#0" [stack: 0x0000009ddce00000,0x0000009ddcf00000] [id=14400]
+  0x0000027bffa6b180 ConcurrentGCThread "G1 Service" [stack: 0x0000009ddcf00000,0x0000009ddd000000] [id=12376]
+
+Threads with active compile tasks:
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000081800000, size: 2024 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000027b8f000000-0x0000027b8fc60000-0x0000027b8fc60000), size 12976128, SharedBaseAddress: 0x0000027b8f000000, ArchiveRelocationMode: 1.
+Compressed class space mapped at: 0x0000027b90000000-0x0000027bd0000000, reserved size: 1073741824
+Narrow klass base: 0x0000027b8f000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+ CPUs: 4 total, 4 available
+ Memory: 8089M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (32-bit)
+ Heap Region Size: 1M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 128M
+ Heap Max Capacity: 2024M
+ Pre-touch: Disabled
+ Parallel Workers: 4
+ Concurrent Workers: 1
+ Concurrent Refinement Workers: 4
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 131072K, used 6144K [0x0000000081800000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 0 survivors (0K)
+ Metaspace       used 2958K, committed 3136K, reserved 1114112K
+  class space    used 198K, committed 256K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start, PB=parsable bottom
+|   0|0x0000000081800000, 0x0000000081800000, 0x0000000081900000|  0%| F|  |TAMS 0x0000000081800000| PB 0x0000000081800000| Untracked 
+|   1|0x0000000081900000, 0x0000000081900000, 0x0000000081a00000|  0%| F|  |TAMS 0x0000000081900000| PB 0x0000000081900000| Untracked 
+|   2|0x0000000081a00000, 0x0000000081a00000, 0x0000000081b00000|  0%| F|  |TAMS 0x0000000081a00000| PB 0x0000000081a00000| Untracked 
+|   3|0x0000000081b00000, 0x0000000081b00000, 0x0000000081c00000|  0%| F|  |TAMS 0x0000000081b00000| PB 0x0000000081b00000| Untracked 
+|   4|0x0000000081c00000, 0x0000000081c00000, 0x0000000081d00000|  0%| F|  |TAMS 0x0000000081c00000| PB 0x0000000081c00000| Untracked 
+|   5|0x0000000081d00000, 0x0000000081d00000, 0x0000000081e00000|  0%| F|  |TAMS 0x0000000081d00000| PB 0x0000000081d00000| Untracked 
+|   6|0x0000000081e00000, 0x0000000081e00000, 0x0000000081f00000|  0%| F|  |TAMS 0x0000000081e00000| PB 0x0000000081e00000| Untracked 
+|   7|0x0000000081f00000, 0x0000000081f00000, 0x0000000082000000|  0%| F|  |TAMS 0x0000000081f00000| PB 0x0000000081f00000| Untracked 
+|   8|0x0000000082000000, 0x0000000082000000, 0x0000000082100000|  0%| F|  |TAMS 0x0000000082000000| PB 0x0000000082000000| Untracked 
+|   9|0x0000000082100000, 0x0000000082100000, 0x0000000082200000|  0%| F|  |TAMS 0x0000000082100000| PB 0x0000000082100000| Untracked 
+|  10|0x0000000082200000, 0x0000000082200000, 0x0000000082300000|  0%| F|  |TAMS 0x0000000082200000| PB 0x0000000082200000| Untracked 
+|  11|0x0000000082300000, 0x0000000082300000, 0x0000000082400000|  0%| F|  |TAMS 0x0000000082300000| PB 0x0000000082300000| Untracked 
+|  12|0x0000000082400000, 0x0000000082400000, 0x0000000082500000|  0%| F|  |TAMS 0x0000000082400000| PB 0x0000000082400000| Untracked 
+|  13|0x0000000082500000, 0x0000000082500000, 0x0000000082600000|  0%| F|  |TAMS 0x0000000082500000| PB 0x0000000082500000| Untracked 
+|  14|0x0000000082600000, 0x0000000082600000, 0x0000000082700000|  0%| F|  |TAMS 0x0000000082600000| PB 0x0000000082600000| Untracked 
+|  15|0x0000000082700000, 0x0000000082700000, 0x0000000082800000|  0%| F|  |TAMS 0x0000000082700000| PB 0x0000000082700000| Untracked 
+|  16|0x0000000082800000, 0x0000000082800000, 0x0000000082900000|  0%| F|  |TAMS 0x0000000082800000| PB 0x0000000082800000| Untracked 
+|  17|0x0000000082900000, 0x0000000082900000, 0x0000000082a00000|  0%| F|  |TAMS 0x0000000082900000| PB 0x0000000082900000| Untracked 
+|  18|0x0000000082a00000, 0x0000000082a00000, 0x0000000082b00000|  0%| F|  |TAMS 0x0000000082a00000| PB 0x0000000082a00000| Untracked 
+|  19|0x0000000082b00000, 0x0000000082b00000, 0x0000000082c00000|  0%| F|  |TAMS 0x0000000082b00000| PB 0x0000000082b00000| Untracked 
+|  20|0x0000000082c00000, 0x0000000082c00000, 0x0000000082d00000|  0%| F|  |TAMS 0x0000000082c00000| PB 0x0000000082c00000| Untracked 
+|  21|0x0000000082d00000, 0x0000000082d00000, 0x0000000082e00000|  0%| F|  |TAMS 0x0000000082d00000| PB 0x0000000082d00000| Untracked 
+|  22|0x0000000082e00000, 0x0000000082e00000, 0x0000000082f00000|  0%| F|  |TAMS 0x0000000082e00000| PB 0x0000000082e00000| Untracked 
+|  23|0x0000000082f00000, 0x0000000082f00000, 0x0000000083000000|  0%| F|  |TAMS 0x0000000082f00000| PB 0x0000000082f00000| Untracked 
+|  24|0x0000000083000000, 0x0000000083000000, 0x0000000083100000|  0%| F|  |TAMS 0x0000000083000000| PB 0x0000000083000000| Untracked 
+|  25|0x0000000083100000, 0x0000000083100000, 0x0000000083200000|  0%| F|  |TAMS 0x0000000083100000| PB 0x0000000083100000| Untracked 
+|  26|0x0000000083200000, 0x0000000083200000, 0x0000000083300000|  0%| F|  |TAMS 0x0000000083200000| PB 0x0000000083200000| Untracked 
+|  27|0x0000000083300000, 0x0000000083300000, 0x0000000083400000|  0%| F|  |TAMS 0x0000000083300000| PB 0x0000000083300000| Untracked 
+|  28|0x0000000083400000, 0x0000000083400000, 0x0000000083500000|  0%| F|  |TAMS 0x0000000083400000| PB 0x0000000083400000| Untracked 
+|  29|0x0000000083500000, 0x0000000083500000, 0x0000000083600000|  0%| F|  |TAMS 0x0000000083500000| PB 0x0000000083500000| Untracked 
+|  30|0x0000000083600000, 0x0000000083600000, 0x0000000083700000|  0%| F|  |TAMS 0x0000000083600000| PB 0x0000000083600000| Untracked 
+|  31|0x0000000083700000, 0x0000000083700000, 0x0000000083800000|  0%| F|  |TAMS 0x0000000083700000| PB 0x0000000083700000| Untracked 
+|  32|0x0000000083800000, 0x0000000083800000, 0x0000000083900000|  0%| F|  |TAMS 0x0000000083800000| PB 0x0000000083800000| Untracked 
+|  33|0x0000000083900000, 0x0000000083900000, 0x0000000083a00000|  0%| F|  |TAMS 0x0000000083900000| PB 0x0000000083900000| Untracked 
+|  34|0x0000000083a00000, 0x0000000083a00000, 0x0000000083b00000|  0%| F|  |TAMS 0x0000000083a00000| PB 0x0000000083a00000| Untracked 
+|  35|0x0000000083b00000, 0x0000000083b00000, 0x0000000083c00000|  0%| F|  |TAMS 0x0000000083b00000| PB 0x0000000083b00000| Untracked 
+|  36|0x0000000083c00000, 0x0000000083c00000, 0x0000000083d00000|  0%| F|  |TAMS 0x0000000083c00000| PB 0x0000000083c00000| Untracked 
+|  37|0x0000000083d00000, 0x0000000083d00000, 0x0000000083e00000|  0%| F|  |TAMS 0x0000000083d00000| PB 0x0000000083d00000| Untracked 
+|  38|0x0000000083e00000, 0x0000000083e00000, 0x0000000083f00000|  0%| F|  |TAMS 0x0000000083e00000| PB 0x0000000083e00000| Untracked 
+|  39|0x0000000083f00000, 0x0000000083f00000, 0x0000000084000000|  0%| F|  |TAMS 0x0000000083f00000| PB 0x0000000083f00000| Untracked 
+|  40|0x0000000084000000, 0x0000000084000000, 0x0000000084100000|  0%| F|  |TAMS 0x0000000084000000| PB 0x0000000084000000| Untracked 
+|  41|0x0000000084100000, 0x0000000084100000, 0x0000000084200000|  0%| F|  |TAMS 0x0000000084100000| PB 0x0000000084100000| Untracked 
+|  42|0x0000000084200000, 0x0000000084200000, 0x0000000084300000|  0%| F|  |TAMS 0x0000000084200000| PB 0x0000000084200000| Untracked 
+|  43|0x0000000084300000, 0x0000000084300000, 0x0000000084400000|  0%| F|  |TAMS 0x0000000084300000| PB 0x0000000084300000| Untracked 
+|  44|0x0000000084400000, 0x0000000084400000, 0x0000000084500000|  0%| F|  |TAMS 0x0000000084400000| PB 0x0000000084400000| Untracked 
+|  45|0x0000000084500000, 0x0000000084500000, 0x0000000084600000|  0%| F|  |TAMS 0x0000000084500000| PB 0x0000000084500000| Untracked 
+|  46|0x0000000084600000, 0x0000000084600000, 0x0000000084700000|  0%| F|  |TAMS 0x0000000084600000| PB 0x0000000084600000| Untracked 
+|  47|0x0000000084700000, 0x0000000084700000, 0x0000000084800000|  0%| F|  |TAMS 0x0000000084700000| PB 0x0000000084700000| Untracked 
+|  48|0x0000000084800000, 0x0000000084800000, 0x0000000084900000|  0%| F|  |TAMS 0x0000000084800000| PB 0x0000000084800000| Untracked 
+|  49|0x0000000084900000, 0x0000000084900000, 0x0000000084a00000|  0%| F|  |TAMS 0x0000000084900000| PB 0x0000000084900000| Untracked 
+|  50|0x0000000084a00000, 0x0000000084a00000, 0x0000000084b00000|  0%| F|  |TAMS 0x0000000084a00000| PB 0x0000000084a00000| Untracked 
+|  51|0x0000000084b00000, 0x0000000084b00000, 0x0000000084c00000|  0%| F|  |TAMS 0x0000000084b00000| PB 0x0000000084b00000| Untracked 
+|  52|0x0000000084c00000, 0x0000000084c00000, 0x0000000084d00000|  0%| F|  |TAMS 0x0000000084c00000| PB 0x0000000084c00000| Untracked 
+|  53|0x0000000084d00000, 0x0000000084d00000, 0x0000000084e00000|  0%| F|  |TAMS 0x0000000084d00000| PB 0x0000000084d00000| Untracked 
+|  54|0x0000000084e00000, 0x0000000084e00000, 0x0000000084f00000|  0%| F|  |TAMS 0x0000000084e00000| PB 0x0000000084e00000| Untracked 
+|  55|0x0000000084f00000, 0x0000000084f00000, 0x0000000085000000|  0%| F|  |TAMS 0x0000000084f00000| PB 0x0000000084f00000| Untracked 
+|  56|0x0000000085000000, 0x0000000085000000, 0x0000000085100000|  0%| F|  |TAMS 0x0000000085000000| PB 0x0000000085000000| Untracked 
+|  57|0x0000000085100000, 0x0000000085100000, 0x0000000085200000|  0%| F|  |TAMS 0x0000000085100000| PB 0x0000000085100000| Untracked 
+|  58|0x0000000085200000, 0x0000000085200000, 0x0000000085300000|  0%| F|  |TAMS 0x0000000085200000| PB 0x0000000085200000| Untracked 
+|  59|0x0000000085300000, 0x0000000085300000, 0x0000000085400000|  0%| F|  |TAMS 0x0000000085300000| PB 0x0000000085300000| Untracked 
+|  60|0x0000000085400000, 0x0000000085400000, 0x0000000085500000|  0%| F|  |TAMS 0x0000000085400000| PB 0x0000000085400000| Untracked 
+|  61|0x0000000085500000, 0x0000000085500000, 0x0000000085600000|  0%| F|  |TAMS 0x0000000085500000| PB 0x0000000085500000| Untracked 
+|  62|0x0000000085600000, 0x0000000085600000, 0x0000000085700000|  0%| F|  |TAMS 0x0000000085600000| PB 0x0000000085600000| Untracked 
+|  63|0x0000000085700000, 0x0000000085700000, 0x0000000085800000|  0%| F|  |TAMS 0x0000000085700000| PB 0x0000000085700000| Untracked 
+|  64|0x0000000085800000, 0x0000000085800000, 0x0000000085900000|  0%| F|  |TAMS 0x0000000085800000| PB 0x0000000085800000| Untracked 
+|  65|0x0000000085900000, 0x0000000085900000, 0x0000000085a00000|  0%| F|  |TAMS 0x0000000085900000| PB 0x0000000085900000| Untracked 
+|  66|0x0000000085a00000, 0x0000000085a00000, 0x0000000085b00000|  0%| F|  |TAMS 0x0000000085a00000| PB 0x0000000085a00000| Untracked 
+|  67|0x0000000085b00000, 0x0000000085b00000, 0x0000000085c00000|  0%| F|  |TAMS 0x0000000085b00000| PB 0x0000000085b00000| Untracked 
+|  68|0x0000000085c00000, 0x0000000085c00000, 0x0000000085d00000|  0%| F|  |TAMS 0x0000000085c00000| PB 0x0000000085c00000| Untracked 
+|  69|0x0000000085d00000, 0x0000000085d00000, 0x0000000085e00000|  0%| F|  |TAMS 0x0000000085d00000| PB 0x0000000085d00000| Untracked 
+|  70|0x0000000085e00000, 0x0000000085e00000, 0x0000000085f00000|  0%| F|  |TAMS 0x0000000085e00000| PB 0x0000000085e00000| Untracked 
+|  71|0x0000000085f00000, 0x0000000085f00000, 0x0000000086000000|  0%| F|  |TAMS 0x0000000085f00000| PB 0x0000000085f00000| Untracked 
+|  72|0x0000000086000000, 0x0000000086000000, 0x0000000086100000|  0%| F|  |TAMS 0x0000000086000000| PB 0x0000000086000000| Untracked 
+|  73|0x0000000086100000, 0x0000000086100000, 0x0000000086200000|  0%| F|  |TAMS 0x0000000086100000| PB 0x0000000086100000| Untracked 
+|  74|0x0000000086200000, 0x0000000086200000, 0x0000000086300000|  0%| F|  |TAMS 0x0000000086200000| PB 0x0000000086200000| Untracked 
+|  75|0x0000000086300000, 0x0000000086300000, 0x0000000086400000|  0%| F|  |TAMS 0x0000000086300000| PB 0x0000000086300000| Untracked 
+|  76|0x0000000086400000, 0x0000000086400000, 0x0000000086500000|  0%| F|  |TAMS 0x0000000086400000| PB 0x0000000086400000| Untracked 
+|  77|0x0000000086500000, 0x0000000086500000, 0x0000000086600000|  0%| F|  |TAMS 0x0000000086500000| PB 0x0000000086500000| Untracked 
+|  78|0x0000000086600000, 0x0000000086600000, 0x0000000086700000|  0%| F|  |TAMS 0x0000000086600000| PB 0x0000000086600000| Untracked 
+|  79|0x0000000086700000, 0x0000000086700000, 0x0000000086800000|  0%| F|  |TAMS 0x0000000086700000| PB 0x0000000086700000| Untracked 
+|  80|0x0000000086800000, 0x0000000086800000, 0x0000000086900000|  0%| F|  |TAMS 0x0000000086800000| PB 0x0000000086800000| Untracked 
+|  81|0x0000000086900000, 0x0000000086900000, 0x0000000086a00000|  0%| F|  |TAMS 0x0000000086900000| PB 0x0000000086900000| Untracked 
+|  82|0x0000000086a00000, 0x0000000086a00000, 0x0000000086b00000|  0%| F|  |TAMS 0x0000000086a00000| PB 0x0000000086a00000| Untracked 
+|  83|0x0000000086b00000, 0x0000000086b00000, 0x0000000086c00000|  0%| F|  |TAMS 0x0000000086b00000| PB 0x0000000086b00000| Untracked 
+|  84|0x0000000086c00000, 0x0000000086c00000, 0x0000000086d00000|  0%| F|  |TAMS 0x0000000086c00000| PB 0x0000000086c00000| Untracked 
+|  85|0x0000000086d00000, 0x0000000086d00000, 0x0000000086e00000|  0%| F|  |TAMS 0x0000000086d00000| PB 0x0000000086d00000| Untracked 
+|  86|0x0000000086e00000, 0x0000000086e00000, 0x0000000086f00000|  0%| F|  |TAMS 0x0000000086e00000| PB 0x0000000086e00000| Untracked 
+|  87|0x0000000086f00000, 0x0000000086f00000, 0x0000000087000000|  0%| F|  |TAMS 0x0000000086f00000| PB 0x0000000086f00000| Untracked 
+|  88|0x0000000087000000, 0x0000000087000000, 0x0000000087100000|  0%| F|  |TAMS 0x0000000087000000| PB 0x0000000087000000| Untracked 
+|  89|0x0000000087100000, 0x0000000087100000, 0x0000000087200000|  0%| F|  |TAMS 0x0000000087100000| PB 0x0000000087100000| Untracked 
+|  90|0x0000000087200000, 0x0000000087200000, 0x0000000087300000|  0%| F|  |TAMS 0x0000000087200000| PB 0x0000000087200000| Untracked 
+|  91|0x0000000087300000, 0x0000000087300000, 0x0000000087400000|  0%| F|  |TAMS 0x0000000087300000| PB 0x0000000087300000| Untracked 
+|  92|0x0000000087400000, 0x0000000087400000, 0x0000000087500000|  0%| F|  |TAMS 0x0000000087400000| PB 0x0000000087400000| Untracked 
+|  93|0x0000000087500000, 0x0000000087500000, 0x0000000087600000|  0%| F|  |TAMS 0x0000000087500000| PB 0x0000000087500000| Untracked 
+|  94|0x0000000087600000, 0x0000000087600000, 0x0000000087700000|  0%| F|  |TAMS 0x0000000087600000| PB 0x0000000087600000| Untracked 
+|  95|0x0000000087700000, 0x0000000087700000, 0x0000000087800000|  0%| F|  |TAMS 0x0000000087700000| PB 0x0000000087700000| Untracked 
+|  96|0x0000000087800000, 0x0000000087800000, 0x0000000087900000|  0%| F|  |TAMS 0x0000000087800000| PB 0x0000000087800000| Untracked 
+|  97|0x0000000087900000, 0x0000000087900000, 0x0000000087a00000|  0%| F|  |TAMS 0x0000000087900000| PB 0x0000000087900000| Untracked 
+|  98|0x0000000087a00000, 0x0000000087a00000, 0x0000000087b00000|  0%| F|  |TAMS 0x0000000087a00000| PB 0x0000000087a00000| Untracked 
+|  99|0x0000000087b00000, 0x0000000087b00000, 0x0000000087c00000|  0%| F|  |TAMS 0x0000000087b00000| PB 0x0000000087b00000| Untracked 
+| 100|0x0000000087c00000, 0x0000000087c00000, 0x0000000087d00000|  0%| F|  |TAMS 0x0000000087c00000| PB 0x0000000087c00000| Untracked 
+| 101|0x0000000087d00000, 0x0000000087d00000, 0x0000000087e00000|  0%| F|  |TAMS 0x0000000087d00000| PB 0x0000000087d00000| Untracked 
+| 102|0x0000000087e00000, 0x0000000087e00000, 0x0000000087f00000|  0%| F|  |TAMS 0x0000000087e00000| PB 0x0000000087e00000| Untracked 
+| 103|0x0000000087f00000, 0x0000000087f00000, 0x0000000088000000|  0%| F|  |TAMS 0x0000000087f00000| PB 0x0000000087f00000| Untracked 
+| 104|0x0000000088000000, 0x0000000088000000, 0x0000000088100000|  0%| F|  |TAMS 0x0000000088000000| PB 0x0000000088000000| Untracked 
+| 105|0x0000000088100000, 0x0000000088100000, 0x0000000088200000|  0%| F|  |TAMS 0x0000000088100000| PB 0x0000000088100000| Untracked 
+| 106|0x0000000088200000, 0x0000000088200000, 0x0000000088300000|  0%| F|  |TAMS 0x0000000088200000| PB 0x0000000088200000| Untracked 
+| 107|0x0000000088300000, 0x0000000088300000, 0x0000000088400000|  0%| F|  |TAMS 0x0000000088300000| PB 0x0000000088300000| Untracked 
+| 108|0x0000000088400000, 0x0000000088400000, 0x0000000088500000|  0%| F|  |TAMS 0x0000000088400000| PB 0x0000000088400000| Untracked 
+| 109|0x0000000088500000, 0x0000000088500000, 0x0000000088600000|  0%| F|  |TAMS 0x0000000088500000| PB 0x0000000088500000| Untracked 
+| 110|0x0000000088600000, 0x0000000088600000, 0x0000000088700000|  0%| F|  |TAMS 0x0000000088600000| PB 0x0000000088600000| Untracked 
+| 111|0x0000000088700000, 0x0000000088700000, 0x0000000088800000|  0%| F|  |TAMS 0x0000000088700000| PB 0x0000000088700000| Untracked 
+| 112|0x0000000088800000, 0x0000000088800000, 0x0000000088900000|  0%| F|  |TAMS 0x0000000088800000| PB 0x0000000088800000| Untracked 
+| 113|0x0000000088900000, 0x0000000088900000, 0x0000000088a00000|  0%| F|  |TAMS 0x0000000088900000| PB 0x0000000088900000| Untracked 
+| 114|0x0000000088a00000, 0x0000000088a00000, 0x0000000088b00000|  0%| F|  |TAMS 0x0000000088a00000| PB 0x0000000088a00000| Untracked 
+| 115|0x0000000088b00000, 0x0000000088b00000, 0x0000000088c00000|  0%| F|  |TAMS 0x0000000088b00000| PB 0x0000000088b00000| Untracked 
+| 116|0x0000000088c00000, 0x0000000088c00000, 0x0000000088d00000|  0%| F|  |TAMS 0x0000000088c00000| PB 0x0000000088c00000| Untracked 
+| 117|0x0000000088d00000, 0x0000000088d00000, 0x0000000088e00000|  0%| F|  |TAMS 0x0000000088d00000| PB 0x0000000088d00000| Untracked 
+| 118|0x0000000088e00000, 0x0000000088e00000, 0x0000000088f00000|  0%| F|  |TAMS 0x0000000088e00000| PB 0x0000000088e00000| Untracked 
+| 119|0x0000000088f00000, 0x0000000088f00000, 0x0000000089000000|  0%| F|  |TAMS 0x0000000088f00000| PB 0x0000000088f00000| Untracked 
+| 120|0x0000000089000000, 0x0000000089000000, 0x0000000089100000|  0%| F|  |TAMS 0x0000000089000000| PB 0x0000000089000000| Untracked 
+| 121|0x0000000089100000, 0x0000000089185e18, 0x0000000089200000| 52%| E|  |TAMS 0x0000000089100000| PB 0x0000000089100000| Complete 
+| 122|0x0000000089200000, 0x0000000089300000, 0x0000000089300000|100%| E|CS|TAMS 0x0000000089200000| PB 0x0000000089200000| Complete 
+| 123|0x0000000089300000, 0x0000000089400000, 0x0000000089400000|100%| E|CS|TAMS 0x0000000089300000| PB 0x0000000089300000| Complete 
+| 124|0x0000000089400000, 0x0000000089500000, 0x0000000089500000|100%| E|CS|TAMS 0x0000000089400000| PB 0x0000000089400000| Complete 
+| 125|0x0000000089500000, 0x0000000089600000, 0x0000000089600000|100%| E|CS|TAMS 0x0000000089500000| PB 0x0000000089500000| Complete 
+| 126|0x0000000089600000, 0x0000000089700000, 0x0000000089700000|100%| E|CS|TAMS 0x0000000089600000| PB 0x0000000089600000| Complete 
+| 127|0x0000000089700000, 0x0000000089800000, 0x0000000089800000|100%| E|CS|TAMS 0x0000000089700000| PB 0x0000000089700000| Complete 
+
+Card table byte_map: [0x0000027bfaf40000,0x0000027bfb340000] _byte_map_base: 0x0000027bfab34000
+
+Marking Bits: (CMBitMap*) 0x0000027bf2accd00
+ Bits: [0x0000027bfb740000, 0x0000027bfd6e0000)
+
+Polling page: 0x0000027bf08d0000
+
+Metaspace:
+
+Usage:
+  Non-class:      2.70 MB used.
+      Class:    198.66 KB used.
+       Both:      2.89 MB used.
+
+Virtual space:
+  Non-class space:       64.00 MB reserved,       2.81 MB (  4%) committed,  1 nodes.
+      Class space:        1.00 GB reserved,     256.00 KB ( <1%) committed,  1 nodes.
+             Both:        1.06 GB reserved,       3.06 MB ( <1%) committed. 
+
+Chunk freelists:
+   Non-Class:  2.66 MB
+       Class:  3.64 MB
+        Both:  6.30 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 21.00 MB
+CDS: on
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 0.
+num_arena_births: 78.
+num_arena_deaths: 0.
+num_vsnodes_births: 2.
+num_vsnodes_deaths: 0.
+num_space_committed: 49.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 0.
+num_chunks_taken_from_freelist: 155.
+num_chunk_merges: 0.
+num_chunk_splits: 99.
+num_chunks_enlarged: 66.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120000Kb used=165Kb max_used=165Kb free=119835Kb
+ bounds [0x0000027b87ad0000, 0x0000027b87d40000, 0x0000027b8f000000]
+CodeHeap 'profiled nmethods': size=120000Kb used=733Kb max_used=733Kb free=119266Kb
+ bounds [0x0000027b80000000, 0x0000027b80270000, 0x0000027b87530000]
+CodeHeap 'non-nmethods': size=5760Kb used=2078Kb max_used=2092Kb free=3681Kb
+ bounds [0x0000027b87530000, 0x0000027b877a0000, 0x0000027b87ad0000]
+ total_blobs=1554 nmethods=546 adapters=919
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 0.464 Thread 0x0000027bffbeab20 nmethod 535 0x0000027b87af8990 code [0x0000027b87af8b00, 0x0000027b87af8bf0]
+Event: 0.464 Thread 0x0000027bffbeedb0 nmethod 536 0x0000027b800b0e10 code [0x0000027b800b1000, 0x0000027b800b1480]
+Event: 0.464 Thread 0x0000027bffbeedb0  538       3       jdk.internal.jimage.ImageLocation::verify (218 bytes)
+Event: 0.466 Thread 0x0000027bffbeedb0 nmethod 538 0x0000027b800b1690 code [0x0000027b800b1920, 0x0000027b800b25a0]
+Event: 0.466 Thread 0x0000027bffbeedb0  539       3       java.util.jar.JarFile::getVersionedEntry (133 bytes)
+Event: 0.467 Thread 0x0000027bffbeedb0 nmethod 539 0x0000027b800b2b10 code [0x0000027b800b2dc0, 0x0000027b800b3b38]
+Event: 0.467 Thread 0x0000027bffbeedb0  537       3       jdk.internal.jimage.ImageStringsReader::hashCode (8 bytes)
+Event: 0.467 Thread 0x0000027bffbeedb0 nmethod 537 0x0000027b800b4110 code [0x0000027b800b42c0, 0x0000027b800b4470]
+Event: 0.468 Thread 0x0000027bffbeedb0  540   !   3       jdk.internal.loader.BuiltinClassLoader::loadClassOrNull (143 bytes)
+Event: 0.469 Thread 0x0000027bffbeedb0 nmethod 540 0x0000027b800b4590 code [0x0000027b800b4840, 0x0000027b800b57c8]
+Event: 0.469 Thread 0x0000027bffbeedb0  545       3       sun.misc.Unsafe::putLong (11 bytes)
+Event: 0.469 Thread 0x0000027bffbeedb0 nmethod 545 0x0000027b800b5e10 code [0x0000027b800b5fa0, 0x0000027b800b60b0]
+Event: 0.469 Thread 0x0000027bffbeedb0  546       3       org.lwjgl.system.MemoryUtil::memPutAddress (29 bytes)
+Event: 0.469 Thread 0x0000027bffbeedb0 nmethod 546 0x0000027b800b6190 code [0x0000027b800b6320, 0x0000027b800b6518]
+Event: 0.469 Thread 0x0000027bffbeedb0  541       3       java.lang.ClassLoader::getClassLoadingLock (35 bytes)
+Event: 0.470 Thread 0x0000027bffbeedb0 nmethod 541 0x0000027b800b6610 code [0x0000027b800b67c0, 0x0000027b800b6ab0]
+Event: 0.470 Thread 0x0000027bffbeedb0  542       3       jdk.internal.loader.BuiltinClassLoader::findLoadedModule (33 bytes)
+Event: 0.470 Thread 0x0000027bffbeedb0 nmethod 542 0x0000027b800b6c10 code [0x0000027b800b6e20, 0x0000027b800b7468]
+Event: 0.470 Thread 0x0000027bffbeedb0  543       1       java.lang.NamedPackage::module (5 bytes)
+Event: 0.471 Thread 0x0000027bffbeedb0 nmethod 543 0x0000027b87af9110 code [0x0000027b87af9280, 0x0000027b87af9348]
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (13 events):
+Event: 0.011 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\java.dll
+Event: 0.043 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\jsvml.dll
+Event: 0.139 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\zip.dll
+Event: 0.142 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\instrument.dll
+Event: 0.149 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\net.dll
+Event: 0.151 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\nio.dll
+Event: 0.157 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\zip.dll
+Event: 0.189 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin\breakgen64.dll
+Event: 0.202 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\extnet.dll
+Event: 0.250 Loaded shared library C:\Users\AN\.jdks\openjdk-20.0.2\bin\jimage.dll
+Event: 0.280 Loaded shared library C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl.dll
+Event: 0.389 Loaded shared library C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl_stb.dll
+Event: 0.462 Loaded shared library C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl_opengl.dll
+
+Deoptimization events (16 events):
+Event: 0.191 Thread 0x0000027bf2a6c340 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000027b87ae096c relative=0x000000000000006c
+Event: 0.191 Thread 0x0000027bf2a6c340 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000027b87ae096c method=java.lang.String.isLatin1()Z @ 10 c2
+Event: 0.191 Thread 0x0000027bf2a6c340 DEOPT PACKING pc=0x0000027b87ae096c sp=0x0000009ddcafe790
+Event: 0.191 Thread 0x0000027bf2a6c340 DEOPT UNPACKING pc=0x0000027b87599d22 sp=0x0000009ddcafe720 mode 2
+Event: 0.191 Thread 0x0000027bf2a6c340 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000027b87adf4b4 relative=0x00000000000000b4
+Event: 0.191 Thread 0x0000027bf2a6c340 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000027b87adf4b4 method=java.lang.String.isLatin1()Z @ 10 c2
+Event: 0.191 Thread 0x0000027bf2a6c340 DEOPT PACKING pc=0x0000027b87adf4b4 sp=0x0000009ddcaff1a0
+Event: 0.191 Thread 0x0000027bf2a6c340 DEOPT UNPACKING pc=0x0000027b87599d22 sp=0x0000009ddcaff0e0 mode 2
+Event: 0.367 Thread 0x0000027bf2a6c340 DEOPT PACKING pc=0x0000027b800268d7 sp=0x0000009ddcafe3c0
+Event: 0.367 Thread 0x0000027bf2a6c340 DEOPT UNPACKING pc=0x0000027b8759a4c2 sp=0x0000009ddcafd7e0 mode 0
+Event: 0.401 Thread 0x0000027bf2a6c340 DEOPT PACKING pc=0x0000027b80007dc1 sp=0x0000009ddcafd670
+Event: 0.401 Thread 0x0000027bf2a6c340 DEOPT UNPACKING pc=0x0000027b8759a4c2 sp=0x0000009ddcafcae8 mode 0
+Event: 0.438 Thread 0x0000027bf2a6c340 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000027b87af6e70 relative=0x0000000000000070
+Event: 0.438 Thread 0x0000027bf2a6c340 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000027b87af6e70 method=java.nio.Buffer.hasRemaining()Z @ 8 c2
+Event: 0.438 Thread 0x0000027bf2a6c340 DEOPT PACKING pc=0x0000027b87af6e70 sp=0x0000009ddcafac60
+Event: 0.438 Thread 0x0000027bf2a6c340 DEOPT UNPACKING pc=0x0000027b87599d22 sp=0x0000009ddcafabf8 mode 2
+
+Classes loaded (20 events):
+Event: 0.308 Loading class java/lang/foreign/MemorySegment
+Event: 0.308 Loading class java/lang/foreign/MemorySegment done
+Event: 0.316 Loading class java/nio/InvalidMarkException
+Event: 0.316 Loading class java/nio/InvalidMarkException done
+Event: 0.316 Loading class java/nio/BufferUnderflowException
+Event: 0.316 Loading class java/nio/BufferUnderflowException done
+Event: 0.318 Loading class java/lang/IndexOutOfBoundsException
+Event: 0.318 Loading class java/lang/IndexOutOfBoundsException done
+Event: 0.366 Loading class java/io/FileReader
+Event: 0.366 Loading class java/io/FileReader done
+Event: 0.373 Loading class java/nio/channels/spi/AbstractInterruptibleChannel$1
+Event: 0.373 Loading class sun/nio/ch/Interruptible
+Event: 0.373 Loading class sun/nio/ch/Interruptible done
+Event: 0.373 Loading class java/nio/channels/spi/AbstractInterruptibleChannel$1 done
+Event: 0.407 Loading class jdk/internal/foreign/MemorySessionImpl
+Event: 0.407 Loading class java/lang/foreign/SegmentScope
+Event: 0.407 Loading class java/lang/foreign/SegmentScope done
+Event: 0.407 Loading class java/lang/foreign/SegmentAllocator
+Event: 0.408 Loading class java/lang/foreign/SegmentAllocator done
+Event: 0.408 Loading class jdk/internal/foreign/MemorySessionImpl done
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 0.277 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x0000000089327978}> (0x0000000089327978) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.278 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x0000000089327e88}> (0x0000000089327e88) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.291 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008933b398}> (0x000000008933b398) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.291 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008933b6e0}> (0x000000008933b6e0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.306 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x0000000089386538}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object, int, long)'> (0x0000000089386538) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.307 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x000000008938bb70}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, int)'> (0x000000008938bb70) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.311 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x0000000089399e48}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object, long, long)'> (0x0000000089399e48) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.312 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x000000008939fc90}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, long)'> (0x000000008939fc90) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.312 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x00000000893a3a48}: 'java.lang.Object java.lang.invoke.Invokers$Holder.linkToTargetMethod(java.lang.Object, long, java.lang.Object)'> (0x00000000893a3a48) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.314 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x00000000893aaa80}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object, java.lang.Object, long)'> (0x00000000893aaa80) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.376 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x000000008923a868}: 'void java.lang.System.load(java.lang.String, java.lang.Class)'> (0x000000008923a868) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.377 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x000000008923d658}: 'void java.lang.System.loadLibrary(java.lang.String, java.lang.Class)'> (0x000000008923d658) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.387 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008924cd10}> (0x000000008924cd10) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.388 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008924d070}> (0x000000008924d070) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.452 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x00000000892fbc98}: 'void java.lang.System.load(java.lang.String, java.lang.Class)'> (0x00000000892fbc98) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.453 Thread 0x0000027bf2a6c340 Exception <a 'java/lang/NoSuchMethodError'{0x00000000892fea80}: 'void java.lang.System.loadLibrary(java.lang.String, java.lang.Class)'> (0x00000000892fea80) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 0.460 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008910e8d8}> (0x000000008910e8d8) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.460 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x000000008910ec58}> (0x000000008910ec58) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.465 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x0000000089114288}> (0x0000000089114288) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 0.465 Thread 0x0000027bf2a6c340 Exception <a 'sun/nio/fs/WindowsException'{0x0000000089114548}> (0x0000000089114548) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+
+VM Operations (4 events):
+Event: 0.120 Executing VM operation: HandshakeAllThreads
+Event: 0.120 Executing VM operation: HandshakeAllThreads done
+Event: 0.193 Executing VM operation: HandshakeAllThreads
+Event: 0.194 Executing VM operation: HandshakeAllThreads done
+
+Events (12 events):
+Event: 0.044 Thread 0x0000027bf2a6c340 Thread added: 0x0000027bf2a6c340
+Event: 0.064 Thread 0x0000027bffbd7a60 Thread added: 0x0000027bffbd7a60
+Event: 0.064 Thread 0x0000027bffbd8860 Thread added: 0x0000027bffbd8860
+Event: 0.065 Thread 0x0000027bffbdb1b0 Thread added: 0x0000027bffbdb1b0
+Event: 0.065 Thread 0x0000027bffbdec10 Thread added: 0x0000027bffbdec10
+Event: 0.066 Thread 0x0000027bffbe1560 Thread added: 0x0000027bffbe1560
+Event: 0.066 Thread 0x0000027bffbe1ea0 Thread added: 0x0000027bffbe1ea0
+Event: 0.066 Thread 0x0000027bffbeab20 Thread added: 0x0000027bffbeab20
+Event: 0.066 Thread 0x0000027bffbeedb0 Thread added: 0x0000027bffbeedb0
+Event: 0.110 Thread 0x0000027bffba3bc0 Thread added: 0x0000027bffba3bc0
+Event: 0.190 Thread 0x0000027bd42dd510 Thread added: 0x0000027bd42dd510
+Event: 0.190 Thread 0x0000027bd42dda60 Thread added: 0x0000027bd42dda60
+
+
+Dynamic libraries:
+0x00007ff6d4c00000 - 0x00007ff6d4c0e000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\java.exe
+0x00007fff7b3f0000 - 0x00007fff7b5e8000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff7b280000 - 0x00007fff7b33d000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007fff78e30000 - 0x00007fff79126000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007fff79200000 - 0x00007fff79300000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fff6e3a0000 - 0x00007fff6e3bb000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\VCRUNTIME140.dll
+0x00007fff6df70000 - 0x00007fff6df87000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\jli.dll
+0x00007fff7b0e0000 - 0x00007fff7b27e000 	C:\WINDOWS\System32\USER32.dll
+0x00007fff5d8d0000 - 0x00007fff5db6a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007fff791d0000 - 0x00007fff791f2000 	C:\WINDOWS\System32\win32u.dll
+0x00007fff7a2b0000 - 0x00007fff7a34e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007fff7a180000 - 0x00007fff7a1ac000 	C:\WINDOWS\System32\GDI32.dll
+0x00007fff79300000 - 0x00007fff7941a000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007fff79130000 - 0x00007fff791cd000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007fff7af80000 - 0x00007fff7afb0000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007fff725a0000 - 0x00007fff725ac000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\vcruntime140_1.dll
+0x00007fff51890000 - 0x00007fff5191e000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\msvcp140.dll
+0x00007fff1b0e0000 - 0x00007fff1bd78000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\server\jvm.dll
+0x00007fff7a8b0000 - 0x00007fff7a95e000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007fff7a010000 - 0x00007fff7a0ac000 	C:\WINDOWS\System32\sechost.dll
+0x00007fff7afb0000 - 0x00007fff7b0d6000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007fff60d90000 - 0x00007fff60db7000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff6e370000 - 0x00007fff6e379000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff6fe00000 - 0x00007fff6fe0a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007fff7a1b0000 - 0x00007fff7a21b000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007fff772f0000 - 0x00007fff77302000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007fff6e240000 - 0x00007fff6e24a000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\jimage.dll
+0x00007fff73810000 - 0x00007fff739f4000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007fff5f680000 - 0x00007fff5f6b4000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007fff78cf0000 - 0x00007fff78d72000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fff6df60000 - 0x00007fff6df6e000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\instrument.dll
+0x00007fff6d3e0000 - 0x00007fff6d406000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\java.dll
+0x00007fff51490000 - 0x00007fff51567000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\jsvml.dll
+0x00007fff79660000 - 0x00007fff79da5000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007fff73a00000 - 0x00007fff7419b000 	C:\WINDOWS\SYSTEM32\windows.storage.dll
+0x00007fff7a550000 - 0x00007fff7a8a4000 	C:\WINDOWS\System32\combase.dll
+0x00007fff78440000 - 0x00007fff7846e000 	C:\WINDOWS\SYSTEM32\Wldp.dll
+0x00007fff7a4a0000 - 0x00007fff7a54d000 	C:\WINDOWS\System32\SHCORE.dll
+0x00007fff7a0c0000 - 0x00007fff7a115000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007fff78a00000 - 0x00007fff78a25000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007fff6d3c0000 - 0x00007fff6d3d8000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\zip.dll
+0x00007fff6d360000 - 0x00007fff6d373000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\net.dll
+0x00007fff6add0000 - 0x00007fff6aeda000 	C:\WINDOWS\SYSTEM32\WINHTTP.dll
+0x00007fff781a0000 - 0x00007fff7820a000 	C:\WINDOWS\system32\mswsock.dll
+0x00007fff6d340000 - 0x00007fff6d356000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\nio.dll
+0x00007fff6d320000 - 0x00007fff6d33a000 	C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin\breakgen64.dll
+0x00007fff6d4a0000 - 0x00007fff6d4a7000 	C:\Users\AN\.jdks\openjdk-20.0.2\bin\extnet.dll
+0x00007fff4f000000 - 0x00007fff4f075000 	C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl.dll
+0x00007fff4b650000 - 0x00007fff4b6b1000 	C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\glfw.dll
+0x00007fff51340000 - 0x00007fff51385000 	C:\WINDOWS\SYSTEM32\dinput8.dll
+0x00007fff6ee70000 - 0x00007fff6ee81000 	C:\WINDOWS\SYSTEM32\xinput1_4.dll
+0x00007fff78ad0000 - 0x00007fff78b1e000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007fff78790000 - 0x00007fff787c3000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x00007fff73460000 - 0x00007fff7348f000 	C:\WINDOWS\SYSTEM32\dwmapi.dll
+0x00007fff6b920000 - 0x00007fff6ba72000 	C:\WINDOWS\SYSTEM32\inputhost.dll
+0x00007fff7aeb0000 - 0x00007fff7af7d000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007fff72d50000 - 0x00007fff72e42000 	C:\WINDOWS\SYSTEM32\CoreMessaging.dll
+0x00007fff711f0000 - 0x00007fff712e6000 	C:\WINDOWS\SYSTEM32\PROPSYS.dll
+0x00007fff721f0000 - 0x00007fff72345000 	C:\WINDOWS\SYSTEM32\wintypes.dll
+0x00007fff729f0000 - 0x00007fff72d4e000 	C:\WINDOWS\SYSTEM32\CoreUIComponents.dll
+0x00007fff77bd0000 - 0x00007fff77c03000 	C:\WINDOWS\SYSTEM32\ntmarta.dll
+0x00007fff730a0000 - 0x00007fff7313e000 	C:\WINDOWS\system32\uxtheme.dll
+0x00007fff7a360000 - 0x00007fff7a474000 	C:\WINDOWS\System32\MSCTF.dll
+0x00007fff44d40000 - 0x00007fff44dc1000 	C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl_stb.dll
+0x00007fff4a7a0000 - 0x00007fff4a7fd000 	C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7\lwjgl_opengl.dll
+0x00007fff4f130000 - 0x00007fff4f255000 	C:\WINDOWS\SYSTEM32\opengl32.dll
+0x00007fff4f700000 - 0x00007fff4f72c000 	C:\WINDOWS\SYSTEM32\GLU32.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\AN\.jdks\openjdk-20.0.2\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e;C:\Users\AN\.jdks\openjdk-20.0.2\bin\server;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin;C:\Users\AN\AppData\Local\Temp\lwjglAN\3.3.1-build-7
+
+VM Arguments:
+jvm_args: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\lib\idea_rt.jar=62680:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: ShadowDance
+java_class_path (initial): C:\Users\AN\annambi-project-2\target\classes;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-assimp\3.3.1\lwjgl-assimp-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-assimp\3.3.1\lwjgl-assimp-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows.jar;C:\Users\AN\.m2\repository\io\github\eleanor-em\bagel\1.9.3\bagel-1.9.3.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 134217728                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2122317824                                {product} {ergonomic}
+   size_t MaxNewSize                               = 1272971264                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5832780                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122912730                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122912730                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2122317824                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MATLAB\R2022b\bin;C:\Program Files\Git\cmd;C:\Users\AN\AppData\Local\Microsoft\WindowsApps;;C:\Users\AN\AppData\Local\Programs\Microsoft VS Code\bin
+USERNAME=AN
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+TMP=C:\Users\AN\AppData\Local\Temp
+TEMP=C:\Users\AN\AppData\Local\Temp
+
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.3393)
+OS uptime: 4 days 18:48 hours
+
+CPU: total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9 microcode 0xb4, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, rdtscp, f16c
+
+Memory: 4k page, system-wide physical 8089M (1266M free)
+TotalPageFile size 12270M (AvailPageFile size 1451M)
+current process WorkingSet (physical memory assigned to process): 53M, peak: 53M
+current process commit charge ("private bytes"): 209M, peak: 209M
+
+vm_info: OpenJDK 64-Bit Server VM (20.0.2+9-78) for windows-amd64 JRE (20.0.2+9-78), built on 2023-06-14T10:08:48Z by "mach5one" with MS VC++ 17.1 (VS2022)
+
+END.

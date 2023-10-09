@@ -1,15 +1,26 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+
 import bagel.*;
 
 public abstract class Levels {
+    public final Font SCORE_FONT = new Font(ShadowDance.FONT_FILE, 30);
+    public final static int SCORE_LOCATION = 35;
     private int levelScore;
     private int targetScore;
     private String csvFile;
-    private int laneNum = 0;
+    private static int laneNum = 0;
     private boolean finished;
+    private final Accuracy accuracy = new Accuracy();
+    private static final ArrayList<NormalLane> normalLanes = new ArrayList<>();
 
-    private final NormalLane[] normalLanes = new NormalLane[4];
+    public Levels(int levelScore, int targetScore, String csvFile){
+        this.levelScore = levelScore;
+        this.targetScore = targetScore;
+        this.csvFile = csvFile;
+
+    }
 
     public void readCsv() {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -24,29 +35,33 @@ public abstract class Levels {
                     Keys relevantKey = Lane.getRelevantKey(laneType);
                     Image laneImage = Lane.getLaneImage(laneType);
                     NormalLane normalLane = new NormalLane(laneType, pos, relevantKey,laneImage);
-                    normalLanes[laneNum++] = normalLane;
-                } else if (!splitText[0].equals("Lane") && !splitText[1].equals("Special")){
+                    normalLanes.add(normalLane);
+                    laneNum++;
+                } else if (!splitText[0].equals("Lane") && !splitText[0].equals("Special")){
                     // reading notes
-                    String dir = splitText[0];
+                    String noteType = splitText[0];
                     NormalLane normalLane = null;
+                    int xCoordinate = 0;
                     for (int i = 0; i < laneNum; i++) {
-                        if (normalLanes[i].getLaneType().equals(dir)) {
-                            normalLane = normalLanes[i];
+                        if (normalLanes.get(i).getLaneType().equals(noteType)) {
+                            normalLane = normalLanes.get(i);
+                            xCoordinate = normalLane.getXCoordinate();
                         }
                     }
-
                     if (normalLane != null) {
                         switch (splitText[1]) {
                             case "Normal":
-                                NormalNote note = new Note(dir, Integer.parseInt(splitText[2]));
-                                normalLane.addNote(note);
+                                NormalNote normalNote = new NormalNote(noteType, Integer.parseInt(splitText[2]),xCoordinate);
+                                normalLane.addNormal(normalNote);
                                 break;
                             case "Hold":
-                                HoldNote holdNote = new HoldNote(dir, Integer.parseInt(splitText[2]));
-                                normallane.addHoldNote(holdNote);
+                                HoldNote holdNote = new HoldNote(noteType,Integer.parseInt(splitText[2]),xCoordinate);
+                                normalLane.addHold(holdNote);
                                 break;
                         }
                     }
+
+
 
                 }
             }
@@ -59,12 +74,44 @@ public abstract class Levels {
 
     public boolean checkFinished() {
         for (int i = 0; i < laneNum; i++) {
-            if (normalLanes[i].isNormalFinished()==true){
-                finished = true;
+            if (normalLanes.get(i).isNormalFinished()) {
+                return false;
             }
         }
-        return finished;
+        return true;
     }
 
+    public void setCsvFile(String csvFile) {
+        this.csvFile = csvFile;
+    }
+
+    public static int getLaneNum() {
+        return laneNum;
+    }
+
+    public static ArrayList<NormalLane> getNormalLanes() {
+        return normalLanes;
+    }
+
+
+    public void setLevelScore(int levelScore) {
+        this.levelScore = levelScore;
+    }
+
+    public void setTargetScore(int targetScore) {
+        this.targetScore = targetScore;
+    }
+
+    public int getLevelScore() {
+        return levelScore;
+    }
+
+    public Accuracy getAccuracy() {
+        return accuracy;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 
 }

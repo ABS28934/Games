@@ -5,13 +5,11 @@ import java.util.ArrayList;
 
 public class Lane {
     private final static int Y_COORDINATE = 384;
-    private final static int TARGET_HEIGHT = 657;
+    public final static int TARGET_HEIGHT = 657;
     private String laneType;
     private int xCoordinate;
     private Keys relevantKey;
     private Image laneImage;
-    private final ArrayList<NormalNote> normalNotes = new ArrayList<>();
-    private final ArrayList<HoldNote> holdNotes = new ArrayList<>();
 
     public Lane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
         this.laneType = laneType;
@@ -19,11 +17,16 @@ public class Lane {
         this.relevantKey = relevantKey;
         this.laneImage = laneImage;
     }
+
+    public Keys getRelevantKey() {
+        return relevantKey;
+    }
+
     public String getLaneType() {
         return laneType;
     }
 
-    public int getxCoordinate() {
+    public  int getXCoordinate() {
         return xCoordinate;
     }
 

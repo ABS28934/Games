@@ -22,8 +22,6 @@ public class ShadowDance extends AbstractGame  {
     private final static int INSTRUCTION_X = 320;
     private final static int INSTRUCTION_Y = 440;
     private static final String SCORE_MESSAGE = "SCORE";
-    private final Font SCORE_FONT = new Font(FONT_FILE, 30);
-    private final static int SCORE_LOCATION = 35;
     private static final String WIN_MESSAGE = "CLEAR!";
     private static final String LOSE_MESSAGE = "TRY AGAIN";
 
@@ -39,13 +37,18 @@ public class ShadowDance extends AbstractGame  {
     private boolean level2 = false;
     private boolean level3 = false;
 
-    private int frameCount = 0;
-    private int score = 0;
+    private static int frameCount = 0;
+    private static int score = 0;
+    private final static int LEVEL1_TARGET = 150;
+    private final static String LEVEL1_CSV = "res/level1.csv";
 
+    private Level1 level_1;
 
 
     public ShadowDance(){
+
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
+        level_1 = new Level1(0, LEVEL1_TARGET, LEVEL1_CSV);
     }
 
     /**
@@ -59,6 +62,10 @@ public class ShadowDance extends AbstractGame  {
     public static void main(String[] args) {
         ShadowDance game = new ShadowDance();
         game.run();
+    }
+
+    public static int getFrameCount() {
+        return frameCount;
     }
 
     /**
@@ -92,20 +99,17 @@ public class ShadowDance extends AbstractGame  {
             }
         }
         if (level1){
-            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+            frameCount++;
+            level_1.update(input);
+
+
         }
         if (level2){
-            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+
 
         }
         if (level3){
-            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
-            if (input.wasPressed(Keys.TAB)){
-                gameWon = true;
-            }
-            if (input.wasPressed(Keys.BACKSPACE)){
-                gameLost = true;
-            }
+
 
         }
         if (gameWon){
@@ -122,6 +126,7 @@ public class ShadowDance extends AbstractGame  {
             if (input.wasPressed(Keys.SPACE)){
                 gameLost = false;
                 showInstructions = true;
+
             }
         }
 
