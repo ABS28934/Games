@@ -8,8 +8,40 @@ import bagel.*;
 public class ShadowDance extends AbstractGame  {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
-    private final static String GAME_TITLE = "SHADOW DANCE";
     private final Image BACKGROUND_IMAGE = new Image("res/background.png");
+    public final static String FONT_FILE = "res/FSO8BITR.TTF";
+
+    private final static String GAME_TITLE = "SHADOW DANCE";
+
+    private final Font TITLE_FONT = new Font(FONT_FILE, 64);
+    private final static int TITLE_X = 220;
+    private final static int TITLE_Y = 250;
+    private static final String INSTRUCTIONS = "SELECT LEVELS WITH\n      NUMBER KEYS\n\n       1     2     3";
+
+    private final Font INSTRUCTION_FONT = new Font(FONT_FILE, 24);
+    private final static int INSTRUCTION_X = 320;
+    private final static int INSTRUCTION_Y = 440;
+    private static final String SCORE_MESSAGE = "SCORE";
+    private final Font SCORE_FONT = new Font(FONT_FILE, 30);
+    private final static int SCORE_LOCATION = 35;
+    private static final String WIN_MESSAGE = "CLEAR!";
+    private static final String LOSE_MESSAGE = "TRY AGAIN";
+
+    private final static int END_MESSAGE = 300;
+
+    private static final String REPLAY_INSTRUCTIONS = "PRESS SPACE TO RETURN LEVEL SELECTION";
+    private final static int REPLAY_INSTRUCTIONS_Y = 500;
+    private boolean showInstructions = true;
+    private boolean gameWon = false;
+    private boolean gameLost = false;
+    private boolean level1 = false;
+
+    private boolean level2 = false;
+    private boolean level3 = false;
+
+    private int frameCount = 0;
+    private int score = 0;
+
 
 
     public ShadowDance(){
@@ -20,9 +52,6 @@ public class ShadowDance extends AbstractGame  {
      * Method used to read file and create objects (you can change
      * this method as you wish).
      */
-    private void readCSV() {
-
-    }
 
     /**
      * The entry point for the program.
@@ -43,6 +72,39 @@ public class ShadowDance extends AbstractGame  {
             Window.close();
         }
         BACKGROUND_IMAGE.draw(Window.getWidth()/2.0, Window.getHeight()/2.0);
+
+        if (showInstructions) {
+            // instruction screen
+            TITLE_FONT.drawString(GAME_TITLE, TITLE_X, TITLE_Y);
+            INSTRUCTION_FONT.drawString(INSTRUCTIONS,
+                    INSTRUCTION_X, INSTRUCTION_Y);
+            if (input.wasPressed(Keys.NUM_1)){
+                level1 = true;
+                showInstructions = false;
+            }
+            if (input.wasPressed(Keys.NUM_2)){
+                level2 = true;
+                showInstructions = false;
+            }
+            if (input.wasPressed(Keys.NUM_3)){
+                level3 = true;
+                showInstructions = false;
+            }
+        }
+        if (level1){
+            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+        }
+        if (level2){
+            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+
+        }
+        if (level3){
+            SCORE_FONT.drawString("Score " + score, SCORE_LOCATION, SCORE_LOCATION);
+
+        }
+
+
+
 
     }
 }
