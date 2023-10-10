@@ -18,6 +18,10 @@ public class Lane {
         this.laneImage = laneImage;
     }
 
+    public Lane(){
+        return;
+    }
+
     public Keys getRelevantKey() {
         return relevantKey;
     }

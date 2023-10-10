@@ -8,16 +8,16 @@ public abstract class Levels {
     public final Font SCORE_FONT = new Font(ShadowDance.FONT_FILE, 30);
     public final static int SCORE_LOCATION = 35;
     private int levelScore;
-    private int targetScore;
     private String csvFile;
     private static int laneNum = 0;
-    private boolean finished;
+    private boolean finished = false;
     private final Accuracy accuracy = new Accuracy();
     private static final ArrayList<NormalLane> normalLanes = new ArrayList<>();
 
-    public Levels(int levelScore, int targetScore, String csvFile){
+    //private static SpecialLane specialLane = new SpecialLane();
+
+    public Levels(int levelScore,String csvFile){
         this.levelScore = levelScore;
-        this.targetScore = targetScore;
         this.csvFile = csvFile;
 
     }
@@ -37,7 +37,14 @@ public abstract class Levels {
                     NormalLane normalLane = new NormalLane(laneType, pos, relevantKey,laneImage);
                     normalLanes.add(normalLane);
                     laneNum++;
-                } else if (!splitText[0].equals("Lane") && !splitText[0].equals("Special")){
+                } else if (splitText[0].equals("Lane") && splitText[1].equals("Special")) {
+                    String laneType = splitText[1];
+                    int pos = Integer.parseInt(splitText[2]);
+                    Keys relevantKey = Lane.getRelevantKey(laneType);
+                    Image laneImage = Lane.getLaneImage(laneType);
+                   // specialLane = new SpecialLane(laneType,pos,relevantKey,laneImage);
+                }
+                else if (!splitText[0].equals("Lane") && !splitText[0].equals("Special")){
                     // reading notes
                     String noteType = splitText[0];
                     NormalLane normalLane = null;
@@ -51,16 +58,19 @@ public abstract class Levels {
                     if (normalLane != null) {
                         switch (splitText[1]) {
                             case "Normal":
-                                NormalNote normalNote = new NormalNote(noteType, Integer.parseInt(splitText[2]),xCoordinate);
+                                NormalNote normalNote = new NormalNote(noteType, Integer.parseInt(splitText[2]), xCoordinate);
                                 normalLane.addNormal(normalNote);
                                 break;
                             case "Hold":
-                                HoldNote holdNote = new HoldNote(noteType,Integer.parseInt(splitText[2]),xCoordinate);
+                                HoldNote holdNote = new HoldNote(noteType, Integer.parseInt(splitText[2]), xCoordinate);
                                 normalLane.addHold(holdNote);
                                 break;
                         }
                     }
-
+//                    } else if (splitText[0].equals("Special")) {
+//                        SpecialNote specialNote = new SpecialNote(splitText[1],Integer.parseInt(splitText[2]),specialLane.getXCoordinate());
+//                        specialLane.addSpecial(specialNote);
+//                    }
 
 
                 }
@@ -74,15 +84,11 @@ public abstract class Levels {
 
     public boolean checkFinished() {
         for (int i = 0; i < laneNum; i++) {
-            if (normalLanes.get(i).isNormalFinished()) {
+            if (!normalLanes.get(i).isNormalFinished()) {
                 return false;
             }
         }
         return true;
-    }
-
-    public void setCsvFile(String csvFile) {
-        this.csvFile = csvFile;
     }
 
     public static int getLaneNum() {
@@ -98,9 +104,6 @@ public abstract class Levels {
         this.levelScore = levelScore;
     }
 
-    public void setTargetScore(int targetScore) {
-        this.targetScore = targetScore;
-    }
 
     public int getLevelScore() {
         return levelScore;
@@ -114,4 +117,11 @@ public abstract class Levels {
         this.finished = finished;
     }
 
+    public boolean isFinished() {
+        return finished;
+    }
+
+//    public static SpecialLane getSpecialLane() {
+//        return specialLane;
+//    }
 }

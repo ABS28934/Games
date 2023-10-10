@@ -41,14 +41,19 @@ public class ShadowDance extends AbstractGame  {
     private static int score = 0;
     private final static int LEVEL1_TARGET = 150;
     private final static String LEVEL1_CSV = "res/level1.csv";
+    private final static int LEVEL2_TARGET = 400;
+    private final static String LEVEL2_CSV = "res/level2.csv";
+
 
     private Level1 level_1;
+
 
 
     public ShadowDance(){
 
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
-        level_1 = new Level1(0, LEVEL1_TARGET, LEVEL1_CSV);
+        level_1 = new Level1(score, LEVEL1_CSV);
+
     }
 
     /**
@@ -101,14 +106,22 @@ public class ShadowDance extends AbstractGame  {
         if (level1){
             frameCount++;
             level_1.update(input);
+            if (level_1.isFinished()) {
+                level1 = false;
+                // Check if the score beats the target score
+                if (level_1.getLevelScore() >= LEVEL1_TARGET) {
+                    gameWon = true;
+                } else {
+                    gameLost = true;
+                }
+            }
+
+        } else if (level2){
+            frameCount++;
 
 
-        }
-        if (level2){
 
-
-        }
-        if (level3){
+        } else if (level3){
 
 
         }
@@ -118,14 +131,18 @@ public class ShadowDance extends AbstractGame  {
             if (input.wasPressed(Keys.SPACE)){
                 gameWon = false;
                 showInstructions = true;
+                frameCount = 0;
+                level_1 = new Level1(score, LEVEL1_CSV);
             }
         }
         if (gameLost){
-            TITLE_FONT.drawString(LOSE_MESSAGE, WINDOW_WIDTH/2 - 130 ,END_MESSAGE);
+            TITLE_FONT.drawString(LOSE_MESSAGE, WINDOW_WIDTH/2 - 220 ,END_MESSAGE);
             INSTRUCTION_FONT.drawString(REPLAY_INSTRUCTIONS, WINDOW_HEIGHT/2 - 200, REPLAY_INSTRUCTIONS_Y);
             if (input.wasPressed(Keys.SPACE)){
                 gameLost = false;
                 showInstructions = true;
+                frameCount = 0;
+                level_1 = new Level1(score, LEVEL1_CSV);
 
             }
         }

@@ -24,7 +24,6 @@ public abstract class Note {
         this.xCoordinate = xCoordinate;
     }
 
-
     public void draw() {
         if (active) {
             noteImage.draw(xCoordinate, yCoordinate);
@@ -91,5 +90,9 @@ public abstract class Note {
             active =true;
         }
 
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

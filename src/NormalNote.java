@@ -1,11 +1,6 @@
-import bagel.Image;
-import bagel.Input;
-import bagel.Keys;
-import bagel.Window;
+import bagel.*;
 
 public class NormalNote extends Note{
-
-
 
     public NormalNote(String noteType, int frameNumber, int xCoordinate) {
         super(noteType,frameNumber,xCoordinate);
