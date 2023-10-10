@@ -2,8 +2,8 @@ import bagel.*;
 
 public class NormalNote extends Note{
 
-    public NormalNote(String noteType, int frameNumber, int xCoordinate) {
-        super(noteType,frameNumber,xCoordinate);
+    public NormalNote(String noteType, int frameNumber) {
+        super(noteType,frameNumber);
         setNoteImage(new Image("res/note" + noteType + ".png"));
         setyCoordinate(100);
     }

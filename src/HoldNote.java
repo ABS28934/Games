@@ -6,8 +6,8 @@ public class HoldNote extends Note{
 
 
 
-    public HoldNote(String noteType, int frameNumber, int xCoordinate) {
-        super(noteType,frameNumber,xCoordinate);
+    public HoldNote(String noteType, int frameNumber) {
+        super(noteType,frameNumber);
         setNoteImage(new Image("res/holdNote" + noteType + ".png"));
         setyCoordinate(24);
         this.released = false;

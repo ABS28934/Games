@@ -2,6 +2,8 @@ import bagel.*;
 
 public class Level1 extends Levels{
 
+
+
     public Level1(int levelScore, String csvFile){
         super(levelScore, csvFile);
         readCsv();

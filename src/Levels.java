@@ -12,7 +12,7 @@ public abstract class Levels {
     private static int laneNum = 0;
     private boolean finished = false;
     private final Accuracy accuracy = new Accuracy();
-    private static final ArrayList<NormalLane> normalLanes = new ArrayList<>();
+    private final ArrayList<NormalLane> normalLanes = new ArrayList<>();
 
     //private static SpecialLane specialLane = new SpecialLane();
 
@@ -48,21 +48,21 @@ public abstract class Levels {
                     // reading notes
                     String noteType = splitText[0];
                     NormalLane normalLane = null;
-                    int xCoordinate = 0;
+                    //int xCoordinate = 0;
                     for (int i = 0; i < laneNum; i++) {
                         if (normalLanes.get(i).getLaneType().equals(noteType)) {
                             normalLane = normalLanes.get(i);
-                            xCoordinate = normalLane.getXCoordinate();
+                            //xCoordinate = normalLane.getXCoordinate();
                         }
                     }
                     if (normalLane != null) {
                         switch (splitText[1]) {
                             case "Normal":
-                                NormalNote normalNote = new NormalNote(noteType, Integer.parseInt(splitText[2]), xCoordinate);
+                                NormalNote normalNote = new NormalNote(noteType, Integer.parseInt(splitText[2]));
                                 normalLane.addNormal(normalNote);
                                 break;
                             case "Hold":
-                                HoldNote holdNote = new HoldNote(noteType, Integer.parseInt(splitText[2]), xCoordinate);
+                                HoldNote holdNote = new HoldNote(noteType, Integer.parseInt(splitText[2]));
                                 normalLane.addHold(holdNote);
                                 break;
                         }
@@ -79,7 +79,11 @@ public abstract class Levels {
             e.printStackTrace();
             System.exit(-1);
         }
-
+        for (int i = 0; i < getLaneNum(); i++) {
+            for (int j = 0; j < 19;j++) {
+                System.out.println(normalLanes.get(i).getNormalNotes().get(i).getFrameNumber());
+            }
+        }
     }
 
     public boolean checkFinished() {
@@ -95,7 +99,7 @@ public abstract class Levels {
         return laneNum;
     }
 
-    public static ArrayList<NormalLane> getNormalLanes() {
+    public ArrayList<NormalLane> getNormalLanes() {
         return normalLanes;
     }
 

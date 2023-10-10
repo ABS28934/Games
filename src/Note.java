@@ -18,15 +18,14 @@ public abstract class Note {
 
     private final static String BOMBED = "LANE CLEAR";
 
-    public Note(String noteType, int frameNumber, int xCoordinate) {
+    public Note(String noteType, int frameNumber) {
         this.noteType = noteType;
         this.frameNumber = frameNumber;
-        this.xCoordinate = xCoordinate;
     }
 
-    public void draw() {
+    public void draw(int x) {
         if (active) {
-            noteImage.draw(xCoordinate, yCoordinate);
+            noteImage.draw(x, yCoordinate);
         }
     }
 
@@ -89,6 +88,8 @@ public abstract class Note {
         if (ShadowDance.getFrameCount() >= frameNumber && !completed) {
             active =true;
         }
+
+
 
     }
 

@@ -59,6 +59,9 @@ public class NormalLane extends Lane{
 
         for (int i = indexNormals; i < numNormals; i++) {
             normalNotes.get(i).update();
+
+            //System.out.println(normalNotes.get(i).getFrameNumber() + "  speed is " + normalNotes.get(i).getSpeed());
+
         }
 
         for (int j = indexHolds; j < numHolds; j++) {
@@ -84,21 +87,6 @@ public class NormalLane extends Lane{
         return Accuracy.NOT_SCORED;
     }
 
-    public int getNumHolds() {
-        return numHolds;
-    }
-
-    public void setNumHolds(int numHolds) {
-        this.numHolds = numHolds;
-    }
-
-    public int getNumNormals() {
-        return numNormals;
-    }
-
-    public void setNumNormals(int numNormals) {
-        this.numNormals = numNormals;
-    }
 
     public void addNormal(NormalNote n) {
         normalNotes.add(n);
@@ -111,13 +99,21 @@ public class NormalLane extends Lane{
     public void drawLane() {
         super.drawLane();
         for (int i = indexNormals; i < numNormals; i++) {
-            normalNotes.get(i).draw();
+            normalNotes.get(i).draw(getXCoordinate());
         }
 
         for (int j = indexHolds; j < numHolds; j++) {
-            holdNotes.get(j).draw();
+            holdNotes.get(j).draw(getXCoordinate());
         }
     }
 
+    public int getNumNormals() {
+        return numNormals;
+    }
+
+
+    public void setNumNormals(int numNormals) {
+        this.numNormals = numNormals;
+    }
 }
 

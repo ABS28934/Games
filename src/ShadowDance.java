@@ -69,9 +69,6 @@ public class ShadowDance extends AbstractGame  {
         game.run();
     }
 
-    public static int getFrameCount() {
-        return frameCount;
-    }
 
     /**
      * Performs a state update.
@@ -150,5 +147,8 @@ public class ShadowDance extends AbstractGame  {
 
 
 
+    }
+    public static int getFrameCount() {
+        return frameCount;
     }
 }
