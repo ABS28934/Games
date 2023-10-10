@@ -8,12 +8,18 @@ public class NormalLane extends Lane{
     private int indexHolds = 0;
     private int indexNormals = 0;
 
+    private int numBombs = 0;
+
+    private int indexBombs = 0;
+
     private  final ArrayList<NormalNote> normalNotes = new ArrayList<>();
     private  final ArrayList<HoldNote> holdNotes = new ArrayList<>();
 
+    private final ArrayList<NormalNote> bombs = new ArrayList<>();
     public NormalLane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
         super(laneType, xCoordinate,relevantKey ,laneImage);
     }
+
 
     public  ArrayList<NormalNote> getNormalNotes() {
         return normalNotes;
@@ -52,12 +58,16 @@ public class NormalLane extends Lane{
         for (int i = indexNormals; i < numNormals; i++) {
             normalNotes.get(i).update();
 
-            //System.out.println(normalNotes.get(i).getFrameNumber() + "  speed is " + normalNotes.get(i).getSpeed());
-
         }
+
+//        for (int i = indexBombs; i < numBombs; i++) {
+//            bombs.get(i).update();
+//
+//        }
 
         for (int j = indexHolds; j < numHolds; j++) {
             holdNotes.get(j).update();
+
         }
 
         if (indexNormals < numNormals) {
@@ -67,6 +77,13 @@ public class NormalLane extends Lane{
                 return score;
             }
         }
+//        if (indexBombs < numBombs) {
+//            int score = bombs.get(indexBombs).scoreNote(input, accuracy, Lane.TARGET_HEIGHT, getRelevantKey());
+//            if (bombs.get(indexBombs).isCompleted()) {
+//                indexBombs++;
+//                return score;
+//            }
+//        }
 
         if (indexHolds < numHolds) {
             int score = holdNotes.get(indexHolds).scoreNote(input, accuracy, Lane.TARGET_HEIGHT, getRelevantKey());
@@ -93,6 +110,10 @@ public class NormalLane extends Lane{
         for (int i = indexNormals; i < numNormals; i++) {
             normalNotes.get(i).draw(getXCoordinate());
         }
+//
+//        for (int i = indexBombs; i < numBombs; i++) {
+//            bombs.get(i).draw(getXCoordinate());
+//        }
 
         for (int j = indexHolds; j < numHolds; j++) {
             holdNotes.get(j).draw(getXCoordinate());

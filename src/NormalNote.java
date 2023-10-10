@@ -14,6 +14,7 @@ public class NormalNote extends Note{
             // evaluate accuracy of the key press
             int score = accuracy.evaluateScore(super.getyCoordinate(), targetHeight, input.wasPressed(relevantKey));
 
+
             if (score != Accuracy.NOT_SCORED) {
                 deactivate();
                 return score;

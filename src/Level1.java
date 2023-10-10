@@ -6,7 +6,6 @@ public class Level1 extends Levels{
 
     public Level1(int levelScore, String csvFile){
         super(levelScore, csvFile);
-        readCsv();
     }
 
     public void update(Input input){

@@ -2,21 +2,15 @@ import bagel.*;
 
 public abstract class Note {
     private Image noteImage;
-    private int speed = 2;
+    private static int speed = 2;
     private int frameNumber;
 
     private String noteType;
     private int yCoordinate = 0;
-    private int xCoordinate = 0;
 
     private boolean active = false;
     private boolean completed = false;
-    private boolean pressed = false;
-    private boolean doubled = false;
-    private final static int ACTIVATE_DISTANCE = 50;
-    private boolean bombed = false;
-
-    private final static String BOMBED = "LANE CLEAR";
+    private boolean pressed = false ;
 
     public Note(String noteType, int frameNumber) {
         this.noteType = noteType;
@@ -29,6 +23,7 @@ public abstract class Note {
         }
     }
 
+
     public void setNoteImage(Image noteImage) {
         this.noteImage = noteImage;
     }
@@ -36,9 +31,11 @@ public abstract class Note {
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
-    public void setSpeed(int speed) {
-        this.speed = speed;
+
+    public static void setSpeed(int speed) {
+        Note.speed = speed;
     }
+
 
     public void setActive(boolean active) {
         this.active = active;
@@ -53,8 +50,12 @@ public abstract class Note {
         return frameNumber;
     }
 
-    public int getSpeed() {
+    public static int getSpeed() {
         return speed;
+    }
+
+    public String getNoteType() {
+        return noteType;
     }
 
     public void deactivate() {
@@ -62,12 +63,7 @@ public abstract class Note {
         completed = true;
     }
 
-    public void bombed(int targetHeight) {
-        int distance = Math.abs(yCoordinate - targetHeight);
-        if (distance <= ACTIVATE_DISTANCE){
-            bombed = true;
-        }
-    }
+
 
     public int getyCoordinate() {
         return yCoordinate;

@@ -46,13 +46,15 @@ public class ShadowDance extends AbstractGame  {
 
 
     private Level1 level_1;
+    private Level2 level_2;
 
 
 
     public ShadowDance(){
-
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
-        level_1 = new Level1(score, LEVEL1_CSV);
+            level_1 = new Level1(score, LEVEL1_CSV);
+            level_2 = new Level2(score, LEVEL2_CSV);
+
 
     }
 
@@ -90,17 +92,19 @@ public class ShadowDance extends AbstractGame  {
             if (input.wasPressed(Keys.NUM_1)){
                 level1 = true;
                 showInstructions = false;
+                level_1.readCsv();
             }
             if (input.wasPressed(Keys.NUM_2)){
                 level2 = true;
                 showInstructions = false;
+                level_2.readCsv();
             }
             if (input.wasPressed(Keys.NUM_3)){
                 level3 = true;
                 showInstructions = false;
             }
         }
-        if (level1){
+        if (level1 && !level2 && !level3){
             frameCount++;
             level_1.update(input);
             if (level_1.isFinished()) {
@@ -113,12 +117,22 @@ public class ShadowDance extends AbstractGame  {
                 }
             }
 
-        } else if (level2){
-            frameCount++;
+        } else if (level2 && !level1 && !level3){
+            frameCount=frameCount+1;
+            level_2.update(input);
+            if (level_2.isFinished()) {
+                level2 = false;
+                // Check if the score beats the target score
+                if (level_2.getLevelScore() >= LEVEL2_TARGET) {
+                    gameWon = true;
+                } else {
+                    gameLost = true;
+                }
+            }
 
 
 
-        } else if (level3){
+        } else if (level3 && !level2 && !level1){
 
 
         }
@@ -130,6 +144,7 @@ public class ShadowDance extends AbstractGame  {
                 showInstructions = true;
                 frameCount = 0;
                 level_1 = new Level1(score,LEVEL1_CSV);
+                level_2 = new Level2(score,LEVEL2_CSV);
             }
         }
         if (gameLost){
@@ -140,13 +155,10 @@ public class ShadowDance extends AbstractGame  {
                 showInstructions = true;
                 frameCount = 0;
                 level_1 = new Level1(score,LEVEL1_CSV);
+                level_2 = new Level2(score,LEVEL2_CSV);
 
             }
         }
-
-
-
-
     }
     public static int getFrameCount() {
         return frameCount;

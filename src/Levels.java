@@ -13,8 +13,9 @@ public abstract class Levels {
     private boolean finished = false;
     private final Accuracy accuracy = new Accuracy();
     private final ArrayList<NormalLane> normalLanes = new ArrayList<>();
+    private SpecialLane specialLane = new SpecialLane();
 
-    //private static SpecialLane specialLane = new SpecialLane();
+   // private  SpecialLane specialLane = new SpecialLane();
 
     public Levels(int levelScore,String csvFile){
         this.levelScore = levelScore;
@@ -34,25 +35,27 @@ public abstract class Levels {
                     int pos = Integer.parseInt(splitText[2]);
                     Keys relevantKey = Lane.getRelevantKey(laneType);
                     Image laneImage = Lane.getLaneImage(laneType);
-                    NormalLane normalLane = new NormalLane(laneType, pos, relevantKey,laneImage);
+                    NormalLane normalLane = new NormalLane(laneType, pos, relevantKey, laneImage);
                     normalLanes.add(normalLane);
                     laneNum++;
-                } else if (splitText[0].equals("Lane") && splitText[1].equals("Special")) {
+
+
+                }
+
+                 else if (splitText[0].equals("Lane") && splitText[1].equals("Special")) {
                     String laneType = splitText[1];
                     int pos = Integer.parseInt(splitText[2]);
                     Keys relevantKey = Lane.getRelevantKey(laneType);
                     Image laneImage = Lane.getLaneImage(laneType);
-                   // specialLane = new SpecialLane(laneType,pos,relevantKey,laneImage);
+                    specialLane = new SpecialLane(laneType,pos,relevantKey,laneImage);
                 }
-                else if (!splitText[0].equals("Lane") && !splitText[0].equals("Special")){
+                else if (!splitText[0].equals("Lane") && !splitText[0].equals("Special")) {
                     // reading notes
                     String noteType = splitText[0];
                     NormalLane normalLane = null;
-                    //int xCoordinate = 0;
                     for (int i = 0; i < laneNum; i++) {
                         if (normalLanes.get(i).getLaneType().equals(noteType)) {
                             normalLane = normalLanes.get(i);
-                            //xCoordinate = normalLane.getXCoordinate();
                         }
                     }
                     if (normalLane != null) {
@@ -65,28 +68,29 @@ public abstract class Levels {
                                 HoldNote holdNote = new HoldNote(noteType, Integer.parseInt(splitText[2]));
                                 normalLane.addHold(holdNote);
                                 break;
+//                            case "Bomb":
+//                                NormalNote bomb = new NormalNote(splitText[1], Integer.parseInt(splitText[2]));
+//                                normalLane.addNormal(bomb);
+//                                break;
+
                         }
                     }
-//                    } else if (splitText[0].equals("Special")) {
-//                        SpecialNote specialNote = new SpecialNote(splitText[1],Integer.parseInt(splitText[2]),specialLane.getXCoordinate());
-//                        specialLane.addSpecial(specialNote);
-//                    }
+                }
+                     else if (splitText[0].equals("Special")) {
+                    String noteType = splitText[1];
+                         SpecialNote specialNote = new SpecialNote(noteType,Integer.parseInt(splitText[2]));
+                       specialLane.addSpecial(specialNote);
+
+                    }
 
 
                 }
-            }
-        } catch (Exception e) {
+
+            } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
-//        for (int i = 0; i < getLaneNum(); i++) {
-//            for (int j = 0; j < normalLanes.get(i).getNumNormals();j++) {
-//                System.out.println(normalLanes.get(i).getNormalNotes().get(i).getFrameNumber());
-//            }
-//        }
-            for (int j = 0; j < normalLanes.get(1).getNumNormals();j++) {
-                System.out.println(normalLanes.get(1).getNormalNotes().get(j).getFrameNumber());
-            }
+
 
 
 
@@ -109,6 +113,9 @@ public abstract class Levels {
         return normalLanes;
     }
 
+    public SpecialLane getSpecialLane() {
+        return specialLane;
+    }
 
     public void setLevelScore(int levelScore) {
         this.levelScore = levelScore;
@@ -134,7 +141,5 @@ public abstract class Levels {
     public static void setLaneNum(int laneNum) {
         Levels.laneNum = laneNum;
     }
-    //    public static SpecialLane getSpecialLane() {
-//        return specialLane;
-//    }
+
 }
