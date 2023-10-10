@@ -79,11 +79,17 @@ public abstract class Levels {
             e.printStackTrace();
             System.exit(-1);
         }
-        for (int i = 0; i < getLaneNum(); i++) {
-            for (int j = 0; j < 19;j++) {
-                System.out.println(normalLanes.get(i).getNormalNotes().get(i).getFrameNumber());
+//        for (int i = 0; i < getLaneNum(); i++) {
+//            for (int j = 0; j < normalLanes.get(i).getNumNormals();j++) {
+//                System.out.println(normalLanes.get(i).getNormalNotes().get(i).getFrameNumber());
+//            }
+//        }
+            for (int j = 0; j < normalLanes.get(1).getNumNormals();j++) {
+                System.out.println(normalLanes.get(1).getNormalNotes().get(j).getFrameNumber());
             }
-        }
+
+
+
     }
 
     public boolean checkFinished() {
@@ -124,6 +130,7 @@ public abstract class Levels {
     public boolean isFinished() {
         return finished;
     }
+
 
 //    public static SpecialLane getSpecialLane() {
 //        return specialLane;

@@ -8,17 +8,17 @@ public class NormalLane extends Lane{
     private int indexHolds = 0;
     private int indexNormals = 0;
 
-    private static final ArrayList<NormalNote> normalNotes = new ArrayList<>();
-    private static final ArrayList<HoldNote> holdNotes = new ArrayList<>();
+    private  final ArrayList<NormalNote> normalNotes = new ArrayList<>();
+    private  final ArrayList<HoldNote> holdNotes = new ArrayList<>();
 
     public NormalLane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
         super(laneType, xCoordinate,relevantKey ,laneImage);
     }
 
-    public static ArrayList<NormalNote> getNormalNotes() {
+    public  ArrayList<NormalNote> getNormalNotes() {
         return normalNotes;
     }
-    public static ArrayList<HoldNote> getHoldNotes() {
+    public  ArrayList<HoldNote> getHoldNotes() {
         return holdNotes;
     }
 
@@ -42,16 +42,8 @@ public class NormalLane extends Lane{
         return true;
     }
     public void setCompleted() {
-        for (int i = 0; i < numNormals; i++) {
-            normalNotes.get(i).setCompleted(false);
-            normalNotes.get(i).setyCoordinate(100);
-        }
-
-        for (int j = 0; j < numHolds; j++) {
-            holdNotes.get(j).setCompleted(false);
-            normalNotes.get(j).setyCoordinate(20);
-        }
-
+         normalNotes.clear();
+        holdNotes.clear();
     }
 
     public int update(Input input, Accuracy accuracy) {
