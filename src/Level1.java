@@ -16,6 +16,15 @@ public class Level1 extends Levels{
         }
         super.getAccuracy().update();
         super.setFinished(checkFinished());
+        if (checkFinished()){
+            setLevelScore(0);
+            for (int i=0; i< getLaneNum();i++){
+                getNormalLanes().get(i).clearNotes();
+            }
+            getNormalLanes().clear();
+            setLaneNum(0);
+
+        }
 
     }
 

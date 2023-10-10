@@ -131,8 +131,10 @@ public abstract class Levels {
         return finished;
     }
 
-
-//    public static SpecialLane getSpecialLane() {
+    public static void setLaneNum(int laneNum) {
+        Levels.laneNum = laneNum;
+    }
+    //    public static SpecialLane getSpecialLane() {
 //        return specialLane;
 //    }
 }

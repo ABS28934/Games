@@ -41,8 +41,8 @@ public class NormalLane extends Lane{
 
         return true;
     }
-    public void setCompleted() {
-         normalNotes.clear();
+    public void clearNotes() {
+        normalNotes.clear();
         holdNotes.clear();
     }
 

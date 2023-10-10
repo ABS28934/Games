@@ -11,7 +11,7 @@ public abstract class Note {
 
     private boolean active = false;
     private boolean completed = false;
-    private boolean pressed = false ;
+    private boolean pressed = false;
     private boolean doubled = false;
     private final static int ACTIVATE_DISTANCE = 50;
     private boolean bombed = false;

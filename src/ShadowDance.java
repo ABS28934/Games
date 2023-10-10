@@ -129,7 +129,7 @@ public class ShadowDance extends AbstractGame  {
                 gameWon = false;
                 showInstructions = true;
                 frameCount = 0;
-                level_1 = new Level1(score, LEVEL1_CSV);
+                level_1 = new Level1(score,LEVEL1_CSV);
             }
         }
         if (gameLost){
@@ -139,7 +139,7 @@ public class ShadowDance extends AbstractGame  {
                 gameLost = false;
                 showInstructions = true;
                 frameCount = 0;
-                level_1 = new Level1(score, LEVEL1_CSV);
+                level_1 = new Level1(score,LEVEL1_CSV);
 
             }
         }
