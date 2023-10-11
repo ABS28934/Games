@@ -122,6 +122,7 @@ public class ShadowDance extends AbstractGame  {
             level_2.update(input);
             if (level_2.isFinished()) {
                 level2 = false;
+                System.out.println(level_2.getLevelScore());
                 // Check if the score beats the target score
                 if (level_2.getLevelScore() >= LEVEL2_TARGET) {
                     gameWon = true;

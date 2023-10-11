@@ -15,7 +15,6 @@ public abstract class Levels {
     private final ArrayList<NormalLane> normalLanes = new ArrayList<>();
     private SpecialLane specialLane = new SpecialLane();
 
-   // private  SpecialLane specialLane = new SpecialLane();
 
     public Levels(int levelScore,String csvFile){
         this.levelScore = levelScore;
