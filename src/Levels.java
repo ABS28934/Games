@@ -67,10 +67,10 @@ public abstract class Levels {
                                 HoldNote holdNote = new HoldNote(noteType, Integer.parseInt(splitText[2]));
                                 normalLane.addHold(holdNote);
                                 break;
-//                            case "Bomb":
-//                                NormalNote bomb = new NormalNote(splitText[1], Integer.parseInt(splitText[2]));
-//                                normalLane.addNormal(bomb);
-//                                break;
+                            case "Bomb":
+                                SpecialNote bomb = new SpecialNote(splitText[1], Integer.parseInt(splitText[2]));
+                                normalLane.addBomb(bomb);
+                                break;
 
                         }
                     }

@@ -109,7 +109,7 @@ public class Accuracy {
                 return SPEED_SCORE;
     }
     public void bombed() {
-            setAccuracy(BOMBED);
+        setAccuracy(BOMBED);
     }
     public void doubled() {
                 setAccuracy(DOUBLE);

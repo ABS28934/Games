@@ -27,6 +27,8 @@ public class SpecialNote extends Note{
                         score = accuracy.slowDown();
                     } else if (getNoteType().equals("DoubleScore")) {
                         accuracy.doubled();
+                    } else if (getNoteType().equals("Bomb")) {
+                        accuracy.bombed();
                     }
                     deactivate();
                 }
