@@ -15,6 +15,7 @@ public class Lane {
 
 
 
+
     public Lane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
         this.laneType = laneType;
         this.xCoordinate = xCoordinate;
@@ -25,7 +26,6 @@ public class Lane {
     public Lane(){
         return;
     }
-
 
 
     public Keys getRelevantKey() {

@@ -1,6 +1,7 @@
 import bagel.*;
 public class SpecialNote extends Note{
 
+
     public SpecialNote(String noteType, int frameNumber) {
         super(noteType,frameNumber);
         if (noteType.equals("DoubleScore")) {
@@ -29,6 +30,7 @@ public class SpecialNote extends Note{
                         accuracy.doubled();
                     } else if (getNoteType().equals("Bomb")) {
                         accuracy.bombed();
+                        setBombed(true);
                     }
                     deactivate();
                 }

@@ -55,6 +55,7 @@ public class NormalLane extends Lane{
     public int update(Input input, Accuracy accuracy) {
         drawLane();
 
+
         for (int i = indexNormals; i < numNormals; i++) {
             normalNotes.get(i).update();
 
@@ -79,6 +80,9 @@ public class NormalLane extends Lane{
         }
         if (indexBombs < numBombs) {
             int score = bombs.get(indexBombs).scoreNote(input, accuracy, Lane.TARGET_HEIGHT, getRelevantKey());
+            if (bombs.get(indexBombs).isBombed()){
+                deactivateAllActiveNotes();
+            }
             if (bombs.get(indexBombs).isCompleted()) {
                 indexBombs++;
                 return score;
@@ -110,6 +114,7 @@ public class NormalLane extends Lane{
         bombs.add(n);
         numBombs++;
     }
+
     public void drawLane() {
         super.drawLane();
         for (int i = indexNormals; i < numNormals; i++) {
@@ -122,6 +127,25 @@ public class NormalLane extends Lane{
 
         for (int j = indexHolds; j < numHolds; j++) {
             holdNotes.get(j).draw(getXCoordinate());
+        }
+    }
+
+    public void deactivateAllActiveNotes() {
+        for (NormalNote note : normalNotes) {
+            if (note.isActive()) {
+                note.deactivate();
+            }
+        }
+
+        for (HoldNote note : holdNotes) {
+            if (note.isActive()) {
+                note.deactivate();
+            }
+        }
+        for (SpecialNote note : bombs) {
+            if (note.isActive()) {
+                note.deactivate();
+            }
         }
     }
 

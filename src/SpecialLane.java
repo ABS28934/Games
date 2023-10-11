@@ -37,6 +37,9 @@ public class SpecialLane extends Lane{
 
         if (indexSpecials < numSpecials) {
             int score = specialNotes.get(indexSpecials).scoreNote(input, accuracy, Lane.TARGET_HEIGHT, getRelevantKey());
+            if (specialNotes.get(indexSpecials).getNoteType().equals("Bomb") &&specialNotes.get(indexSpecials).isBombed() ){
+                deactivateAllActiveNotes();
+            }
             if (specialNotes.get(indexSpecials).isCompleted()) {
                 indexSpecials++;
                 return score;
@@ -58,6 +61,15 @@ public class SpecialLane extends Lane{
     }
     public void clearNotes() {
         specialNotes.clear();
+    }
+
+    public void deactivateAllActiveNotes() {
+
+        for (SpecialNote note : specialNotes) {
+            if (note.isActive()) {
+                note.deactivate();
+            }
+        }
     }
     public void setCompleted() {
         for (int i = 0; i < numSpecials; i++) {

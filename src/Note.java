@@ -12,6 +12,9 @@ public abstract class Note {
     private boolean completed = false;
     private boolean pressed = false ;
 
+    private boolean bombed = false;
+
+
     public Note(String noteType, int frameNumber) {
         this.noteType = noteType;
         this.frameNumber = frameNumber;
@@ -23,6 +26,13 @@ public abstract class Note {
         }
     }
 
+    public boolean isBombed() {
+        return bombed;
+    }
+
+    public void setBombed(boolean bombed) {
+        this.bombed = bombed;
+    }
 
     public void setNoteImage(Image noteImage) {
         this.noteImage = noteImage;
