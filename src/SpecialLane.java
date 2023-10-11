@@ -35,7 +35,6 @@ public class SpecialLane extends Lane{
             specialNotes.get(i).update();
         }
 
-
         if (indexSpecials < numSpecials) {
             int score = specialNotes.get(indexSpecials).scoreNote(input, accuracy, Lane.TARGET_HEIGHT, getRelevantKey());
             if (specialNotes.get(indexSpecials).isCompleted()) {
@@ -54,8 +53,7 @@ public class SpecialLane extends Lane{
                 return false;
             }
         }
-
-
+        Note.setSpeed(2);
         return true;
     }
     public void clearNotes() {

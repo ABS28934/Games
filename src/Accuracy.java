@@ -34,7 +34,6 @@ public class Accuracy {
     public static final String SLOW_DOWN = "SLOW DOWN";
 
     public static final int SPEED_SCORE = 15;
-    public static final int ARBITRARY_SCORE = 10;
 
     private boolean doubled = false;
 
@@ -42,8 +41,6 @@ public class Accuracy {
 
     private int scoreChange = 1;
     private int doubledFrameCount = 0;
-
-
 
 
     public void setAccuracy(String accuracy) {
@@ -57,34 +54,34 @@ public class Accuracy {
         if (triggered) {
             if (distance <= PERFECT_RADIUS) {
                 setAccuracy(PERFECT);
-                if (doubled){
-                    return PERFECT_SCORE*scoreChange;
+                if (doubled) {
+                    return PERFECT_SCORE * scoreChange;
                 }
                 return PERFECT_SCORE;
             } else if (distance <= GOOD_RADIUS) {
                 setAccuracy(GOOD);
-                if (doubled){
-                    return GOOD_SCORE*scoreChange;
+                if (doubled) {
+                    return GOOD_SCORE * scoreChange;
                 }
                 return GOOD_SCORE;
             } else if (distance <= BAD_RADIUS) {
                 setAccuracy(BAD);
-                if (doubled){
-                    return BAD_SCORE*scoreChange;
+                if (doubled) {
+                    return BAD_SCORE * scoreChange;
                 }
                 return BAD_SCORE;
             } else if (distance <= MISS_RADIUS) {
                 setAccuracy(MISS);
-                if (doubled){
-                    return MISS_SCORE*scoreChange;
+                if (doubled) {
+                    return MISS_SCORE * scoreChange;
                 }
                 return MISS_SCORE;
             }
 
         } else if (height >= (Window.getHeight())) {
             setAccuracy(MISS);
-            if (doubled){
-                return MISS_SCORE*scoreChange;
+            if (doubled) {
+                return MISS_SCORE * scoreChange;
             }
             return MISS_SCORE;
         }
@@ -92,56 +89,35 @@ public class Accuracy {
         return NOT_SCORED;
 
     }
-    public int speedUp(int height, int targetHeight, boolean triggered) {
-        int distance = Math.abs(height - targetHeight);
 
-        if (triggered) {
-            if (distance <= ACTIVATE_DISTANCE) {
-                setAccuracy(SPEED_UP);
-                Note.setSpeed(Note.getSpeed() + 1);
-                if (doubled){
-                    return SPEED_SCORE*scoreChange;
-                }
-                return SPEED_SCORE;
-            }
+    public int speedUp() {
+        setAccuracy(SPEED_UP);
+        Note.setSpeed(Note.getSpeed() + 1);
+        if (doubled) {
+            return SPEED_SCORE * scoreChange;
         }
-
-        return NOT_SCORED;
+        return SPEED_SCORE;
     }
-    public int slowDown(int height, int targetHeight, boolean triggered) {
-        int distance = Math.abs(height - targetHeight);
 
-        if (triggered) {
-            if (distance <= ACTIVATE_DISTANCE) {
+
+    public int slowDown() {
                 setAccuracy(SLOW_DOWN);
                 Note.setSpeed(Note.getSpeed() - 1);
                 if (doubled){
                     return SPEED_SCORE*scoreChange;
                 }
                 return SPEED_SCORE;
-            }
-        }
-        return NOT_SCORED;
     }
-    public int bombed() {
+    public void bombed() {
             setAccuracy(BOMBED);
-            return ARBITRARY_SCORE;
     }
-    public int doubled(int height, int targetHeight, boolean triggered) {
-        int distance = Math.abs(height - targetHeight);
-
-        if (triggered) {
-            if (distance <= ACTIVATE_DISTANCE) {
+    public void doubled() {
                 setAccuracy(DOUBLE);
                 if (doubled){
                     scoreChange *= 2;
                 } else {
                     setDoubled(true);
                 }
-                return ARBITRARY_SCORE;
-            }
-        }
-        return NOT_SCORED;
     }
     public void setDoubled(boolean doubled) {
         this.doubled = doubled;

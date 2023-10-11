@@ -12,31 +12,27 @@ public class SpecialNote extends Note{
     }
 
     public int scoreNote(Input input, Accuracy accuracy, int targetHeight, Keys relevantKey) {
+        int score = 0;
+        int distance = Math.abs(super.getyCoordinate() - targetHeight);
         if (super.isActive()) {
             // evaluate accuracy of the key press
-            int score = 0;
-            if (getNoteType().equals("SpeedUp")) {
-                 score = accuracy.speedUp(super.getyCoordinate(), targetHeight, input.wasPressed(relevantKey));
-            }
-            else if (getNoteType().equals("SlowDown")) {
-                score = accuracy.slowDown(super.getyCoordinate(), targetHeight, input.wasPressed(relevantKey));
-
-            }
-            else if (getNoteType().equals("DoubleScore")) {
-                score = accuracy.doubled(super.getyCoordinate(), targetHeight, input.wasPressed(relevantKey));
-            }
-
-            if (score != Accuracy.NOT_SCORED ) {
+            if (getyCoordinate() >= Window.getHeight()) {
                 deactivate();
-                if (score == Accuracy.ARBITRARY_SCORE){
-                    score -= Accuracy.ARBITRARY_SCORE;
-                }
-                return score;
             }
-
+            if (input.wasReleased(relevantKey)) {
+                if (distance <= Accuracy.ACTIVATE_DISTANCE) {
+                    if (getNoteType().equals("SpeedUp")) {
+                        score = accuracy.speedUp();
+                    } else if (getNoteType().equals("SlowDown")) {
+                        score = accuracy.slowDown();
+                    } else if (getNoteType().equals("DoubleScore")) {
+                        accuracy.doubled();
+                    }
+                    deactivate();
+                }
+            }
         }
-
-        return 0;
+        return score;
     }
 
 
