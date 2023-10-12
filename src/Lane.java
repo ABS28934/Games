@@ -11,12 +11,8 @@ public class Lane {
     private Keys relevantKey;
     private Image laneImage;
 
-    private boolean bombed = false;
 
-
-
-
-    public Lane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
+    public Lane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage) {
         this.laneType = laneType;
         this.xCoordinate = xCoordinate;
         this.relevantKey = relevantKey;
@@ -60,6 +56,7 @@ public class Lane {
     }
 
     public static Image getLaneImage(String laneType) {
+
         return new Image("res/lane" + laneType + ".png");
     }
 

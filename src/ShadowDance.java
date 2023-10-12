@@ -21,7 +21,6 @@ public class ShadowDance extends AbstractGame  {
     private final Font INSTRUCTION_FONT = new Font(FONT_FILE, 24);
     private final static int INSTRUCTION_X = 320;
     private final static int INSTRUCTION_Y = 440;
-    private static final String SCORE_MESSAGE = "SCORE";
     private static final String WIN_MESSAGE = "CLEAR!";
     private static final String LOSE_MESSAGE = "TRY AGAIN";
 
@@ -43,10 +42,13 @@ public class ShadowDance extends AbstractGame  {
     private final static String LEVEL1_CSV = "res/level1.csv";
     private final static int LEVEL2_TARGET = 400;
     private final static String LEVEL2_CSV = "res/level2.csv";
+    private final static int LEVEL3_TARGET = 350;
+    private final static String LEVEL3_CSV = "res/level3.csv";
 
 
     private Level1 level_1;
     private Level2 level_2;
+    private Level3 level_3;
 
 
 
@@ -54,6 +56,7 @@ public class ShadowDance extends AbstractGame  {
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
             level_1 = new Level1(score, LEVEL1_CSV);
             level_2 = new Level2(score, LEVEL2_CSV);
+            level_3 = new Level3(score, LEVEL3_CSV);
 
 
     }
@@ -102,6 +105,7 @@ public class ShadowDance extends AbstractGame  {
             if (input.wasPressed(Keys.NUM_3)){
                 level3 = true;
                 showInstructions = false;
+                level_3.readCsv();
             }
         }
         if (level1 && !level2 && !level3){
@@ -118,7 +122,7 @@ public class ShadowDance extends AbstractGame  {
             }
 
         } else if (level2 && !level1 && !level3){
-            frameCount=frameCount+1;
+            frameCount++;
             level_2.update(input);
             if (level_2.isFinished()) {
                 level2 = false;
@@ -133,7 +137,17 @@ public class ShadowDance extends AbstractGame  {
 
 
         } else if (level3 && !level2 && !level1){
-
+            frameCount++;
+            level_3.update(input);
+            if (level_3.isFinished()) {
+                level3 = false;
+                // Check if the score beats the target score
+                if (level_3.getLevelScore() >= LEVEL3_TARGET) {
+                    gameWon = true;
+                } else {
+                    gameLost = true;
+                }
+            }
 
         }
         if (gameWon){
@@ -145,6 +159,7 @@ public class ShadowDance extends AbstractGame  {
                 frameCount = 0;
                 level_1 = new Level1(score,LEVEL1_CSV);
                 level_2 = new Level2(score,LEVEL2_CSV);
+                level_3 = new Level3(score,LEVEL3_CSV);
             }
         }
         if (gameLost){
@@ -156,6 +171,7 @@ public class ShadowDance extends AbstractGame  {
                 frameCount = 0;
                 level_1 = new Level1(score,LEVEL1_CSV);
                 level_2 = new Level2(score,LEVEL2_CSV);
+                level_3 = new Level3(score,LEVEL3_CSV);
 
             }
         }

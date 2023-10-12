@@ -4,12 +4,11 @@ import java.util.ArrayList;
 public class SpecialLane extends Lane{
     private int numSpecials = 0;
     private int indexSpecials = 0;
-    private boolean specialFinished = false;
 
     private  final ArrayList<SpecialNote> specialNotes = new ArrayList<>();
 
     public SpecialLane(String laneType, int xCoordinate, Keys relevantKey, Image laneImage){
-        super(laneType, xCoordinate,relevantKey ,laneImage);
+        super(laneType, xCoordinate,relevantKey,laneImage);
     }
 
     public SpecialLane (){
