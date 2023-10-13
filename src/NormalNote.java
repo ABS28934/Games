@@ -1,6 +1,7 @@
 import bagel.*;
 
-/** Class for normal notes
+/**
+ * Class for normal notes
  */
 public class NormalNote extends Note{
     private static final int YCOORDINATE = 100;

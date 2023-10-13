@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import bagel.*;
 
-/** Define a Levels superclass
- *
+/**
+ * Superclass for levels
  */
 public abstract class Levels {
     /** The font used for displaying scores. */
