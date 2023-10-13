@@ -9,8 +9,6 @@ public class Accuracy {
     public static final int BAD_SCORE = -1;
     public static final int MISS_SCORE = -5;
     public static final int NOT_SCORED = 0;
-
-
     public static final String PERFECT = "PERFECT";
     public static final String GOOD = "GOOD";
     public static final String BAD = "BAD";
@@ -24,24 +22,15 @@ public class Accuracy {
     private String currAccuracy = null;
     private int frameCount = 0;
     public final static int ACTIVATE_DISTANCE = 50;
-
     public static final String BOMBED = "LANE CLEAR";
-
     public static final String DOUBLE = "DOUBLE SCORE";
-
     public static final String SPEED_UP = "SPEED UP";
-
     public static final String SLOW_DOWN = "SLOW DOWN";
-
     public static final int SPEED_SCORE = 15;
-
     private boolean doubled = false;
-
     private static final int DOUBLE_FRAME = 480;
-
     private int scoreChange = 1;
     private int doubledFrameCount = 0;
-
 
     public void setAccuracy(String accuracy) {
         currAccuracy = accuracy;
@@ -77,7 +66,6 @@ public class Accuracy {
                 }
                 return MISS_SCORE;
             }
-
         } else if (height >= (Window.getHeight())) {
             setAccuracy(MISS);
             if (doubled) {
@@ -87,7 +75,6 @@ public class Accuracy {
         }
 
         return NOT_SCORED;
-
     }
 
     public int speedUp() {
@@ -99,26 +86,28 @@ public class Accuracy {
         return SPEED_SCORE;
     }
 
-
     public int slowDown() {
-                setAccuracy(SLOW_DOWN);
-                Note.setSpeed(Note.getSpeed() - 1);
-                if (doubled){
-                    return SPEED_SCORE*scoreChange;
-                }
-                return SPEED_SCORE;
+        setAccuracy(SLOW_DOWN);
+        Note.setSpeed(Note.getSpeed() - 1);
+        if (doubled) {
+            return SPEED_SCORE * scoreChange;
+        }
+        return SPEED_SCORE;
     }
+
     public void bombed() {
         setAccuracy(BOMBED);
     }
+
     public void doubled() {
-                setAccuracy(DOUBLE);
-                if (doubled){
-                    scoreChange *= 2;
-                } else {
-                    setDoubled(true);
-                }
+        setAccuracy(DOUBLE);
+        if (doubled) {
+            scoreChange *= 2;
+        } else {
+            setDoubled(true);
+        }
     }
+
     public void setDoubled(boolean doubled) {
         this.doubled = doubled;
         if (doubled) {
@@ -126,7 +115,6 @@ public class Accuracy {
             scoreChange *= 2;
         }
     }
-
 
     public void update() {
         frameCount++;
@@ -139,8 +127,8 @@ public class Accuracy {
         }
         if (currAccuracy != null && frameCount < RENDER_FRAMES) {
             ACCURACY_FONT.drawString(currAccuracy,
-                    Window.getWidth()/2 - ACCURACY_FONT.getWidth(currAccuracy)/2,
-                    Window.getHeight()/2);
+                    Window.getWidth() / 2 - ACCURACY_FONT.getWidth(currAccuracy) / 2,
+                    Window.getHeight() / 2);
         }
     }
 }

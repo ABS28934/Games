@@ -137,16 +137,6 @@ public class NormalLane extends Lane{
             }
         }
 
-        for (HoldNote note : holdNotes) {
-            if (note.isActive()) {
-                note.deactivate();
-            }
-        }
-        for (SpecialNote note : bombs) {
-            if (note.isActive()) {
-                note.deactivate();
-            }
-        }
     }
 
     public int getNumNormals() {

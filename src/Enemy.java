@@ -57,6 +57,14 @@ public class Enemy extends Character {
         return new Random().nextInt((maxY - minY) + 1) + minY;
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
     private void move() {
         setxCoordinate(getxCoordinate() + speed * direction);
         if (getxCoordinate() <= DIR_CHANGE_1) {

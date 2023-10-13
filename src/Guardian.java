@@ -4,7 +4,6 @@ import bagel.*;
 import java.util.ArrayList;
 
 public class Guardian extends Character{
-    private boolean pressed;
     public static final int X_COORDINATE = 800;
     public static final int Y_COORDINATE = 600;
 
@@ -17,7 +16,7 @@ public class Guardian extends Character{
         setxCoordinate(X_COORDINATE);
     }
 
-    public double nearestEnemy(ArrayList<Enemy> enemies) {
+    public Enemy nearestEnemy(ArrayList<Enemy> enemies) {
         Enemy nearest = null;
         double minDistance = Double.MAX_VALUE;
 
@@ -37,9 +36,12 @@ public class Guardian extends Character{
                 }
             }
         }
+        return nearest;
+    }
 
-        int x = nearest.getxCoordinate() - X_COORDINATE;
-        int y = nearest.getyCoordinate() - Y_COORDINATE;
+    public double calculateRotation(Enemy enemy){
+        int x = enemy.getxCoordinate() - X_COORDINATE;
+        int y = enemy.getyCoordinate() - Y_COORDINATE;
         return Math.atan2(y,x);
     }
     public void update(Input input, ArrayList<Enemy> enemies, boolean enemyActive) {
@@ -48,7 +50,8 @@ public class Guardian extends Character{
            if (input.wasPressed(Keys.LEFT_SHIFT)&& enemyActive) {
                Projectile projectile = new Projectile();
                projectile.setActive(true);
-               projectile.drawOptions.setRotation(nearestEnemy(enemies));
+               projectile.drawOptions.setRotation(calculateRotation(nearestEnemy(enemies)));
+               projectile.setRotation(calculateRotation(nearestEnemy(enemies)));
                projectiles.add(projectile);
            }
 
