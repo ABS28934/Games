@@ -2,6 +2,7 @@ import bagel.*;
 
 /**
  * Skeleton Code for SWEN20003 Project 2, Semester 2, 2023
+ * Implements the game ShadowDance
  * Please enter your name below
  * @AnandiNambiar
  */
@@ -9,6 +10,10 @@ public class ShadowDance extends AbstractGame  {
     private final static int WINDOW_WIDTH = 1024;
     private final static int WINDOW_HEIGHT = 768;
     private final Image BACKGROUND_IMAGE = new Image("res/background.png");
+
+    /**
+     * File path for the game's font.
+     */
     public final static String FONT_FILE = "res/FSO8BITR.TTF";
 
     private final static String GAME_TITLE = "SHADOW DANCE";
@@ -50,8 +55,9 @@ public class ShadowDance extends AbstractGame  {
     private Level2 level_2;
     private Level3 level_3;
 
-
-
+    /**
+     * Constructs a new ShadowDance game.
+     */
     public ShadowDance(){
         super(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE);
             level_1 = new Level1(score, LEVEL1_CSV);
@@ -62,12 +68,9 @@ public class ShadowDance extends AbstractGame  {
     }
 
     /**
-     * Method used to read file and create objects (you can change
-     * this method as you wish).
-     */
-
-    /**
      * The entry point for the program.
+     *
+     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
         ShadowDance game = new ShadowDance();
@@ -76,8 +79,9 @@ public class ShadowDance extends AbstractGame  {
 
 
     /**
-     * Performs a state update.
-     * Allows the game to exit when the escape key is pressed.
+     * Performs a state update. Allows the game to exit when the escape key is pressed.
+     *
+     * @param input The user input for the game.
      */
     @Override
     protected void update(Input input) {
@@ -87,27 +91,27 @@ public class ShadowDance extends AbstractGame  {
         }
         BACKGROUND_IMAGE.draw(Window.getWidth()/2.0, Window.getHeight()/2.0);
 
+        // instruction screen
         if (showInstructions) {
-            // instruction screen
             TITLE_FONT.drawString(GAME_TITLE, TITLE_X, TITLE_Y);
             INSTRUCTION_FONT.drawString(INSTRUCTIONS,
                     INSTRUCTION_X, INSTRUCTION_Y);
+
             if (input.wasPressed(Keys.NUM_1)){
                 level1 = true;
                 showInstructions = false;
                 level_1.readCsv();
-            }
-            if (input.wasPressed(Keys.NUM_2)){
+            } else if (input.wasPressed(Keys.NUM_2)){
                 level2 = true;
                 showInstructions = false;
                 level_2.readCsv();
-            }
-            if (input.wasPressed(Keys.NUM_3)){
+            } else if (input.wasPressed(Keys.NUM_3)){
                 level3 = true;
                 showInstructions = false;
                 level_3.readCsv();
             }
         }
+        // gameplay for each level
         if (level1 && !level2 && !level3){
             frameCount++;
             level_1.update(input);
@@ -133,8 +137,6 @@ public class ShadowDance extends AbstractGame  {
                     gameLost = true;
                 }
             }
-
-
 
         } else if (level3 && !level2 && !level1){
             frameCount++;
@@ -176,6 +178,11 @@ public class ShadowDance extends AbstractGame  {
             }
         }
     }
+    /**
+     * Gets the frame count for the game.
+     *
+     * @return int Returns the frame count.
+     */
     public static int getFrameCount() {
         return frameCount;
     }

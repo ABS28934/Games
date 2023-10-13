@@ -3,18 +3,27 @@ import bagel.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Defines an Enemy class to represent
+ * enemies in the game
+ */
 public class Enemy extends Character {
-
     private int speed = 1;
     private int direction;
     private boolean active = false;
-    private int xCoordinate;
-    private int yCoordinate;
+    // The maximum distance for collision detection.
+    private static final int COLLISION_DISTANCE = 104;
 
-    public static final int COLLISION_DISTANCE = 104;
-    public static final int DIR_CHANGE_1 = 100;
-    public static final int DIR_CHANGE_2 = 900;
+    // x-coordinates the trigger direction change
+    private static final int DIR_CHANGE_1 = 100;
+    private static final int DIR_CHANGE_2 = 900;
 
+
+    /**
+     * Constructor for an enemy
+     *
+     * @param characterType The character type (enemy in this case)
+     */
     public Enemy(String characterType) {
         super(characterType);
         setRandomDirection();
@@ -22,6 +31,12 @@ public class Enemy extends Character {
         setyCoordinate(randomY());
     }
 
+    /**
+     * Updates the position of the enemy and its stealing of normal notes.
+     *
+     * @param normalNotes An ArrayList of normal notes in the game.
+     * @param x           The x-coordinate representing a note's x coordinate.
+     */
     public void update(ArrayList<NormalNote> normalNotes, int x) {
         if (active) {
             drawCharacter();
@@ -30,41 +45,44 @@ public class Enemy extends Character {
         }
     }
 
+    /**
+     * Checks if the enemy character is currently active.
+     *
+     * @return boolean Returns whether the enemy is active
+     */
     public boolean isActive() {
         return active;
     }
 
+    /**
+     * Sets the enemy character's activity status.
+     *
+     * @param active Current state to be reassigned.
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
+    // Randomly set the initial direction (-1 for left, 1 for right)
     private void setRandomDirection() {
-        // Randomly set the initial direction (-1 for left, 1 for right)
         direction = (new Random().nextBoolean()) ? -1 : 1;
     }
 
+    // Generate a random x-coordinate between 100 and 900
     private int randomX() {
-        // Generate a random x-coordinate between 100 and 900
         int minX = 100;
         int maxX = 900;
         return new Random().nextInt((maxX - minX) + 1) + minX;
     }
 
+    // Generate a random y-coordinate between 100 and 500
     private int randomY() {
-        // Generate a random y-coordinate between 100 and 500
         int minY = 100;
         int maxY = 500;
         return new Random().nextInt((maxY - minY) + 1) + minY;
     }
 
-    public int getDirection() {
-        return direction;
-    }
-
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
-
+    // Controls the movement of the enemy
     private void move() {
         setxCoordinate(getxCoordinate() + speed * direction);
         if (getxCoordinate() <= DIR_CHANGE_1) {
@@ -74,6 +92,7 @@ public class Enemy extends Character {
         }
     }
 
+    // Determines any of the normal notes have been stolen by the enemy
     private void steal(ArrayList<NormalNote> normalNotes, int x){
         for (NormalNote note: normalNotes){
             if (Math.abs(getyCoordinate() - note.getyCoordinate()) <= COLLISION_DISTANCE && Math.abs(getxCoordinate() - x) <= COLLISION_DISTANCE){
