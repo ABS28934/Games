@@ -1,7 +1,7 @@
 import bagel.*;
 
 /**
- * Defines a superclass for characters in the game
+ * Superclass for characters in the game
  */
 public abstract class Character {
     private Image characterImage;

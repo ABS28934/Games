@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Defines an Enemy class to represent
- * enemies in the game
+ * Class for enemy characters
  */
 public class Enemy extends Character {
     private int speed = 1;

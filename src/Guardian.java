@@ -3,6 +3,9 @@ import bagel.*;
 
 import java.util.ArrayList;
 
+/**
+ * Class for guardian characters
+ */
 public class Guardian extends Character{
     /**
      * The x-coordinate of the guardian character.
